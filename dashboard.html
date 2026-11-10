@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>València Mobility Pulse</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: status header, one band of four city figures, then the map (the working surface) with a context panel beside it; history and the neighbourhood table follow as supporting evidence. */
+:root {
+  --bg: #f2f5f8; --surface: #ffffff; --ink: #14213a; --muted: #5a6781; --line: #d5dde7;
+  --accent: #0b5fa5; --accent-soft: #e2eefa;
+  --water: #dce8f3; --land: #fbfcfe; --land-line: #c3cfdc;
+  --empty: #d9480f; --low: #f0a13a; --mid: #8b9db3; --high: #3b82c4; --full: #1b3a8a; --off: #b8c1cd;
+  --traffic: #8a2f6b; --warn: #b3420c;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0e1520; --surface: #162030; --ink: #e9eef6; --muted: #98a6bb; --line: #2a374b;
+  --accent: #62aef2; --accent-soft: #1b3350;
+  --water: #0a1019; --land: #1b2738; --land-line: #34445c;
+  --empty: #ff7a45; --low: #f5b85a; --mid: #74859d; --high: #4d9de0; --full: #c3dcff; --off: #4a586c;
+  --traffic: #ea8fcb; --warn: #ffa26b; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0e1520; --surface: #162030; --ink: #e9eef6; --muted: #98a6bb; --line: #2a374b;
+  --accent: #62aef2; --accent-soft: #1b3350;
+  --water: #0a1019; --land: #1b2738; --land-line: #34445c;
+  --empty: #ff7a45; --low: #f5b85a; --mid: #74859d; --high: #4d9de0; --full: #c3dcff; --off: #4a586c;
+  --traffic: #ea8fcb; --warn: #ffa26b; color-scheme: dark }
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+[hidden] { display: none !important; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-block: 28px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 28px; }
+h1, h2, h3 { font-family: var(--font-display); margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(28px, 4.2vw, 42px); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; }
+h2 { font-size: 21px; font-weight: 700; letter-spacing: -0.01em; }
+h3 { font-size: 15px; font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.muted { color: var(--muted); }
+.num { font-variant-numeric: tabular-nums; }
+button, select { font: inherit; color: inherit; }
+button:focus-visible, select:focus-visible, [tabindex]:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+a { color: var(--accent); }
+
+.top { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: flex-end; justify-content: space-between; }
+.top-text { display: flex; flex-direction: column; gap: 8px; min-width: 0; flex: 1 1 420px; }
+.lede { max-width: 62ch; color: var(--muted); font-size: 16px; }
+.status { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.status-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.pill { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; padding: 4px 11px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+.pill::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.pill.live::before { animation: pulse 1.8s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: 0.25; } }
+@media (prefers-reduced-motion: reduce) { .pill.live::before { animation: none; } }
+.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 7px 13px; font-weight: 600; font-size: 13.5px; cursor: pointer; }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.status-note { font-size: 12.5px; color: var(--muted); max-width: 36ch; }
+
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line); }
+.kpi { padding: 16px 18px 16px 0; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.kpi + .kpi { padding-left: 18px; border-left: 1px solid var(--line); }
+.kpi-label { font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.kpi-value { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 4vw, 44px); line-height: 1.05; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.kpi-value small { font-size: 0.45em; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+.kpi-sub { font-size: 13px; color: var(--muted); }
+.kpi.is-empty .kpi-value { color: var(--empty); }
+.kpi.is-full .kpi-value { color: var(--high); }
+.insight { font-size: 16px; max-width: 80ch; padding-left: 14px; border-left: 3px solid var(--accent); }
+.insight strong { font-weight: 600; }
+
+.main { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 24px; align-items: start; }
+.mapcard { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; min-width: 0; }
+.mapbar { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+.tabs { display: inline-flex; background: var(--bg); border-radius: 9px; padding: 3px; gap: 2px; }
+.tab { border: 0; background: transparent; border-radius: 7px; padding: 6px 13px; font-weight: 600; font-size: 13.5px; cursor: pointer; color: var(--muted); }
+.tab[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(20, 33, 58, 0.18); }
+.tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.chip { border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 4px 11px; font-size: 13px; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.sel { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 5px 8px; font-size: 13px; max-width: 100%; }
+.mapbox { position: relative; background: var(--water); aspect-ratio: 4 / 3; max-width: 100%; }
+#map { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; }
+#map.dragging { cursor: grabbing; }
+#map.zoomed { touch-action: none; }
+.barrio { fill: var(--land); stroke: var(--land-line); stroke-width: 0.8; vector-effect: non-scaling-stroke; }
+.barrio.hot { cursor: pointer; }
+.barrio.sel { stroke: var(--ink); stroke-width: 2.2; }
+.seg { fill: none; stroke: var(--traffic); stroke-linecap: round; vector-effect: non-scaling-stroke; cursor: pointer; }
+.seg.nodata { stroke: var(--off); stroke-dasharray: 3 3; }
+.seg.sel { stroke: var(--ink); }
+.st { stroke: var(--surface); stroke-width: 1.2; vector-effect: non-scaling-stroke; cursor: pointer; }
+.st.dim { opacity: 0.12; }
+.st.sel { stroke: var(--ink); stroke-width: 2.6; }
+.c-empty { fill: var(--empty); } .c-low { fill: var(--low); } .c-mid { fill: var(--mid); } .c-high { fill: var(--high); } .c-full { fill: var(--full); } .c-off { fill: var(--off); }
+.zoom { position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column; gap: 4px; }
+.zoom button { width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); font-size: 18px; font-weight: 600; cursor: pointer; line-height: 1; }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); font-size: 12.5px; line-height: 1.35; padding: 7px 10px; border-radius: 7px; max-width: 230px; z-index: 3; }
+.tip b { font-weight: 600; display: block; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; padding: 11px 14px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--muted); align-items: center; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+.sw.sq { border-radius: 3px; border: 1px solid var(--land-line); }
+.sw.ln { width: 22px; height: 0; border-radius: 0; border-top: 3px solid var(--traffic); }
+
+.side { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.panel { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.panel-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+.detail-name { font-family: var(--font-display); font-weight: 700; font-size: 19px; line-height: 1.2; overflow-wrap: anywhere; }
+.pairs { display: grid; grid-template-columns: auto 1fr; gap: 3px 14px; font-size: 13.5px; }
+.pairs dt { color: var(--muted); } .pairs dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; font-weight: 500; }
+dl { margin: 0; }
+.fillbar { height: 10px; border-radius: 5px; background: var(--bg); overflow: hidden; border: 1px solid var(--line); }
+.fillbar i { display: block; height: 100%; }
+.rank { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.rank li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; cursor: pointer; }
+.rank li:hover .rk-name { color: var(--accent); }
+.rk-name { overflow-wrap: anywhere; font-weight: 500; }
+.rk-val { font-variant-numeric: tabular-nums; text-align: right; }
+.rk-sub { grid-column: 1 / -1; font-size: 12px; color: var(--muted); }
+.rk-bar { grid-column: 1 / -1; height: 4px; background: var(--bg); border-radius: 2px; }
+.rk-bar i { display: block; height: 100%; border-radius: 2px; background: var(--traffic); }
+.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
+.more { font-size: 12.5px; color: var(--muted); padding-top: 4px; }
+
+.sec-head { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; justify-content: space-between; margin-bottom: 12px; }
+.charts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.chart { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.chart svg { width: 100%; height: auto; display: block; }
+.chart .now { font-family: var(--font-display); font-weight: 700; font-size: 22px; font-variant-numeric: tabular-nums; }
+.grid-line { stroke: var(--line); stroke-width: 1; }
+.axis-t { fill: var(--muted); font-size: 10.5px; font-family: var(--font-body); }
+.ln-a { stroke: var(--accent); } .ln-e { stroke: var(--empty); } .ln-f { stroke: var(--high); } .ln-t { stroke: var(--traffic); }
+.pt-a { fill: var(--accent); } .pt-e { fill: var(--empty); } .pt-f { fill: var(--high); } .pt-t { fill: var(--traffic); }
+.series { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.key { display: flex; gap: 14px; font-size: 12.5px; color: var(--muted); }
+
+.tablebox { overflow: auto; max-height: 460px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; min-width: 760px; }
+th, td { padding: 8px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+th:nth-child(-n+2), td:nth-child(-n+2) { text-align: left; }
+th { position: sticky; top: 0; background: var(--surface); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); cursor: pointer; user-select: none; }
+th[aria-sort] { color: var(--ink); }
+tbody tr { cursor: pointer; }
+tbody tr:hover td { background: var(--accent-soft); }
+.lvl { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; border: 1px solid var(--line); }
+.lvl.High { border-color: var(--warn); color: var(--warn); }
+.cellbar { display: inline-block; height: 6px; border-radius: 3px; background: var(--accent); vertical-align: middle; margin-right: 8px; }
+
+.foot { border-top: 1px solid var(--line); padding-top: 16px; font-size: 13px; color: var(--muted); display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px 32px; }
+.foot ul { margin: 6px 0 0; padding-left: 18px; }
+.foot h3 { color: var(--ink); font-size: 13.5px; }
+
+@media (max-width: 920px) {
+  .main { grid-template-columns: minmax(0, 1fr); }
+  .charts { grid-template-columns: minmax(0, 1fr); }
+  .foot { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 620px) {
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kpi { padding: 12px 10px 12px 0; }
+  .kpi + .kpi { padding-left: 12px; }
+  .kpi:nth-child(3) { padding-left: 0; border-left: 0; }
+  .kpi:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .mapbox { aspect-ratio: 1 / 1; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="top-text">
+      <p class="eyebrow">València · open mobility data</p>
+      <h1>València Mobility Pulse</h1>
+      <p class="lede">Where is the public bike share running short right now, and how does that sit next to traffic and neighbourhood coverage?</p>
+    </div>
+    <div class="status">
+      <div class="status-row">
+        <span class="pill" id="statusPill">Saved capture</span>
+        <span class="num" id="statusTime"></span>
+      </div>
+      <div class="status-row">
+        <button class="btn" id="refreshBtn" type="button">Refresh live data</button>
+      </div>
+      <p class="status-note" id="statusNote"></p>
+    </div>
+  </header>
+
+  <section class="kpis" id="kpis" aria-label="City figures"></section>
+  <p class="insight" id="insight"></p>
+
+  <section class="main">
+    <div class="mapcard">
+      <div class="mapbar">
+        <div class="tabs" role="tablist" aria-label="Map layer">
+          <button class="tab" role="tab" id="tab-bike" data-mode="bike" aria-selected="true" type="button">Bike share</button>
+          <button class="tab" role="tab" id="tab-traffic" data-mode="traffic" aria-selected="false" type="button">Traffic</button>
+          <button class="tab" role="tab" id="tab-hood" data-mode="hood" aria-selected="false" type="button">Neighbourhoods</button>
+        </div>
+        <div class="tools">
+          <span id="bikeTools">
+            <button class="chip" type="button" data-filter="all" aria-pressed="true" id="chip-all">All stations</button>
+            <button class="chip" type="button" data-filter="empty" aria-pressed="false" id="chip-empty">No bikes</button>
+            <button class="chip" type="button" data-filter="full" aria-pressed="false" id="chip-full">No free docks</button>
+          </span>
+          <select class="sel" id="metricSel" aria-label="Neighbourhood indicator" hidden>
+            <option value="docksKm">Bike share docks per km²</option>
+            <option value="stopsKm">Bus stops per km²</option>
+            <option value="cycleKm2">Cycle routes, km per km²</option>
+            <option value="vul">Vulnerability level (2021)</option>
+          </select>
+          <select class="sel" id="districtSel" aria-label="Zoom to district"></select>
+        </div>
+      </div>
+      <div class="mapbox" id="mapbox">
+        <svg id="map" role="img" aria-label="Map of València"><g id="gBarrios"></g><g id="gTraffic"></g><g id="gStations"></g></svg>
+        <div class="zoom">
+          <button type="button" id="zoomIn" aria-label="Zoom in">+</button>
+          <button type="button" id="zoomOut" aria-label="Zoom out">−</button>
+          <button type="button" id="zoomReset" aria-label="Reset view" title="Reset view">⌂</button>
+        </div>
+        <div class="tip" id="tip" hidden></div>
+      </div>
+      <div class="legend" id="legend"></div>
+    </div>
+    <aside class="side">
+      <div class="panel" id="detail"></div>
+      <div class="panel" id="ranking"></div>
+    </aside>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>Through the day</h2>
+      <p class="muted" id="histNote"></p>
+    </div>
+    <div class="charts" id="charts"></div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>Neighbourhood coverage</h2>
+      <p class="muted">88 neighbourhoods. Select a column to sort, a row to find it on the map.</p>
+    </div>
+    <div class="tablebox"><table id="hoodTable"><thead></thead><tbody></tbody></table></div>
+  </section>
+
+  <footer class="foot">
+    <div>
+      <h3>Where the numbers come from</h3>
+      <ul>
+        <li>Bike availability: <a href="https://opendata.vlci.valencia.es/dataset/valenbisi-disponibilitat-valenbisi-dsiponibilidad" target="_blank" rel="noopener">ValenBisi Disponibilidad</a>, refreshed by the city every 10 minutes.</li>
+        <li>Traffic: <a href="https://opendata.vlci.valencia.es/dataset/intensitat-transit-trams-intensidad-trafico-tramos" target="_blank" rel="noopener">Intensidad tráfico tramos</a>. The portal publishes the latest sensor reading per street segment and does not state its unit.</li>
+        <li>Neighbourhood outlines: <a href="https://opendata.vlci.valencia.es/dataset/barris-barrios" target="_blank" rel="noopener">Barrios</a>. Areas are calculated from the outlines.</li>
+        <li>Bus stops: <a href="https://opendata.vlci.valencia.es/dataset/emt" target="_blank" rel="noopener">EMT</a>. Cycle routes: <a href="https://opendata.vlci.valencia.es/dataset/itinerarios-ciclistas-itineraris-ciclistes" target="_blank" rel="noopener">Itinerarios ciclistas</a>, each stretch assigned to the neighbourhood of its midpoint.</li>
+        <li>Vulnerability: <a href="https://opendata.vlci.valencia.es/dataset/vulnerabilidad-por-barrios" target="_blank" rel="noopener">Vulnerabilidad por barrios 2021</a>, published for 70 of the 88 neighbourhoods.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>How it stays current</h3>
+      <p>The city portal only publishes the present moment. A small script saves a copy every 10 minutes, which is what makes the history charts possible. All times are València local time. Source: Ajuntament de València open data portal.</p>
+      <p style="margin-top:8px">Workshop example, CITIES FORUM International Mentoring Programme.</p>
+    </div>
+  </footer>
+</div>
+
+<script src="data/base.js"></script>
+<script src="data/snapshot.js"></script>
+<script src="data/history.js"></script>
+<script>
+(function () {
+  'use strict';
+  var BASE = window.BASE, SNAP = window.SNAPSHOT, HIST = (window.HISTORY || []).slice();
+  var $ = function (id) { return document.getElementById(id); };
+  var fmt = function (n, d) { return n == null || isNaN(n) ? 'n/a' : Number(n).toLocaleString('en-GB', { maximumFractionDigits: d || 0, minimumFractionDigits: d || 0 }); };
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var hhmm = function (iso) { return String(iso).slice(11, 16); };
+  var LIVE = 'https://geoportal.valencia.es/server/rest/services/OPENDATA/Trafico/MapServer/';
+  var LIVEQ = '/query?where=1=1&outFields=*&f=geojson';
+
+  // ---------- projection (plain lon/lat to flat units, about 11 m per unit)
+  var KX = Math.cos(39.47 * Math.PI / 180), SC = 10000;
+  var px = function (lon) { return (lon + 0.5) * KX * SC; }, py = function (lat) { return (39.7 - lat) * SC; };
+
+  var state = { mode: 'bike', filter: 'all', district: '', metric: 'docksKm', sel: null, sort: { k: 'docksKm', d: -1 }, live: false };
+  var hoods = BASE.barrios, hoodByCode = {};
+  hoods.forEach(function (b) {
+    hoodByCode[b.code] = b;
+    b.docksKm = b.docks / b.km2; b.stopsKm = b.stops / b.km2; b.cycleKm2 = b.cycleKm / b.km2;
+    b.path = b.rings.map(function (r) { return 'M' + r.map(function (c) { return px(c[0]).toFixed(1) + ' ' + py(c[1]).toFixed(1); }).join('L') + 'Z'; }).join('');
+    var xs = [], ys = []; b.rings.forEach(function (r) { r.forEach(function (c) { xs.push(px(c[0])); ys.push(py(c[1])); }); });
+    b.box = [Math.min.apply(0, xs), Math.min.apply(0, ys), Math.max.apply(0, xs), Math.max.apply(0, ys)];
+  });
+  var segs = BASE.traffic;
+  segs.forEach(function (t) { t.path = 'M' + t.pts.map(function (c) { return px(c[0]).toFixed(1) + ' ' + py(c[1]).toFixed(1); }).join('L'); });
+  var stations = [];
+
+  function classify(s) {
+    var inService = s.available + s.free;
+    s.inService = inService; s.ratio = inService ? s.available / inService : null;
+    s.cls = !inService || s.open === false ? 'off' : s.available === 0 ? 'empty' : s.free === 0 ? 'full' : s.ratio < 0.25 ? 'low' : s.ratio > 0.75 ? 'high' : 'mid';
+    s.hood = hoodByCode[BASE.stationBarrio[s.n]] || null;
+    s.x = px(s.lon); s.y = py(s.lat); s.rpx = 3.6 + Math.sqrt(s.total) * 0.75;
+    return s;
+  }
+  var CLS_LABEL = { empty: 'No bikes', low: 'Under 25% full', mid: 'Balanced', high: 'Over 75% full', full: 'No free docks', off: 'Out of service' };
+  function loadSnapshot(snap) { SNAP = snap; stations = snap.stations.map(classify); }
+  loadSnapshot(SNAP);
+
+  function cityStats(list) {
+    var o = { bikes: 0, inService: 0, empty: 0, full: 0, off: 0, n: list.length };
+    list.forEach(function (s) { o.bikes += s.available; o.inService += s.available + s.free; if (s.available + s.free === 0) o.off++; else if (s.available === 0) o.empty++; else if (s.free === 0) o.full++; });
+    return o;
+  }
+  var histStats = function (h) { return cityStats(h.s.map(function (r) { return { available: r[1], free: r[2] }; })); };
+
+  // ---------- KPIs and the one-sentence reading
+  function renderKpis() {
+    var c = cityStats(stations), first = HIST.length ? histStats(HIST[0]) : null;
+    var delta = function (now, was, unit) { if (!first || HIST.length < 2) return ''; var d = now - was; return (d > 0 ? '+' : d < 0 ? '−' : '±') + fmt(Math.abs(d)) + (unit || '') + ' since ' + hhmm(HIST[0].t); };
+    var fill = c.inService ? c.bikes / c.inService * 100 : 0;
+    var tiles = [
+      ['', 'Bikes available', fmt(c.bikes), 'of ' + fmt(c.inService) + ' working docks. ' + delta(c.bikes, first && first.bikes)],
+      ['', 'System fill', fmt(fill) + '<small>%</small>', 'Share of working docks holding a bike'],
+      ['is-empty', 'Stations with no bikes', fmt(c.empty), fmt(c.empty / c.n * 100) + '% of ' + c.n + ' stations. ' + delta(c.empty, first && first.empty)],
+      ['is-full', 'Stations with no free docks', fmt(c.full), 'Nowhere to return a bike. ' + delta(c.full, first && first.full)]
+    ];
+    $('kpis').innerHTML = tiles.map(function (t) { return '<div class="kpi ' + t[0] + '"><span class="kpi-label">' + t[1] + '</span><span class="kpi-value">' + t[2] + '</span><span class="kpi-sub">' + t[3] + '</span></div>'; }).join('');
+    // reading: which district concentrates the empty stations
+    var byD = {}; stations.forEach(function (s) { if (!s.hood) return; var d = byD[s.hood.district] || (byD[s.hood.district] = { n: 0, e: 0 }); d.n++; if (s.cls === 'empty') d.e++; });
+    var worst = Object.keys(byD).filter(function (k) { return byD[k].n >= 5; }).sort(function (a, b) { return byD[b].e / byD[b].n - byD[a].e / byD[a].n; })[0];
+    $('insight').innerHTML = c.empty + c.full === 0 ? 'Every working station has both bikes and free docks right now.' :
+      'Right now <strong>' + fmt((c.empty + c.full) / c.n * 100) + '% of stations fail one of their two jobs</strong>: ' + c.empty + ' have no bike to take and ' + c.full + ' have no dock to return one.' +
+      (worst && byD[worst].e ? ' The shortage is sharpest in <strong>' + esc(worst) + '</strong>, where ' + byD[worst].e + ' of ' + byD[worst].n + ' stations are empty.' : '');
+  }
+
+  // ---------- map
+  var svg = $('map'), view = null, home = null;
+  function fitBox(box, pad) {
+    var w = box[2] - box[0], h = box[3] - box[1], p = Math.max(w, h) * (pad == null ? 0.07 : pad) + 6;
+    return { x: box[0] - p, y: box[1] - p, w: w + 2 * p, h: h + 2 * p };
+  }
+  function scale() { var r = svg.getBoundingClientRect(); return Math.min(r.width / view.w, r.height / view.h) || 1; }
+  function applyView() {
+    svg.setAttribute('viewBox', view.x.toFixed(1) + ' ' + view.y.toFixed(1) + ' ' + view.w.toFixed(1) + ' ' + view.h.toFixed(1));
+    var k = scale(), zoomBoost = Math.min(1.9, Math.max(1, Math.sqrt(home.w / view.w)));
+    Array.prototype.forEach.call($('gStations').children, function (el) { var s = stations[+el.dataset.i]; if (s) el.setAttribute('r', (s.rpx * zoomBoost / k).toFixed(2)); });
+    svg.classList.toggle('zoomed', view.w < home.w * 0.98);
+  }
+  function zoomBy(f, cx, cy) {
+    var nw = Math.min(home.w * 3, Math.max(home.w / 40, view.w * f)), r = nw / view.w;
+    if (cx == null) { cx = view.x + view.w / 2; cy = view.y + view.h / 2; }
+    view = { x: cx - (cx - view.x) * r, y: cy - (cy - view.y) * r, w: nw, h: view.h * r }; applyView();
+  }
+  function toSvg(ev) { var p = svg.createSVGPoint(); p.x = ev.clientX; p.y = ev.clientY; var m = svg.getScreenCTM(); return m ? p.matrixTransform(m.inverse()) : { x: 0, y: 0 }; }
+
+  function trafficClass(v, max) { if (v == null || v < 0) return null; var q = v / max; return q > 0.6 ? 5 : q > 0.35 ? 4 : q > 0.18 ? 3 : q > 0.07 ? 2 : 1; }
+  function quantiles(vals) { var a = vals.filter(function (v) { return v > 0; }).sort(function (x, y) { return x - y; }); return [0.2, 0.4, 0.6, 0.8].map(function (q) { return a.length ? a[Math.min(a.length - 1, Math.floor(q * a.length))] : 0; }); }
+  var METRIC = {
+    docksKm: { label: 'Bike share docks per km²', d: 0 }, stopsKm: { label: 'Bus stops per km²', d: 0 },
+    cycleKm2: { label: 'Cycle routes, km per km²', d: 1 }, vul: { label: 'Vulnerability level (2021)' }
+  };
+  function hoodFill(b, qs) {
+    if (state.metric === 'vul') return b.vulLabel ? { fill: 'var(--warn)', op: { Low: 0.1, Medium: 0.45, High: 0.9 }[b.vulLabel] } : null;
+    var v = b[state.metric]; if (!(v > 0)) return { fill: 'var(--accent)', op: 0.03 };
+    var c = 0; qs.forEach(function (q) { if (v > q) c++; }); return { fill: 'var(--accent)', op: 0.14 + c * 0.19 };
+  }
+  function renderMap() {
+    var hot = state.mode === 'hood', qs = quantiles(hoods.map(function (b) { return b[state.metric]; }));
+    $('gBarrios').innerHTML = hoods.map(function (b, i) {
+      var f = hot ? hoodFill(b, qs) : null, sel = state.sel && state.sel.k === 'h' && state.sel.i === i;
+      return '<path class="barrio' + (hot ? ' hot' : '') + (sel ? ' sel' : '') + '" d="' + b.path + '"' + (hot ? ' data-k="h" data-i="' + i + '"' : ' pointer-events="none"') + '/>' +
+        (f ? '<path d="' + b.path + '" pointer-events="none" fill="' + f.fill + '" fill-opacity="' + f.op.toFixed(2) + '" stroke="none"/>' : '');
+    }).join('');
+    var tr = SNAP.traffic || {}, max = Math.max.apply(0, segs.map(function (t) { return tr[t.id] > 0 ? tr[t.id] : 0; })) || 1;
+    $('gTraffic').innerHTML = state.mode !== 'traffic' ? '' : segs.map(function (t, i) {
+      var c = trafficClass(tr[t.id], max), sel = state.sel && state.sel.k === 't' && state.sel.i === i;
+      return '<path class="seg' + (c ? '' : ' nodata') + (sel ? ' sel' : '') + '" data-k="t" data-i="' + i + '" d="' + t.path + '" stroke-width="' + (c ? 1 + c * 1.25 : 1.2) + '" stroke-opacity="' + (c ? 0.3 + c * 0.14 : 0.8) + '"/>';
+    }).join('');
+    $('gStations').innerHTML = state.mode !== 'bike' ? '' : stations.map(function (s, i) { return { s: s, i: i }; }).sort(function (a, b) { return b.s.total - a.s.total; }).map(function (o) {
+      var s = o.s, dim = (state.filter !== 'all' && s.cls !== state.filter) || (state.district && (!s.hood || s.hood.district !== state.district));
+      var sel = state.sel && state.sel.k === 's' && stations[state.sel.i] && stations[state.sel.i].n === s.n;
+      return '<circle class="st c-' + s.cls + (dim ? ' dim' : '') + (sel ? ' sel' : '') + '" data-k="s" data-i="' + o.i + '" cx="' + s.x.toFixed(1) + '" cy="' + s.y.toFixed(1) + '" r="1"/>';
+    }).join('');
+    applyView(); renderLegend();
+  }
+  function renderLegend() {
+    var h = '';
+    if (state.mode === 'bike') h = ['empty', 'low', 'mid', 'high', 'full', 'off'].map(function (c) { return '<span><i class="sw c-' + c + '" style="background:var(--' + c + ')"></i>' + CLS_LABEL[c] + '</span>'; }).join('') + '<span>Circle size: number of docks</span>';
+    else if (state.mode === 'traffic') h = '<span><i class="sw ln" style="border-top-width:1.5px;opacity:.45"></i>Lighter flow</span><span><i class="sw ln" style="border-top-width:5px"></i>Heavier flow (latest sensor reading)</span><span><i class="sw ln" style="border-top:2px dashed var(--off)"></i>Sensor not reporting</span>';
+    else if (state.metric === 'vul') h = ['Low', 'Medium', 'High'].map(function (l, i) { return '<span><i class="sw sq" style="background:var(--warn);opacity:' + [0.15, 0.5, 0.95][i] + '"></i>' + l + ' vulnerability</span>'; }).join('') + '<span><i class="sw sq" style="background:var(--land)"></i>Not published</span>';
+    else h = '<span>' + METRIC[state.metric].label + ':</span><span><i class="sw sq" style="background:var(--accent);opacity:.18"></i>lowest fifth</span><span><i class="sw sq" style="background:var(--accent);opacity:.52"></i>middle</span><span><i class="sw sq" style="background:var(--accent);opacity:.9"></i>highest fifth</span><span><i class="sw sq" style="background:var(--land)"></i>none</span>';
+    $('legend').innerHTML = h;
+  }
+
+  // ---------- tooltips and selection
+  function describe(k, i) {
+    if (k === 's') { var s = stations[i]; return '<b>' + esc(s.address || s.name) + '</b>' + (s.inService ? s.available + ' bikes, ' + s.free + ' free docks' : 'Out of service') + '<br>' + CLS_LABEL[s.cls]; }
+    if (k === 't') { var t = segs[i], v = SNAP.traffic[t.id]; return '<b>' + esc(t.name) + '</b>' + (v >= 0 ? 'Latest reading: ' + fmt(v) : 'Sensor not reporting') + (t.imv ? '<br>Average daily intensity: ' + fmt(t.imv) : ''); }
+    var b = hoods[i]; return '<b>' + esc(b.name) + '</b>' + esc(b.district) + '<br>' + (state.metric === 'vul' ? (b.vulLabel ? b.vulLabel + ' vulnerability' : 'Vulnerability not published') : METRIC[state.metric].label + ': ' + fmt(b[state.metric], METRIC[state.metric].d));
+  }
+  var tip = $('tip'), box = $('mapbox');
+  function showTip(ev, el) {
+    tip.innerHTML = describe(el.dataset.k, +el.dataset.i); tip.hidden = false;
+    var r = box.getBoundingClientRect(), x = ev.clientX - r.left + 14, y = ev.clientY - r.top + 14;
+    if (x + tip.offsetWidth > r.width - 6) x = Math.max(6, ev.clientX - r.left - tip.offsetWidth - 12);
+    if (y + tip.offsetHeight > r.height - 6) y = Math.max(6, ev.clientY - r.top - tip.offsetHeight - 12);
+    tip.style.left = x + 'px'; tip.style.top = y + 'px';
+  }
+  function select(k, i, zoom) {
+    state.sel = { k: k, i: i };
+    if (zoom) {
+      if (k === 's') { var s = stations[i], w = home.w / 5; view = { x: s.x - w / 2, y: s.y - w * (home.h / home.w) / 2, w: w, h: w * (home.h / home.w) }; }
+      if (k === 'h') view = fitBox(hoods[i].box, 0.6);
+    }
+    renderMap(); renderDetail();
+  }
+  var drag = null;
+  svg.addEventListener('pointerdown', function (ev) { drag = { x: ev.clientX, y: ev.clientY, vx: view.x, vy: view.y, moved: false, id: ev.pointerId, target: ev.target, touch: ev.pointerType === 'touch' }; });
+  svg.addEventListener('pointermove', function (ev) {
+    if (drag && drag.id === ev.pointerId && (!drag.touch || svg.classList.contains('zoomed'))) {
+      var dx = ev.clientX - drag.x, dy = ev.clientY - drag.y;
+      if (Math.abs(dx) + Math.abs(dy) > 5) { if (!drag.moved) { drag.moved = true; svg.classList.add('dragging'); tip.hidden = true; try { svg.setPointerCapture(ev.pointerId); } catch (e) {} } }
+      if (drag.moved) { var k = scale(); view.x = drag.vx - dx / k; view.y = drag.vy - dy / k; applyView(); return; }
+    }
+    var el = ev.target.closest ? ev.target.closest('[data-k]') : null;
+    if (el && ev.pointerType !== 'touch') showTip(ev, el); else tip.hidden = true;
+  });
+  function endDrag(ev) {
+    if (!drag) return; var d = drag; drag = null; svg.classList.remove('dragging');
+    if (d.moved) return;
+    var el = d.target.closest ? d.target.closest('[data-k]') : null;
+    if (el) select(el.dataset.k, +el.dataset.i, false);
+  }
+  svg.addEventListener('pointerup', endDrag);
+  svg.addEventListener('pointercancel', function () { drag = null; svg.classList.remove('dragging'); });
+  svg.addEventListener('pointerleave', function () { tip.hidden = true; });
+  svg.addEventListener('wheel', function (ev) { ev.preventDefault(); var p = toSvg(ev); zoomBy(ev.deltaY > 0 ? 1.25 : 0.8, p.x, p.y); }, { passive: false });
+  $('zoomIn').addEventListener('click', function () { zoomBy(0.62); });
+  $('zoomOut').addEventListener('click', function () { zoomBy(1.6); });
+  $('zoomReset').addEventListener('click', function () { state.district = ''; $('districtSel').value = ''; view = Object.assign({}, home); renderMap(); renderRanking(); });
+  window.addEventListener('resize', function () { if (view) applyView(); });
+
+  // ---------- detail panel
+  function spark(vals, cls) {
+    if (vals.length < 2) return '';
+    var w = 300, h = 54, lo = Math.min.apply(0, vals), hi = Math.max.apply(0, vals); if (hi === lo) { hi += 1; lo = Math.max(0, lo - 1); }
+    var X = function (i) { return 4 + i * (w - 8) / (vals.length - 1); }, Y = function (v) { return 6 + (hi - v) * (h - 12) / (hi - lo); };
+    return '<svg viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="Bikes available since the first capture" style="width:100%;height:auto;display:block"><path class="series ln-' + cls + '" d="M' + vals.map(function (v, i) { return X(i).toFixed(1) + ' ' + Y(v).toFixed(1); }).join('L') + '"/><circle class="pt-' + cls + '" cx="' + X(vals.length - 1).toFixed(1) + '" cy="' + Y(vals[vals.length - 1]).toFixed(1) + '" r="3.5"/></svg>';
+  }
+  function renderDetail() {
+    var sel = state.sel, h = '';
+    if (!sel) { $('detail').innerHTML = ''; return; }
+    if (sel.k === 's') {
+      var s = stations[sel.i], series = HIST.map(function (x) { var r = x.s.find(function (q) { return q[0] === s.n; }); return r ? r[1] : null; }).filter(function (v) { return v != null; });
+      h = '<div class="panel-head"><h3>Station ' + s.n + '</h3><span class="muted" style="font-size:12.5px">' + CLS_LABEL[s.cls] + '</span></div>' +
+        '<p class="detail-name">' + esc(s.address || s.name) + '</p>' +
+        '<p class="muted" style="font-size:13px">' + (s.hood ? esc(s.hood.name) + ', ' + esc(s.hood.district) : '') + '</p>' +
+        '<div class="fillbar" title="Share of working docks holding a bike"><i style="width:' + (s.ratio == null ? 0 : s.ratio * 100).toFixed(0) + '%;background:var(--' + s.cls + ')"></i></div>' +
+        '<dl class="pairs"><dt>Bikes available</dt><dd>' + s.available + '</dd><dt>Free docks</dt><dd>' + s.free + '</dd><dt>Docks installed</dt><dd>' + s.total + '</dd><dt>Docks out of use</dt><dd>' + Math.max(0, s.total - s.inService) + '</dd></dl>' +
+        (series.length > 1 ? '<p class="muted" style="font-size:12.5px">Bikes here since ' + hhmm(HIST[0].t) + ': from ' + Math.min.apply(0, series) + ' to ' + Math.max.apply(0, series) + '</p>' + spark(series, 'a') : '');
+    } else if (sel.k === 't') {
+      var t = segs[sel.i], v = SNAP.traffic[t.id];
+      h = '<div class="panel-head"><h3>Traffic segment ' + esc(t.id) + '</h3></div><p class="detail-name">' + esc(t.name) + '</p>' +
+        '<dl class="pairs"><dt>Latest sensor reading</dt><dd>' + (v >= 0 ? fmt(v) : 'not reporting') + '</dd><dt>Average daily intensity</dt><dd>' + (t.imv ? fmt(t.imv) : 'n/a') + '</dd></dl>' +
+        '<p class="muted" style="font-size:12.5px">Figures as published by the city. The portal does not state the unit of the reading.</p>';
+    } else {
+      var b = hoods[sel.i], now = stations.filter(function (s) { return s.hood === b; }), c = cityStats(now);
+      h = '<div class="panel-head"><h3>Neighbourhood</h3><span class="muted" style="font-size:12.5px">' + esc(b.district) + '</span></div><p class="detail-name">' + esc(b.name) + '</p>' +
+        '<dl class="pairs"><dt>Area</dt><dd>' + fmt(b.km2, 2) + ' km²</dd><dt>Bike share stations</dt><dd>' + b.stations + '</dd><dt>Docks per km²</dt><dd>' + fmt(b.docksKm) + '</dd><dt>Bikes available now</dt><dd>' + c.bikes + '</dd><dt>Bus stops</dt><dd>' + b.stops + ' (' + b.lines + ' lines)</dd><dt>Cycle routes</dt><dd>' + fmt(b.cycleKm, 1) + ' km</dd><dt>Vulnerability 2021</dt><dd>' + (b.vulLabel || 'not published') + '</dd></dl>';
+    }
+    $('detail').innerHTML = h;
+  }
+
+  // ---------- ranking panel (changes with the layer)
+  function inDistrict(b) { return !state.district || (b && b.district === state.district); }
+  function renderRanking() {
+    var h = '', where = state.district ? ' in ' + esc(state.district) : '';
+    if (state.mode === 'bike') {
+      var list = function (cls, title) {
+        var a = stations.map(function (s, i) { return { s: s, i: i }; }).filter(function (o) { return o.s.cls === cls && inDistrict(o.s.hood); }).sort(function (x, y) { return y.s.total - x.s.total; });
+        return '<div class="panel-head"><h3><i class="dot" style="background:var(--' + cls + ')"></i>' + title + where + '</h3><span class="num muted">' + a.length + '</span></div>' +
+          (a.length ? '<ul class="rank">' + a.slice(0, 5).map(function (o) { return '<li data-k="s" data-i="' + o.i + '" tabindex="0"><span class="rk-name">' + esc(o.s.address || o.s.name) + '</span><span class="rk-val">' + o.s.total + ' docks</span><span class="rk-sub">' + (o.s.hood ? esc(o.s.hood.name) : '') + '</span></li>'; }).join('') + '</ul>' + (a.length > 5 ? '<p class="more">and ' + (a.length - 5) + ' more, largest first</p>' : '') : '<p class="muted" style="font-size:13.5px">None right now.</p>');
+      };
+      h = list('empty', 'No bikes to take') + '<div style="height:6px"></div>' + list('full', 'No dock to return');
+    } else if (state.mode === 'traffic') {
+      var tr = SNAP.traffic, a = segs.map(function (t, i) { return { t: t, i: i, v: tr[t.id] }; }).filter(function (o) { return o.v > 0; }).sort(function (x, y) { return y.v - x.v; }), max = a.length ? a[0].v : 1;
+      var rep = segs.filter(function (t) { return tr[t.id] >= 0; }).length;
+      var ts = SNAP.trafficState, mon = ts ? ts.flowing + ts.dense + ts.congested + ts.closed : 0;
+      h = (ts && mon ? '<div class="panel-head"><h3>Traffic state now</h3><span class="num muted">' + mon + ' segments</span></div><dl class="pairs"><dt>Flowing freely</dt><dd>' + ts.flowing + ' (' + fmt(ts.flowing / mon * 100) + '%)</dd><dt>Dense</dt><dd>' + ts.dense + '</dd><dt>Congested</dt><dd>' + ts.congested + '</dd><dt>Closed</dt><dd>' + ts.closed + '</dd></dl><div style="height:6px"></div>' : '') +
+        '<div class="panel-head"><h3>Busiest segments now</h3><span class="num muted">' + rep + ' of ' + segs.length + ' reporting</span></div><ul class="rank">' +
+        a.slice(0, 8).map(function (o) { return '<li data-k="t" data-i="' + o.i + '" tabindex="0"><span class="rk-name">' + esc(o.t.name) + '</span><span class="rk-val">' + fmt(o.v) + '</span><span class="rk-bar"><i style="width:' + (o.v / max * 100).toFixed(0) + '%"></i></span></li>'; }).join('') + '</ul>';
+    } else {
+      var pool = hoods.map(function (b, i) { return { b: b, i: i }; }).filter(function (o) { return inDistrict(o.b); });
+      if (state.metric === 'vul') {
+        var hi = pool.filter(function (o) { return o.b.vulLabel === 'High'; }).sort(function (x, y) { return x.b.docksKm - y.b.docksKm; });
+        h = '<div class="panel-head"><h3>High vulnerability' + where + '</h3><span class="num muted">' + hi.length + '</span></div>' + (hi.length ? '<ul class="rank">' + hi.map(function (o) { return '<li data-k="h" data-i="' + o.i + '" tabindex="0"><span class="rk-name">' + esc(o.b.name) + '</span><span class="rk-val">' + fmt(o.b.docksKm) + ' docks/km²</span><span class="rk-sub">' + o.b.stations + ' stations, ' + o.b.stops + ' bus stops</span></li>'; }).join('') + '</ul><p class="more">Sorted by bike share coverage, lowest first.</p>' : '<p class="muted" style="font-size:13.5px">None in this selection.</p>');
+      } else {
+        var m = METRIC[state.metric], srt = pool.slice().sort(function (x, y) { return y.b[state.metric] - x.b[state.metric]; }), none = srt.filter(function (o) { return !(o.b[state.metric] > 0); }).length;
+        h = '<div class="panel-head"><h3>Best covered' + where + '</h3><span class="muted" style="font-size:12.5px">' + m.label + '</span></div><ul class="rank">' +
+          srt.slice(0, 6).map(function (o) { return '<li data-k="h" data-i="' + o.i + '" tabindex="0"><span class="rk-name">' + esc(o.b.name) + '</span><span class="rk-val">' + fmt(o.b[state.metric], m.d) + '</span><span class="rk-sub">' + esc(o.b.district) + '</span></li>'; }).join('') + '</ul>' +
+          '<p class="more">' + none + ' of ' + pool.length + ' neighbourhoods' + where + ' have none at all.</p>';
+      }
+    }
+    $('ranking').innerHTML = h;
+  }
+  function pick(ev) { var li = ev.target.closest('li[data-k]'); if (li && (ev.type === 'click' || ev.key === 'Enter')) select(li.dataset.k, +li.dataset.i, true); }
+  $('ranking').addEventListener('click', pick); $('ranking').addEventListener('keydown', pick);
+
+  // ---------- history charts
+  function niceStep(span) { var p = Math.pow(10, Math.floor(Math.log10(span || 1))), f = (span || 1) / p; return (f > 5 ? 2 : f > 2 ? 1 : f > 1 ? 0.5 : 0.25) * p; }
+  function chart(title, series, times, minSpan) {
+    var W = 360, H = 170, R = 14, T = 12, B = 24, all = [].concat.apply([], series.map(function (s) { return s.v; }));
+    var lo = Math.min.apply(0, all), hi = Math.max.apply(0, all);
+    if (minSpan && hi - lo < minSpan) { var mid = (hi + lo) / 2; lo = Math.max(0, mid - minSpan / 2); hi = lo + minSpan; } // a change too small to matter must not look like a swing
+    var step = Math.max(niceStep(hi - lo), 1);
+    lo = Math.floor(lo / step) * step; hi = Math.ceil(hi / step) * step; if (hi === lo) hi = lo + step;
+    var L = Math.max(34, 12 + fmt(hi).length * 6.4);
+    var n = times.length, X = function (i) { return n < 2 ? (L + W - R) / 2 : L + i * (W - L - R) / (n - 1); }, Y = function (v) { return T + (hi - v) * (H - T - B) / (hi - lo); };
+    var g = '', ticks = Math.round((hi - lo) / step), every = Math.ceil(ticks / 4);
+    for (var k = 0; k <= ticks; k += every) { var v = lo + k * step; g += '<line class="grid-line" x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(v).toFixed(1) + '" y2="' + Y(v).toFixed(1) + '"/><text class="axis-t" x="' + (L - 6) + '" y="' + (Y(v) + 3.5).toFixed(1) + '" text-anchor="end">' + fmt(v, step < 1 ? 1 : 0) + '</text>'; }
+    var xi = n < 2 ? [0] : n < 6 ? [0, n - 1] : [0, Math.floor((n - 1) / 2), n - 1];
+    xi.forEach(function (i, j) { g += '<text class="axis-t" x="' + X(i).toFixed(1) + '" y="' + (H - 6) + '" text-anchor="' + (n < 2 ? 'middle' : j === 0 ? 'start' : j === xi.length - 1 ? 'end' : 'middle') + '">' + hhmm(times[i]) + '</text>'; });
+    series.forEach(function (s) {
+      if (n > 1) g += '<path class="series ln-' + s.c + '" d="M' + s.v.map(function (v, i) { return X(i).toFixed(1) + ' ' + Y(v).toFixed(1); }).join('L') + '"/>';
+      g += '<circle class="pt-' + s.c + '" cx="' + X(n - 1).toFixed(1) + '" cy="' + Y(s.v[n - 1]).toFixed(1) + '" r="4"/>';
+    });
+    return '<div class="chart"><h3>' + title + '</h3><div class="key">' + series.map(function (s) { return '<span><i class="dot" style="background:var(--' + s.t + ')"></i>' + s.name + ' <b class="num" style="color:var(--ink)">' + fmt(s.v[n - 1]) + '</b></span>'; }).join('') + '</div><svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + title + '">' + g + '</svg></div>';
+  }
+  function renderCharts() {
+    if (!HIST.length) { $('charts').innerHTML = ''; $('histNote').textContent = 'No saved captures yet.'; return; }
+    var st = HIST.map(histStats), times = HIST.map(function (h) { return h.t; });
+    $('charts').innerHTML =
+      chart('Bikes available, whole city', [{ name: 'Bikes', c: 'a', t: 'accent', v: st.map(function (s) { return s.bikes; }) }], times) +
+      chart('Stations failing', [{ name: 'No bikes', c: 'e', t: 'empty', v: st.map(function (s) { return s.empty; }) }, { name: 'No free docks', c: 'f', t: 'high', v: st.map(function (s) { return s.full; }) }], times) +
+      chart('Traffic, sum of sensor readings', [{ name: 'All reporting sensors', c: 't', t: 'traffic', v: HIST.map(function (h) { return h.tv; }) }], times, Math.max.apply(0, HIST.map(function (h) { return h.tv; })) * 0.1);
+    var d0 = String(HIST[0].t).slice(0, 10), d1 = String(HIST[HIST.length - 1].t).slice(0, 10);
+    $('histNote').textContent = HIST.length + ' captures, ' + (d0 === d1 ? '' : d0 + ' ') + hhmm(HIST[0].t) + ' to ' + hhmm(HIST[HIST.length - 1].t) + ' València time, one every 10 minutes.';
+  }
+
+  // ---------- neighbourhood table
+  var COLS = [['name', 'Neighbourhood'], ['district', 'District'], ['stations', 'Stations'], ['docks', 'Docks'], ['docksKm', 'Docks / km²'], ['stops', 'Bus stops'], ['stopsKm', 'Stops / km²'], ['cycleKm', 'Cycle km'], ['vul', 'Vulnerability']];
+  function renderTable() {
+    var s = state.sort, max = Math.max.apply(0, hoods.map(function (b) { return b.docksKm; })) || 1;
+    $('hoodTable').tHead.innerHTML = '<tr>' + COLS.map(function (c) { return '<th data-k="' + c[0] + '"' + (s.k === c[0] ? ' aria-sort="' + (s.d > 0 ? 'ascending' : 'descending') + '"' : '') + ' tabindex="0">' + c[1] + (s.k === c[0] ? (s.d > 0 ? ' ↑' : ' ↓') : '') + '</th>'; }).join('') + '</tr>';
+    var rows = hoods.map(function (b, i) { return { b: b, i: i }; }).sort(function (x, y) {
+      var a = x.b[s.k], c = y.b[s.k]; if (a == null && c == null) return 0; if (a == null) return 1; if (c == null) return -1;
+      return (typeof a === 'string' ? a.localeCompare(c) : a - c) * s.d;
+    });
+    $('hoodTable').tBodies[0].innerHTML = rows.map(function (o) {
+      var b = o.b; return '<tr data-i="' + o.i + '"><td>' + esc(b.name) + '</td><td>' + esc(b.district) + '</td><td>' + b.stations + '</td><td>' + b.docks + '</td><td><i class="cellbar" style="width:' + (b.docksKm / max * 56).toFixed(0) + 'px"></i>' + fmt(b.docksKm) + '</td><td>' + b.stops + '</td><td>' + fmt(b.stopsKm) + '</td><td>' + fmt(b.cycleKm, 1) + '</td><td>' + (b.vulLabel ? '<span class="lvl ' + b.vulLabel + '">' + b.vulLabel + '</span>' : '<span class="muted">n/a</span>') + '</td></tr>';
+    }).join('');
+  }
+  function sortBy(ev) { var th = ev.target.closest('th'); if (!th || (ev.type === 'keydown' && ev.key !== 'Enter')) return; var k = th.dataset.k; state.sort = { k: k, d: state.sort.k === k ? -state.sort.d : (k === 'name' || k === 'district' ? 1 : -1) }; renderTable(); }
+  $('hoodTable').tHead.addEventListener('click', sortBy); $('hoodTable').tHead.addEventListener('keydown', sortBy);
+  $('hoodTable').tBodies[0].addEventListener('click', function (ev) { var tr = ev.target.closest('tr'); if (!tr) return; setMode('hood'); select('h', +tr.dataset.i, true); box.scrollIntoView({ behavior: 'smooth', block: 'center' }); });
+
+  // ---------- controls
+  function setMode(m) {
+    state.mode = m; state.sel = null;
+    Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (t) { t.setAttribute('aria-selected', t.dataset.mode === m ? 'true' : 'false'); });
+    $('bikeTools').hidden = m !== 'bike'; $('metricSel').hidden = m !== 'hood';
+    if (m === 'bike') { var big = 0; stations.forEach(function (s, i) { if (s.total > stations[big].total) big = i; }); state.sel = { k: 's', i: big }; }
+    if (m === 'traffic') { var tr = SNAP.traffic, top = 0; segs.forEach(function (t, i) { if ((tr[t.id] || 0) > (tr[segs[top].id] || 0)) top = i; }); state.sel = { k: 't', i: top }; }
+    if (m === 'hood') { var best = 0; hoods.forEach(function (b, i) { if (b.docksKm > hoods[best].docksKm) best = i; }); state.sel = { k: 'h', i: best }; }
+    renderMap(); renderDetail(); renderRanking();
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (t) { t.addEventListener('click', function () { setMode(t.dataset.mode); }); });
+  Array.prototype.forEach.call(document.querySelectorAll('.chip'), function (c) { c.addEventListener('click', function () { state.filter = c.dataset.filter; Array.prototype.forEach.call(document.querySelectorAll('.chip'), function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); }); renderMap(); }); });
+  $('metricSel').addEventListener('change', function () { state.metric = this.value; renderMap(); renderRanking(); });
+  var districts = []; hoods.forEach(function (b) { if (b.district && districts.indexOf(b.district) < 0) districts.push(b.district); }); districts.sort(function (a, b) { return a.localeCompare(b); });
+  $('districtSel').innerHTML = '<option value="">All districts</option>' + districts.map(function (d) { return '<option>' + esc(d) + '</option>'; }).join('');
+  $('districtSel').addEventListener('change', function () {
+    state.district = this.value;
+    if (!state.district) view = Object.assign({}, home);
+    else { var bx = [1e9, 1e9, -1e9, -1e9]; hoods.forEach(function (b) { if (b.district === state.district) { bx[0] = Math.min(bx[0], b.box[0]); bx[1] = Math.min(bx[1], b.box[1]); bx[2] = Math.max(bx[2], b.box[2]); bx[3] = Math.max(bx[3], b.box[3]); } }); view = fitBox(bx, 0.08); }
+    renderMap(); renderRanking();
+  });
+
+  // ---------- live refresh straight from the city portal (works when the page is opened in a browser)
+  function setStatus(note) {
+    $('statusPill').textContent = state.live ? 'Live' : 'Saved capture'; $('statusPill').classList.toggle('live', state.live);
+    $('statusTime').textContent = String(SNAP.capturedAt).slice(0, 10) + ' ' + hhmm(SNAP.capturedAt) + ' València time';
+    $('statusNote').textContent = note || '';
+  }
+  function madridIso(d) {
+    var p = {}; new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Madrid', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(d).forEach(function (x) { p[x.type] = x.value; });
+    return p.year + '-' + p.month + '-' + p.day + 'T' + (p.hour === '24' ? '00' : p.hour) + ':' + p.minute + ':00';
+  }
+  function getLayer(id) {
+    var ctl = new AbortController(), timer = setTimeout(function () { ctl.abort(); }, 20000);
+    return fetch(LIVE + id + LIVEQ, { signal: ctl.signal }).then(function (r) { clearTimeout(timer); if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); }).then(function (j) { if (!j.features || !j.features.length) throw new Error('empty'); return j.features; });
+  }
+  function refresh(manual) {
+    if (manual) setStatus('Asking the city portal…');
+    var getState = fetch(LIVE + '192/query?where=1=1&outFields=idtramo,estado&returnGeometry=false&f=json').then(function (r) { return r.json(); }).then(function (j) {
+      var o = { flowing: 0, dense: 0, congested: 0, closed: 0, nodata: 0 }; j.features.forEach(function (f) { var c = f.attributes.estado; o[c == null ? 'nodata' : ['flowing', 'dense', 'congested', 'closed', 'nodata'][c % 5]]++; }); return o;
+    }).catch(function () { return SNAP.trafficState || null; });
+    return Promise.all([getLayer(228), getLayer(188), getState]).then(function (res) {
+      var at = madridIso(new Date()), old = {}; SNAP.stations.forEach(function (s) { old[s.n] = s; });
+      var st = res[0].map(function (f) { var p = f.properties, c = f.geometry.coordinates, o = old[p.number] || {}; return { n: p.number, name: o.name || p.name, address: p.address, lon: c[0], lat: c[1], available: p.available, free: p.free, total: p.total, open: p.open === 'T', updated: p.updated_at }; }).sort(function (a, b) { return a.n - b.n; });
+      var tr = {}; res[1].forEach(function (f) { tr[f.properties.idtramo] = f.properties.lectura; });
+      var keep = state.sel && state.sel.k === 's' ? stations[state.sel.i].n : null;
+      loadSnapshot({ capturedAt: at, stations: st, traffic: tr, trafficState: res[2] });
+      if (keep != null) { var ni = stations.findIndex(function (s) { return s.n === keep; }); state.sel = ni < 0 ? null : { k: 's', i: ni }; }
+      var last = HIST[HIST.length - 1];
+      if (!last || new Date(at.slice(0, 16)) - new Date(String(last.t).slice(0, 16)) >= 4 * 60000) { var valid = Object.keys(tr).map(function (k) { return tr[k]; }).filter(function (v) { return v >= 0; }); HIST.push({ t: at, s: st.map(function (s) { return [s.n, s.available, s.free]; }), tv: valid.reduce(function (a, b) { return a + b; }, 0), tn: valid.length }); }
+      state.live = true; setStatus('Read straight from the city portal. Checks again every 5 minutes.'); renderAll();
+    }).catch(function () {
+      state.live = false; setStatus(manual ? 'The city portal cannot be reached from this viewer. Open dashboard.html in a browser for live numbers.' : 'Showing the latest saved capture.');
+    });
+  }
+  $('refreshBtn').addEventListener('click', function () { refresh(true); });
+
+  function renderAll() { renderKpis(); renderMap(); renderDetail(); renderRanking(); renderCharts(); renderTable(); }
+  // first frame: fit the map to the station network, select the largest station
+  var bx = [1e9, 1e9, -1e9, -1e9]; stations.forEach(function (s) { bx[0] = Math.min(bx[0], s.x); bx[1] = Math.min(bx[1], s.y); bx[2] = Math.max(bx[2], s.x); bx[3] = Math.max(bx[3], s.y); });
+  home = fitBox(bx, 0.06); view = Object.assign({}, home);
+  setStatus('Showing the latest saved capture.');
+  renderKpis(); renderCharts(); renderTable(); setMode('bike');
+  refresh(false); setInterval(function () { refresh(false); }, 5 * 60000);
+})();
+</script>
+</body>
+</html>

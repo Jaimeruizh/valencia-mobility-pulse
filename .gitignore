@@ -1,0 +1,10 @@
+capture.log
+check_*.png
+*.tmp
+data/raw/
+node_modules/
+patch*.cjs
+check_*.js
+run_hidden.vbs
+seed.js
+sync_repo.js
