@@ -850,7 +850,7 @@ td:first-child { font-weight: 600; }
     syncScrub();
   }
   $('playBtn').addEventListener('click', play);
-  $('scrubRange').addEventListener('input', function () { stop(); setFrame(+this.value); });
+  $('scrubRange').addEventListener('input', function () { var k = +this.value; stop(); setFrame(k); });
 
   // ---------- atlas: six plates at the same scale and on the same ground
   var PLATES = [['docksKm', 'Bike share docks per km²'], ['stopsKm', 'Bus stops per km²'], ['cycleKm2', 'Cycle routes, km per km²'], ['vul', 'Vulnerability level, 2021'], ['cycle', 'Cycle network'], ['stops', 'Bus stops']];
