@@ -5,250 +5,404 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>València Mobility Pulse v2</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
 <style>
-/* Layout: status header, one band of four city figures, then the map (the working surface) with a context panel beside it; history and the neighbourhood table follow as supporting evidence. */
 :root {
-  --bg: #f2f5f8; --surface: #ffffff; --ink: #14213a; --muted: #5a6781; --line: #d5dde7;
-  --accent: #0b5fa5; --accent-soft: #e2eefa;
-  --water: #dce8f3; --land: #fbfcfe; --land-line: #c3cfdc;
-  --empty: #d9480f; --low: #f0a13a; --mid: #8b9db3; --high: #3b82c4; --full: #1b3a8a; --off: #b8c1cd;
-  --traffic: #8a2f6b; --warn: #b3420c;
-  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --font-body: "Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --bg: #EEF2FA; --surface: #FFFFFF; --surface-2: #F6F8FC; --ink: #0F1B3F; --muted: #4D5A7C;
+  --line: #D3DBEC; --line-strong: #AEBBD6;
+  --shell: #1A3CAE; --shell-ink: #FFFFFF; --shell-muted: #C9D6FF; --shell-line: #4A66C8;
+  --accent: #1A3CAE; --accent-soft: #E2E9FB; --on-accent: #FFFFFF;
+  --orange: #F28A1A; --orange-soft: #FFD08A; --on-orange: #0F1B3F;
+  --water: #D6E4F8; --land: #FBFCFE; --land-line: #C3CEE4;
+  --empty: #D62839; --low: #EE9B2D; --mid: #3A9A52; --high: #4BA3E3; --full: #6A35C9; --off: #98A2B8;
+  --traffic: #C2410C; --warn: #B0306F; --gain: #1A3CAE; --loss: #E0531F; --cycle: #2E8B4A; --bus: #0F1B3F;
+  --focus: #1A3CAE;
+  --r: 6px;
+  --f: "Archivo", "Segoe UI", system-ui, sans-serif;
+  --t-xs: 0.72rem; --t-sm: 0.8125rem; --t-md: 0.875rem; --t-base: 0.9375rem; --t-lg: 1.125rem; --t-xl: 1.375rem; --t-xxl: 2.125rem;
 }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #0e1520; --surface: #162030; --ink: #e9eef6; --muted: #98a6bb; --line: #2a374b;
-  --accent: #62aef2; --accent-soft: #1b3350;
-  --water: #0a1019; --land: #1b2738; --land-line: #34445c;
-  --empty: #ff7a45; --low: #f5b85a; --mid: #74859d; --high: #4d9de0; --full: #c3dcff; --off: #4a586c;
-  --traffic: #ea8fcb; --warn: #ffa26b; color-scheme: dark } }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A1130; --surface: #111B45; --surface-2: #16225A; --ink: #EBF0FF; --muted: #A8B4D8;
+    --line: #26346C; --line-strong: #3D4E94;
+    --shell: #1A3CAE; --shell-ink: #FFFFFF; --shell-muted: #C9D6FF; --shell-line: #4A66C8;
+    --accent: #9BB6FF; --accent-soft: #1D2B6B; --on-accent: #0A1130;
+    --orange: #FF9D2E; --orange-soft: #FFD08A; --on-orange: #0F1B3F;
+    --water: #0B1640; --land: #172352; --land-line: #33437F;
+    --empty: #FF5C6C; --low: #FFB14A; --mid: #58C873; --high: #78C2FF; --full: #A98BFF; --off: #5F6A93;
+    --traffic: #FF8A4C; --warn: #F06AA8; --gain: #8FB0FF; --loss: #FF8552; --cycle: #58C873; --bus: #EBF0FF;
+    --focus: #9BB6FF;
+    color-scheme: dark;
+  }
+}
 :root[data-theme="dark"] {
-  --bg: #0e1520; --surface: #162030; --ink: #e9eef6; --muted: #98a6bb; --line: #2a374b;
-  --accent: #62aef2; --accent-soft: #1b3350;
-  --water: #0a1019; --land: #1b2738; --land-line: #34445c;
-  --empty: #ff7a45; --low: #f5b85a; --mid: #74859d; --high: #4d9de0; --full: #c3dcff; --off: #4a586c;
-  --traffic: #ea8fcb; --warn: #ffa26b; color-scheme: dark }
-
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
-[hidden] { display: none !important; }
-.wrap { max-width: 1240px; margin: 0 auto; padding-block: 28px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 28px; }
-h1, h2, h3 { font-family: var(--font-display); margin: 0; text-wrap: balance; }
-h1 { font-size: clamp(28px, 4.2vw, 42px); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; }
-h2 { font-size: 21px; font-weight: 700; letter-spacing: -0.01em; }
-h3 { font-size: 15px; font-weight: 700; }
-p { margin: 0; }
-.eyebrow { font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-.muted { color: var(--muted); }
-.num { font-variant-numeric: tabular-nums; }
-button, select { font: inherit; color: inherit; }
-button:focus-visible, select:focus-visible, [tabindex]:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-a { color: var(--accent); }
-
-.top { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: flex-end; justify-content: space-between; }
-.top-text { display: flex; flex-direction: column; gap: 8px; min-width: 0; flex: 1 1 420px; }
-.lede { max-width: 62ch; color: var(--muted); font-size: 16px; }
-.status { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
-.status-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-.pill { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; padding: 4px 11px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
-.pill::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
-.pill.live::before { animation: pulse 1.8s ease-in-out infinite; }
-@keyframes pulse { 50% { opacity: 0.25; } }
-@media (prefers-reduced-motion: reduce) { .pill.live::before { animation: none; } }
-.btn { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 7px 13px; font-weight: 600; font-size: 13.5px; cursor: pointer; }
-.btn:hover { border-color: var(--accent); color: var(--accent); }
-.status-note { font-size: 12.5px; color: var(--muted); max-width: 36ch; }
-
-.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line); }
-.kpi { padding: 16px 18px 16px 0; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.kpi + .kpi { padding-left: 18px; border-left: 1px solid var(--line); }
-.kpi-label { font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
-.kpi-value { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 4vw, 44px); line-height: 1.05; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
-.kpi-value small { font-size: 0.45em; font-weight: 500; color: var(--muted); letter-spacing: 0; }
-.kpi-sub { font-size: 13px; color: var(--muted); }
-.kpi.is-empty .kpi-value { color: var(--empty); }
-.kpi.is-full .kpi-value { color: var(--high); }
-.insight { font-size: 16px; max-width: 80ch; padding-left: 14px; border-left: 3px solid var(--accent); }
-.insight strong { font-weight: 600; }
-
-.main { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 24px; align-items: start; }
-.mapcard { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; min-width: 0; }
-.mapbar { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; padding: 12px 14px; border-bottom: 1px solid var(--line); }
-.tabs { display: inline-flex; background: var(--bg); border-radius: 9px; padding: 3px; gap: 2px; }
-.tab { border: 0; background: transparent; border-radius: 7px; padding: 6px 13px; font-weight: 600; font-size: 13.5px; cursor: pointer; color: var(--muted); }
-.tab[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(20, 33, 58, 0.18); }
-.tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.chip { border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 4px 11px; font-size: 13px; cursor: pointer; }
-.chip[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
-.sel { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 5px 8px; font-size: 13px; max-width: 100%; }
-.mapbox { position: relative; background: var(--water); aspect-ratio: 4 / 3; max-width: 100%; }
-#map { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; }
-#map.dragging { cursor: grabbing; }
-#map.zoomed { touch-action: none; }
-.barrio { fill: var(--land); stroke: var(--land-line); stroke-width: 0.8; vector-effect: non-scaling-stroke; }
-.barrio.hot { cursor: pointer; }
-.barrio.sel { stroke: var(--ink); stroke-width: 2.2; }
-.seg { fill: none; stroke: var(--traffic); stroke-linecap: round; vector-effect: non-scaling-stroke; cursor: pointer; }
-.seg.nodata { stroke: var(--off); stroke-dasharray: 3 3; }
-.seg.sel { stroke: var(--ink); }
-.st { stroke: var(--surface); stroke-width: 1.2; vector-effect: non-scaling-stroke; cursor: pointer; }
-.st.dim { opacity: 0.12; }
-.st.sel { stroke: var(--ink); stroke-width: 2.6; }
-.c-empty { fill: var(--empty); } .c-low { fill: var(--low); } .c-mid { fill: var(--mid); } .c-high { fill: var(--high); } .c-full { fill: var(--full); } .c-off { fill: var(--off); }
-.zoom { position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column; gap: 4px; }
-.zoom button { width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); font-size: 18px; font-weight: 600; cursor: pointer; line-height: 1; }
-.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); font-size: 12.5px; line-height: 1.35; padding: 7px 10px; border-radius: 7px; max-width: 230px; z-index: 3; }
-.tip b { font-weight: 600; display: block; }
-.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; padding: 11px 14px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--muted); align-items: center; }
-.legend span { display: inline-flex; align-items: center; gap: 6px; }
-.sw { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
-.sw.sq { border-radius: 3px; border: 1px solid var(--land-line); }
-.sw.ln { width: 22px; height: 0; border-radius: 0; border-top: 3px solid var(--traffic); }
-
-.side { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
-.panel { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-.panel-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
-.detail-name { font-family: var(--font-display); font-weight: 700; font-size: 19px; line-height: 1.2; overflow-wrap: anywhere; }
-.pairs { display: grid; grid-template-columns: auto 1fr; gap: 3px 14px; font-size: 13.5px; }
-.pairs dt { color: var(--muted); } .pairs dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; font-weight: 500; }
-dl { margin: 0; }
-.fillbar { height: 10px; border-radius: 5px; background: var(--bg); overflow: hidden; border: 1px solid var(--line); }
-.fillbar i { display: block; height: 100%; }
-.rank { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-.rank li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; cursor: pointer; }
-.rank li:hover .rk-name { color: var(--accent); }
-.rk-name { overflow-wrap: anywhere; font-weight: 500; }
-.rk-val { font-variant-numeric: tabular-nums; text-align: right; }
-.rk-sub { grid-column: 1 / -1; font-size: 12px; color: var(--muted); }
-.rk-bar { grid-column: 1 / -1; height: 4px; background: var(--bg); border-radius: 2px; }
-.rk-bar i { display: block; height: 100%; border-radius: 2px; background: var(--traffic); }
-.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
-.more { font-size: 12.5px; color: var(--muted); padding-top: 4px; }
-
-.sec-head { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; justify-content: space-between; margin-bottom: 12px; }
-.charts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-.chart { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
-.chart svg { width: 100%; height: auto; display: block; }
-.chart .now { font-family: var(--font-display); font-weight: 700; font-size: 22px; font-variant-numeric: tabular-nums; }
-.grid-line { stroke: var(--line); stroke-width: 1; }
-.axis-t { fill: var(--muted); font-size: 10.5px; font-family: var(--font-body); }
-.ln-a { stroke: var(--accent); } .ln-e { stroke: var(--empty); } .ln-f { stroke: var(--high); } .ln-t { stroke: var(--traffic); }
-.pt-a { fill: var(--accent); } .pt-e { fill: var(--empty); } .pt-f { fill: var(--high); } .pt-t { fill: var(--traffic); }
-.series { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
-.key { display: flex; gap: 14px; font-size: 12.5px; color: var(--muted); }
-
-.tablebox { overflow: auto; max-height: 460px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
-table { border-collapse: collapse; width: 100%; font-size: 13.5px; min-width: 760px; }
-th, td { padding: 8px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
-th:nth-child(-n+2), td:nth-child(-n+2) { text-align: left; }
-th { position: sticky; top: 0; background: var(--surface); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); cursor: pointer; user-select: none; }
-th[aria-sort] { color: var(--ink); }
-tbody tr { cursor: pointer; }
-tbody tr:hover td { background: var(--accent-soft); }
-.lvl { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; border: 1px solid var(--line); }
-.lvl.High { border-color: var(--warn); color: var(--warn); }
-.cellbar { display: inline-block; height: 6px; border-radius: 3px; background: var(--accent); vertical-align: middle; margin-right: 8px; }
-
-.foot { border-top: 1px solid var(--line); padding-top: 16px; font-size: 13px; color: var(--muted); display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px 32px; }
-.foot ul { margin: 6px 0 0; padding-left: 18px; }
-.foot h3 { color: var(--ink); font-size: 13.5px; }
-
-@media (max-width: 920px) {
-  .main { grid-template-columns: minmax(0, 1fr); }
-  .charts { grid-template-columns: minmax(0, 1fr); }
-  .foot { grid-template-columns: minmax(0, 1fr); }
+  --bg: #0A1130; --surface: #111B45; --surface-2: #16225A; --ink: #EBF0FF; --muted: #A8B4D8;
+  --line: #26346C; --line-strong: #3D4E94;
+  --shell: #1A3CAE; --shell-ink: #FFFFFF; --shell-muted: #C9D6FF; --shell-line: #4A66C8;
+  --accent: #9BB6FF; --accent-soft: #1D2B6B; --on-accent: #0A1130;
+  --orange: #FF9D2E; --orange-soft: #FFD08A; --on-orange: #0F1B3F;
+  --water: #0B1640; --land: #172352; --land-line: #33437F;
+  --empty: #FF5C6C; --low: #FFB14A; --mid: #58C873; --high: #78C2FF; --full: #A98BFF; --off: #5F6A93;
+  --traffic: #FF8A4C; --warn: #F06AA8; --gain: #8FB0FF; --loss: #FF8552; --cycle: #58C873; --bus: #EBF0FF;
+  --focus: #9BB6FF;
+  color-scheme: dark;
 }
-@media (max-width: 620px) {
-  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .kpi { padding: 12px 10px 12px 0; }
-  .kpi + .kpi { padding-left: 12px; }
-  .kpi:nth-child(3) { padding-left: 0; border-left: 0; }
-  .kpi:nth-child(n+3) { border-top: 1px solid var(--line); }
-  .mapbox { aspect-ratio: 1 / 1; }
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 var(--t-base)/1.5 var(--f); font-variant-numeric: tabular-nums; accent-color: var(--accent); scrollbar-color: var(--line-strong) transparent; -webkit-text-size-adjust: 100%; }
+::selection { background: var(--orange); color: var(--on-orange); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 2px; }
+h1, h2, h3, p, ul, dl, dd { margin: 0; }
+ul { padding: 0; list-style: none; }
+a { color: var(--accent); text-underline-offset: 3px; }
+button, select, input { font: inherit; color: inherit; }
+.muted { color: var(--muted); }
+.small { font-size: var(--t-sm); }
+.num { font-variant-numeric: tabular-nums; }
+.lab { font-size: var(--t-xs); font-weight: 600; font-stretch: 88%; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* ---------- shell band */
+.shell { background: var(--shell); color: var(--shell-ink); --focus: var(--shell-ink); }
+.shell-in, .wrap { max-width: 1360px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.shell-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-block: 16px 12px; }
+.brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.brand svg { width: 42px; height: 42px; flex: none; }
+.brand h1 { font-size: var(--t-xl); font-weight: 800; font-stretch: 125%; line-height: 1.1; letter-spacing: -.01em; text-wrap: balance; }
+.brand p { font-size: var(--t-sm); color: var(--shell-muted); }
+.status { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-size: var(--t-sm); }
+.pill { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border: 1px solid var(--shell-line); border-radius: 99px; font-weight: 600; font-stretch: 88%; text-transform: uppercase; letter-spacing: .06em; font-size: var(--t-xs); }
+.pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--shell-muted); }
+.pill.live::before { background: var(--orange); }
+#statusTime { color: var(--shell-muted); }
+.btn { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 6px 14px; border: 0; border-radius: 99px; background: var(--orange); color: var(--on-orange); font-weight: 700; font-size: var(--t-sm); cursor: pointer; transition: background-color .15s; }
+.btn:hover { background: var(--orange-soft); }
+.btn:active { transform: translateY(1px); }
+.btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.shell-note { font-size: var(--t-sm); color: var(--shell-muted); min-height: 1.3em; }
+.nav { display: flex; gap: 4px 22px; overflow-x: auto; border-top: 1px solid var(--shell-line); margin-top: 10px; scrollbar-width: none; }
+.nav a { flex: none; padding: 10px 0; color: var(--shell-muted); text-decoration: none; font-size: var(--t-sm); font-weight: 600; font-stretch: 88%; text-transform: uppercase; letter-spacing: .06em; }
+.nav a:hover { color: var(--shell-ink); text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: var(--orange); }
+
+/* ---------- page rhythm */
+.wrap { padding-block: 24px 40px; display: grid; gap: 36px; }
+section { display: grid; gap: 14px; min-width: 0; scroll-margin-top: 12px; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 24px; border-top: 1px solid var(--line-strong); padding-top: 12px; }
+.sec-head h2 { font-size: var(--t-xl); font-weight: 800; font-stretch: 125%; line-height: 1.15; letter-spacing: -.01em; }
+.sec-head p { font-size: var(--t-md); color: var(--muted); max-width: 70ch; }
+
+/* ---------- now: reading and figure strip */
+.reading { font-size: clamp(1.125rem, 0.8rem + 1.1vw, 1.5rem); line-height: 1.35; font-weight: 400; max-width: 62ch; text-wrap: pretty; }
+.reading strong { font-weight: 700; }
+.strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: var(--surface); border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line-strong); }
+.cell { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 2px 10px; padding: 12px 16px 14px; border-left: 1px solid var(--line); min-width: 0; }
+.cell:first-child { border-left: 0; }
+.cell .lab { grid-column: 1 / -1; display: flex; align-items: center; gap: 6px; }
+.cell .val { font-size: var(--t-xxl); font-weight: 700; font-stretch: 112%; line-height: 1.05; letter-spacing: -.02em; }
+.cell .val small { font-size: .5em; font-weight: 600; margin-left: 1px; }
+.cell .mini { width: 96px; height: 28px; display: block; margin-bottom: 4px; }
+.cell .sub { grid-column: 1 / -1; font-size: var(--t-sm); color: var(--muted); }
+.cell .sub b { color: var(--ink); font-weight: 600; }
+
+/* ---------- class colours: one custom property, used by map rounds, crate rounds and swatches */
+.c-empty { --c: var(--empty); } .c-low { --c: var(--low); } .c-mid { --c: var(--mid); } .c-high { --c: var(--high); } .c-full { --c: var(--full); } .c-off { --c: var(--off); }
+.c-gain { --c: var(--gain); } .c-loss { --c: var(--loss); } .c-flat { --c: var(--off); }
+
+/* ---------- map */
+.mapgrid { display: grid; grid-template-columns: minmax(0, 1fr) 372px; gap: 16px; align-items: start; }
+.mapcard, .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); min-width: 0; }
+.mapbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 0 12px; border-bottom: 1px solid var(--line); }
+.tabs { display: flex; gap: 2px 18px; overflow-x: auto; max-width: 100%; scrollbar-width: none; }
+.tab { flex: none; padding: 13px 0 11px; border: 0; background: none; color: var(--muted); font-weight: 600; font-size: var(--t-md); cursor: pointer; box-shadow: inset 0 -3px 0 transparent; transition: color .15s, box-shadow .15s; }
+.tab:hover { color: var(--ink); box-shadow: inset 0 -3px 0 var(--line-strong); }
+.tab[aria-selected="true"] { color: var(--ink); font-weight: 700; box-shadow: inset 0 -3px 0 var(--orange); }
+.tools { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 8px 0; }
+.tools > span { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.chip, .tog { min-height: 32px; padding: 4px 12px; border: 1px solid var(--line-strong); border-radius: 99px; background: var(--surface); font-size: var(--t-sm); font-weight: 500; cursor: pointer; transition: background-color .15s, color .15s, border-color .15s; }
+.chip:hover, .tog:hover { border-color: var(--ink); }
+.chip[aria-pressed="true"], .tog[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 600; }
+.sel-box { min-height: 32px; padding: 4px 8px; border: 1px solid var(--line-strong); border-radius: var(--r); background: var(--surface); font-size: var(--t-sm); max-width: 100%; }
+.sel-box:hover { border-color: var(--ink); }
+.mapbox { position: relative; height: clamp(360px, 62vh, 620px); background: var(--water); overflow: hidden; }
+#map { width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; user-select: none; }
+#map.zoomed { touch-action: none; }
+#map.dragging { cursor: grabbing; }
+.barrio { fill: var(--land); stroke: var(--land-line); stroke-width: 1; }
+.barrio.hot { cursor: pointer; }
+.barrio.hot:hover { stroke: var(--ink); stroke-width: 1.6; }
+.barrio.sel { stroke: var(--ink); stroke-width: 2.4; }
+.cyc { fill: none; stroke: var(--cycle); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.bus { fill: none; stroke: var(--bus); stroke-width: 3.4; stroke-linecap: round; pointer-events: none; opacity: .75; }
+.seg { fill: none; stroke: var(--traffic); stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; cursor: pointer; }
+.seg.nodata { stroke: var(--off); stroke-dasharray: 3 4; }
+.seg:hover, .seg.sel { stroke: var(--ink); stroke-opacity: 1; }
+.st { fill: var(--c); stroke: var(--surface); stroke-width: 1; vector-effect: non-scaling-stroke; cursor: pointer; transition: fill .25s, opacity .25s; }
+.st.c-flat { opacity: .55; }
+.st.dim { opacity: .14; }
+.st:hover, .st.sel { stroke: var(--ink); stroke-width: 2.4; opacity: 1; }
+.zoom { position: absolute; top: 10px; right: 10px; display: grid; gap: 4px; }
+.zoom button, .play { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid var(--line-strong); border-radius: var(--r); background: var(--surface); cursor: pointer; }
+.zoom button:hover, .play:hover { border-color: var(--ink); }
+.zoom svg, .play svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.tip { position: absolute; z-index: 2; max-width: 260px; padding: 8px 10px; background: var(--ink); color: var(--bg); border-radius: var(--r); font-size: var(--t-sm); line-height: 1.4; pointer-events: none; }
+.tip b { display: block; font-weight: 700; }
+.scrub { display: flex; align-items: center; gap: 12px; padding: 8px 12px; border-top: 1px solid var(--line); }
+.play { flex: none; border-radius: 50%; background: var(--orange); border-color: var(--orange); color: var(--on-orange); }
+.play svg { fill: currentColor; stroke: none; }
+.play .i-pause, .play[aria-pressed="true"] .i-play { display: none; }
+.play[aria-pressed="true"] .i-pause { display: block; }
+.scrub input { flex: 1; min-width: 0; height: 28px; accent-color: var(--accent); cursor: pointer; }
+.scrub output { flex: none; min-width: 7.5em; text-align: right; font-size: var(--t-sm); font-weight: 600; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; padding: 10px 12px; border-top: 1px solid var(--line); font-size: var(--t-sm); color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { flex: none; width: 11px; height: 11px; border-radius: 50%; background: var(--c); }
+.sw.sq { border-radius: 2px; border: 1px solid var(--land-line); }
+.sw.ln { width: 20px; height: 0; border-radius: 0; background: none; border-top: 3px solid var(--traffic); }
+.sw.ln.t1 { border-top-width: 1.5px; opacity: .5; } .sw.ln.t5 { border-top-width: 5px; } .sw.ln.nd { border-top: 2px dashed var(--off); } .sw.ln.cy { border-top-color: var(--cycle); }
+.sw.bd { width: 6px; height: 6px; background: var(--bus); }
+
+/* ---------- the crate: one row per district, one round per station */
+.panel { padding: 14px 16px; }
+.panel-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+.panel-head h3 { display: flex; align-items: center; gap: 8px; font-size: var(--t-base); font-weight: 700; line-height: 1.25; }
+.crow { display: grid; grid-template-columns: 104px minmax(0, 1fr) auto; gap: 10px; align-items: start; padding: 6px 0; border-top: 1px solid var(--line); }
+.cname { padding: 0; border: 0; background: none; text-align: left; font-size: var(--t-sm); font-weight: 600; font-stretch: 88%; line-height: 1.25; cursor: pointer; }
+button.cname:hover, .cname[aria-pressed="true"] { color: var(--accent); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.cds { display: flex; flex-wrap: wrap; gap: 3px; padding-top: 2px; }
+.cd { width: 13px; height: 13px; padding: 0; border: 0; border-radius: 50%; background: var(--c); cursor: pointer; transition: background-color .25s, opacity .2s; }
+.cd:hover, .cd.sel { outline: 2px solid var(--ink); outline-offset: 1px; }
+.crate.has-d .crow:not(.on) .cd { opacity: .3; }
+.ccount { font-size: var(--t-sm); color: var(--muted); text-align: right; min-width: 3.4em; }
+.ccount b { color: var(--ink); font-weight: 700; }
+
+/* ---------- detail and rankings */
+.below { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 16px; align-items: start; }
+.rankgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; min-width: 0; }
+.rankgrid .panel:only-child { grid-column: 1 / -1; }
+.detail-name { font-size: var(--t-lg); font-weight: 700; line-height: 1.25; text-wrap: balance; }
+.fillbar { height: 8px; margin: 10px 0; background: var(--surface-2); border: 1px solid var(--line); border-radius: 99px; overflow: hidden; }
+.fillbar i { display: block; height: 100%; background: var(--c); }
+.pairs { display: grid; grid-template-columns: minmax(0, 1fr) auto; margin: 8px 0; font-size: var(--t-md); }
+.pairs dt, .pairs dd { padding: 5px 0; border-top: 1px solid var(--line); }
+.pairs dt { color: var(--muted); }
+.pairs dd { text-align: right; font-weight: 600; }
+.rank li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 12px; padding: 7px 6px; margin: 0 -6px; border-top: 1px solid var(--line); border-radius: 2px; cursor: pointer; font-size: var(--t-md); }
+.rank li:hover { background: var(--accent-soft); }
+.rk-name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rk-val { text-align: right; font-weight: 600; white-space: nowrap; }
+.rk-sub { grid-column: 1 / -1; font-size: var(--t-sm); color: var(--muted); }
+.rk-bar { grid-column: 1 / -1; height: 4px; margin-top: 4px; background: var(--surface-2); }
+.rk-bar i { display: block; height: 100%; background: var(--traffic); }
+.more { margin-top: 8px; font-size: var(--t-sm); color: var(--muted); }
+
+/* ---------- atlas */
+.atlas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.plate { display: grid; gap: 2px; padding: 0 0 12px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); text-align: left; cursor: pointer; overflow: hidden; transition: border-color .15s; }
+.plate:hover { border-color: var(--ink); }
+.plate svg { width: 100%; aspect-ratio: 5 / 4; display: block; background: var(--water); margin-bottom: 8px; pointer-events: none; }
+.plate .cyc { stroke-width: 1.1; } .plate .bus { stroke-width: 2; }
+.plate-t, .plate-f { padding: 0 12px; }
+.plate-t { font-weight: 700; line-height: 1.25; }
+.plate-f { font-size: var(--t-sm); color: var(--muted); }
+
+/* ---------- charts */
+.charts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.chart { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; min-width: 0; }
+.chart h3 { font-size: var(--t-base); font-weight: 700; }
+.chart svg { width: 100%; height: auto; display: block; }
+.key { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 4px 0 6px; font-size: var(--t-sm); color: var(--muted); }
+.key span { display: inline-flex; align-items: center; gap: 6px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+.series { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.ln-a { stroke: var(--accent); } .ln-e { stroke: var(--empty); } .ln-f { stroke: var(--full); } .ln-t { stroke: var(--traffic); }
+.pt-a { fill: var(--accent); } .pt-e { fill: var(--empty); } .pt-f { fill: var(--full); } .pt-t { fill: var(--traffic); }
+.grid-line { stroke: var(--line); stroke-width: 1; }
+.axis-t { fill: var(--muted); font-size: 10.5px; font-family: var(--f); }
+
+/* ---------- table */
+.tablebox { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); max-height: 520px; overflow-y: auto; }
+table { width: 100%; border-collapse: collapse; font-size: var(--t-md); }
+th, td { padding: 8px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
+th:nth-child(-n+2), td:nth-child(-n+2) { text-align: left; }
+th { position: sticky; top: 0; background: var(--surface-2); font-size: var(--t-xs); font-weight: 600; font-stretch: 88%; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); cursor: pointer; user-select: none; }
+th:hover, th[aria-sort] { color: var(--ink); }
+th[aria-sort]::after { content: ""; display: inline-block; margin-left: 6px; border: 4px solid transparent; }
+th[aria-sort="ascending"]::after { border-bottom-color: currentColor; transform: translateY(-2px); }
+th[aria-sort="descending"]::after { border-top-color: currentColor; transform: translateY(2px); }
+tbody tr { cursor: pointer; }
+tbody tr:hover { background: var(--accent-soft); }
+td:first-child { font-weight: 600; }
+.cellbar { display: inline-block; height: 8px; margin-right: 8px; background: var(--accent); opacity: .55; vertical-align: middle; }
+.lvl { display: inline-flex; align-items: center; gap: 6px; }
+.lvl::before { content: ""; width: 9px; height: 9px; border-radius: 2px; background: var(--warn); }
+.lvl.Low::before { opacity: .25; } .lvl.Medium::before { opacity: .6; }
+
+/* ---------- footer */
+.foot { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 16px 40px; border-top: 2px solid var(--ink); padding-top: 16px; font-size: var(--t-md); color: var(--muted); scroll-margin-top: 12px; }
+.foot h3 { font-size: var(--t-base); font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.foot li { padding: 3px 0; max-width: 75ch; }
+.foot p + p { margin-top: 8px; }
+
+@media (max-width: 1080px) {
+  .mapgrid { grid-template-columns: minmax(0, 1fr); }
+  .charts { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 820px) {
+  .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cell:nth-child(3) { border-left: 0; }
+  .cell:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .below, .foot { grid-template-columns: minmax(0, 1fr); }
+  .atlas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .wrap { gap: 28px; }
+}
+@media (max-width: 560px) {
+  .rankgrid { grid-template-columns: minmax(0, 1fr); }
+  .cell { padding: 10px 12px 12px; }
+  .cell .val { font-size: 1.75rem; }
+  .cell .mini { width: 64px; }
+  .brand h1 { font-size: var(--t-lg); }
+  .mapbox { height: clamp(340px, 58vh, 480px); }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }
+/* wide layout: the map grows to the height of the crate beside it */
+@media (min-width: 1081px) {
+  .mapgrid { align-items: stretch; }
+  .mapcard { display: flex; flex-direction: column; }
+  .mapbox { flex: 1 1 auto; height: auto; min-height: clamp(360px, 62vh, 620px); }
+  #map { position: absolute; inset: 0; }
 }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header class="top">
-    <div class="top-text">
-      <p class="eyebrow">València · open mobility data</p>
-      <h1>València Mobility Pulse</h1>
-      <p class="lede">Where is the public bike share running short right now, and how does that sit next to traffic and neighbourhood coverage?</p>
-    </div>
-    <div class="status">
-      <div class="status-row">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs id="hoodDefs"></defs></svg>
+
+<header class="shell">
+  <div class="shell-in">
+    <div class="shell-top">
+      <div class="brand">
+        <svg viewBox="0 0 48 48" role="img" aria-label="València Mobility Pulse logo: an orange slice that is also a wheel">
+          <circle cx="24" cy="24" r="23" style="fill:var(--orange)"/>
+          <g style="fill:var(--orange-soft)">
+            <path id="lgw" d="M22.83 20.17 L19.18 8.22 A16.5 16.5 0 0 1 28.82 8.22 L25.17 20.17 Z"/>
+            <use href="#lgw" transform="rotate(90 24 24)"/><use href="#lgw" transform="rotate(135 24 24)"/><use href="#lgw" transform="rotate(180 24 24)"/>
+            <use href="#lgw" transform="rotate(225 24 24)"/><use href="#lgw" transform="rotate(270 24 24)"/><use href="#lgw" transform="rotate(315 24 24)"/>
+          </g>
+          <use href="#lgw" transform="rotate(45 24 24)" style="fill:var(--shell-ink)"/>
+          <circle cx="24" cy="24" r="2.2" style="fill:var(--shell-ink)"/>
+        </svg>
+        <div>
+          <h1>València Mobility Pulse</h1>
+          <p>Bike share, traffic and neighbourhood coverage, from the city's open data</p>
+        </div>
+      </div>
+      <div class="status">
         <span class="pill" id="statusPill">Saved capture</span>
-        <span class="num" id="statusTime"></span>
+        <span id="statusTime"></span>
+        <button class="btn" type="button" id="refreshBtn"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.6-3.9M13.5 2.5v3h-3"/></svg>Refresh</button>
       </div>
-      <div class="status-row">
-        <button class="btn" id="refreshBtn" type="button">Refresh live data</button>
-      </div>
-      <p class="status-note" id="statusNote"></p>
     </div>
-  </header>
+    <p class="shell-note" id="statusNote" role="status"></p>
+    <nav class="nav" aria-label="Sections">
+      <a href="#now">Now</a><a href="#maps">Maps</a><a href="#atlas">Atlas</a><a href="#today">Today</a><a href="#hoods">Neighbourhoods</a><a href="#sources">Sources</a>
+    </nav>
+  </div>
+</header>
 
-  <section class="kpis" id="kpis" aria-label="City figures"></section>
-  <p class="insight" id="insight"></p>
-
-  <section class="main">
-    <div class="mapcard">
-      <div class="mapbar">
-        <div class="tabs" role="tablist" aria-label="Map layer">
-          <button class="tab" role="tab" id="tab-bike" data-mode="bike" aria-selected="true" type="button">Bike share</button>
-          <button class="tab" role="tab" id="tab-traffic" data-mode="traffic" aria-selected="false" type="button">Traffic</button>
-          <button class="tab" role="tab" id="tab-hood" data-mode="hood" aria-selected="false" type="button">Neighbourhoods</button>
-        </div>
-        <div class="tools">
-          <span id="bikeTools">
-            <button class="chip" type="button" data-filter="all" aria-pressed="true" id="chip-all">All stations</button>
-            <button class="chip" type="button" data-filter="empty" aria-pressed="false" id="chip-empty">No bikes</button>
-            <button class="chip" type="button" data-filter="full" aria-pressed="false" id="chip-full">No free docks</button>
-          </span>
-          <select class="sel" id="metricSel" aria-label="Neighbourhood indicator" hidden>
-            <option value="docksKm">Bike share docks per km²</option>
-            <option value="stopsKm">Bus stops per km²</option>
-            <option value="cycleKm2">Cycle routes, km per km²</option>
-            <option value="vul">Vulnerability level (2021)</option>
-          </select>
-          <select class="sel" id="districtSel" aria-label="Zoom to district"></select>
-        </div>
-      </div>
-      <div class="mapbox" id="mapbox">
-        <svg id="map" role="img" aria-label="Map of València"><g id="gBarrios"></g><g id="gTraffic"></g><g id="gStations"></g></svg>
-        <div class="zoom">
-          <button type="button" id="zoomIn" aria-label="Zoom in">+</button>
-          <button type="button" id="zoomOut" aria-label="Zoom out">−</button>
-          <button type="button" id="zoomReset" aria-label="Reset view" title="Reset view">⌂</button>
-        </div>
-        <div class="tip" id="tip" hidden></div>
-      </div>
-      <div class="legend" id="legend"></div>
-    </div>
-    <aside class="side">
-      <div class="panel" id="detail"></div>
-      <div class="panel" id="ranking"></div>
-    </aside>
+<main class="wrap">
+  <section id="now" aria-labelledby="nowH">
+    <h2 class="vh" id="nowH">Right now</h2>
+    <p class="reading" id="insight"></p>
+    <div class="strip" id="kpis"></div>
   </section>
 
-  <section>
+  <section id="maps">
+    <div class="sec-head">
+      <h2>Maps</h2>
+      <p>Five readings of the same city. Pick a layer, add cycle lanes or bus stops, select anything for its detail.</p>
+    </div>
+    <div class="mapgrid">
+      <div class="mapcard">
+        <div class="mapbar">
+          <div class="tabs" role="tablist" aria-label="Map layer">
+            <button class="tab" type="button" role="tab" data-mode="bike" aria-selected="true">Bikes now</button>
+            <button class="tab" type="button" role="tab" data-mode="change" aria-selected="false">Change today</button>
+            <button class="tab" type="button" role="tab" data-mode="trouble" aria-selected="false">Trouble spots</button>
+            <button class="tab" type="button" role="tab" data-mode="traffic" aria-selected="false">Traffic</button>
+            <button class="tab" type="button" role="tab" data-mode="hood" aria-selected="false">Neighbourhoods</button>
+          </div>
+          <div class="tools">
+            <span id="bikeTools">
+              <button class="chip" type="button" data-filter="all" aria-pressed="true">All stations</button>
+              <button class="chip" type="button" data-filter="empty" aria-pressed="false">No bikes</button>
+              <button class="chip" type="button" data-filter="full" aria-pressed="false">No free docks</button>
+            </span>
+            <select class="sel-box" id="metricSel" aria-label="Neighbourhood indicator" hidden>
+              <option value="docksKm">Bike share docks per km²</option>
+              <option value="stopsKm">Bus stops per km²</option>
+              <option value="cycleKm2">Cycle routes, km per km²</option>
+              <option value="vul">Vulnerability level (2021)</option>
+            </select>
+            <span id="layerTools">
+              <button class="tog" type="button" data-layer="cycle" aria-pressed="false">Cycle lanes</button>
+              <button class="tog" type="button" data-layer="stops" aria-pressed="false">Bus stops</button>
+            </span>
+            <select class="sel-box" id="districtSel" aria-label="Zoom to district"></select>
+          </div>
+        </div>
+        <div class="mapbox" id="mapbox">
+          <svg id="map" role="img" aria-label="Map of València"><g id="gBarrios"></g><g id="gCycle"></g><g id="gStops"></g><g id="gTraffic"></g><g id="gStations"></g></svg>
+          <div class="zoom">
+            <button type="button" id="zoomIn" aria-label="Zoom in"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></button>
+            <button type="button" id="zoomOut" aria-label="Zoom out"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10"/></svg></button>
+            <button type="button" id="zoomReset" aria-label="Reset view" title="Reset view"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6V3h3M10 3h3v3M13 10v3h-3M6 13H3v-3"/></svg></button>
+          </div>
+          <div class="tip" id="tip" hidden></div>
+        </div>
+        <div class="scrub" id="scrub" hidden>
+          <button type="button" class="play" id="playBtn" aria-pressed="false" aria-label="Replay the day"><svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3l8 5-8 5z"/></svg><svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3h3v10H4zM9 3h3v10H9z"/></svg></button>
+          <input type="range" id="scrubRange" min="0" max="0" step="1" value="0" aria-label="Capture shown on the map">
+          <output id="scrubTime" for="scrubRange"></output>
+        </div>
+        <div class="legend" id="legend"></div>
+      </div>
+      <aside class="panel" aria-labelledby="crateH">
+        <div class="panel-head"><h3 id="crateH">Every station, by district</h3><span class="lab">failing / all</span></div>
+        <p class="small muted" id="crateNote">One round per station, emptiest first. Select a district name to focus the map on it.</p>
+        <div class="crate" id="crate"></div>
+      </aside>
+    </div>
+    <div class="below">
+      <div class="panel" id="detail" aria-live="polite"></div>
+      <div class="rankgrid" id="ranking"></div>
+    </div>
+  </section>
+
+  <section id="atlas">
+    <div class="sec-head">
+      <h2>Atlas</h2>
+      <p>The same city at the same scale, drawn six ways. Select a plate to open it in the main map.</p>
+    </div>
+    <div class="atlas" id="atlasGrid"></div>
+  </section>
+
+  <section id="today">
     <div class="sec-head">
       <h2>Through the day</h2>
-      <p class="muted" id="histNote"></p>
+      <p id="histNote"></p>
     </div>
     <div class="charts" id="charts"></div>
   </section>
 
-  <section>
+  <section id="hoods">
     <div class="sec-head">
       <h2>Neighbourhood coverage</h2>
-      <p class="muted">88 neighbourhoods. Select a column to sort, a row to find it on the map.</p>
+      <p>88 neighbourhoods. Select a column to sort, a row to find it on the map.</p>
     </div>
     <div class="tablebox"><table id="hoodTable"><thead></thead><tbody></tbody></table></div>
   </section>
 
-  <footer class="foot">
+  <footer class="foot" id="sources">
     <div>
       <h3>Where the numbers come from</h3>
       <ul>
@@ -261,15 +415,16 @@ tbody tr:hover td { background: var(--accent-soft); }
     </div>
     <div>
       <h3>How it stays current</h3>
-      <p>The city portal only publishes the present moment. A small script saves a copy every 10 minutes, which is what makes the history charts possible. All times are València local time. Source: Ajuntament de València open data portal.</p>
-      <p style="margin-top:8px">Workshop example, CITIES FORUM International Mentoring Programme.</p>
+      <p>The city portal only publishes the present moment. A small script saves a copy at regular intervals, which is what makes the replay and the history charts possible. All times are València local time. Source: Ajuntament de València open data portal.</p>
+      <p>Workshop example, CITIES FORUM International Mentoring Programme.</p>
     </div>
   </footer>
-</div>
+</main>
 
 <script src="data/base.js"></script>
 <script src="data/snapshot.js"></script>
 <script src="data/history.js"></script>
+<script src="data/extra.js"></script>
 <script>
 (function () {
   'use strict';
@@ -285,7 +440,8 @@ tbody tr:hover td { background: var(--accent-soft); }
   var KX = Math.cos(39.47 * Math.PI / 180), SC = 10000;
   var px = function (lon) { return (lon + 0.5) * KX * SC; }, py = function (lat) { return (39.7 - lat) * SC; };
 
-  var state = { mode: 'bike', filter: 'all', district: '', metric: 'docksKm', sel: null, sort: { k: 'docksKm', d: -1 }, live: false };
+  var EXTRA = window.EXTRA || null; // cycle network lines and bus stops, built by build_extra.js
+  var state = { mode: 'bike', filter: 'all', district: '', metric: 'docksKm', sel: null, sort: { k: 'docksKm', d: -1 }, live: false, frame: null, timer: null, cycle: !!EXTRA, stops: false };
   var hoods = BASE.barrios, hoodByCode = {};
   hoods.forEach(function (b) {
     hoodByCode[b.code] = b;
@@ -317,24 +473,52 @@ tbody tr:hover td { background: var(--accent-soft); }
   }
   var histStats = function (h) { return cityStats(h.s.map(function (r) { return { available: r[1], free: r[2] }; })); };
 
-  // ---------- KPIs and the one-sentence reading
+  // ---------- today's captures: city totals per capture, each station's record, replay frames
+  var cache = { stats: null, day: null, frames: {} };
+  function allStats() { return cache.stats || (cache.stats = HIST.map(histStats)); }
+  function t0() { return HIST.length ? hhmm(HIST[0].t) : ''; }
+  function dayStats() {
+    if (cache.day) return cache.day;
+    var d = {}; stations.forEach(function (s) { d[s.n] = { first: null, delta: 0, eN: 0, fN: 0, seen: 0, share: 0 }; });
+    HIST.forEach(function (h) { h.s.forEach(function (r) { var o = d[r[0]]; if (!o) return; if (o.first == null) o.first = r[1]; if (r[1] + r[2] > 0) { o.seen++; if (r[1] === 0) o.eN++; else if (r[2] === 0) o.fN++; } }); });
+    stations.forEach(function (s) { var o = d[s.n]; o.delta = o.first == null ? 0 : s.available - o.first; o.share = o.seen ? (o.eN + o.fN) / o.seen : 0; });
+    return (cache.day = d);
+  }
+  function frameStations(k) {
+    if (cache.frames[k]) return cache.frames[k];
+    var by = {}; HIST[k].s.forEach(function (r) { by[r[0]] = r; });
+    return (cache.frames[k] = stations.map(function (s) { var r = by[s.n], c = Object.assign({}, s); c.available = r ? r[1] : 0; c.free = r ? r[2] : 0; return classify(c); }));
+  }
+  function cur() { return state.frame == null ? stations : frameStations(state.frame); }
+  function signed(d, unit) { return (d > 0 ? '+' : d < 0 ? '−' : '') + fmt(Math.abs(d)) + (unit || ''); }
+
+  // ---------- the one-sentence reading and the strip of four figures, each with today's trend
+  function miniSpark(vals, k, cls) {
+    if (vals.length < 2) return '';
+    var w = 96, h = 28, lo = Math.min.apply(0, vals), hi = Math.max.apply(0, vals); if (hi === lo) { hi += 1; lo -= 1; }
+    var X = function (i) { return 4 + i * (w - 8) / (vals.length - 1); }, Y = function (v) { return 4 + (hi - v) * (h - 8) / (hi - lo); };
+    k = Math.max(0, Math.min(vals.length - 1, k));
+    return '<svg class="mini" viewBox="0 0 ' + w + ' ' + h + '" aria-hidden="true"><path class="series ln-' + cls + '" d="M' + vals.map(function (v, i) { return X(i).toFixed(1) + ' ' + Y(v).toFixed(1); }).join('L') + '"/><circle class="pt-' + cls + '" cx="' + X(k).toFixed(1) + '" cy="' + Y(vals[k]).toFixed(1) + '" r="3"/></svg>';
+  }
   function renderKpis() {
-    var c = cityStats(stations), first = HIST.length ? histStats(HIST[0]) : null;
-    var delta = function (now, was, unit) { if (!first || HIST.length < 2) return ''; var d = now - was; return (d > 0 ? '+' : d < 0 ? '−' : '±') + fmt(Math.abs(d)) + (unit || '') + ' since ' + hhmm(HIST[0].t); };
-    var fill = c.inService ? c.bikes / c.inService * 100 : 0;
-    var tiles = [
-      ['', 'Bikes available', fmt(c.bikes), 'of ' + fmt(c.inService) + ' working docks. ' + delta(c.bikes, first && first.bikes)],
-      ['', 'System fill', fmt(fill) + '<small>%</small>', 'Share of working docks holding a bike'],
-      ['is-empty', 'Stations with no bikes', fmt(c.empty), fmt(c.empty / c.n * 100) + '% of ' + c.n + ' stations. ' + delta(c.empty, first && first.empty)],
-      ['is-full', 'Stations with no free docks', fmt(c.full), 'Nowhere to return a bike. ' + delta(c.full, first && first.full)]
+    var list = cur(), c = cityStats(list), st = allStats(), k = state.frame == null ? st.length - 1 : state.frame, first = st[0];
+    var fillOf = function (s) { return s.inService ? s.bikes / s.inService * 100 : 0; }, fill = fillOf(c);
+    var delta = function (d, unit) { return st.length > 1 ? '<b>' + signed(d, unit) + '</b> since ' + t0() : ''; };
+    var col = function (key) { return st.map(function (s) { return key === 'fill' ? fillOf(s) : s[key]; }); };
+    var cells = [
+      ['a', '', 'Bikes available', fmt(c.bikes), col('bikes'), 'of ' + fmt(c.inService) + ' working docks. ' + delta(c.bikes - (first ? first.bikes : c.bikes))],
+      ['a', '', 'System fill', fmt(fill) + '<small>%</small>', col('fill'), 'of working docks hold a bike. ' + delta(Math.round(fill - (first ? fillOf(first) : fill)), ' pts')],
+      ['e', 'c-empty', 'Stations with no bikes', fmt(c.empty), col('empty'), fmt(c.empty / c.n * 100) + '% of ' + c.n + ' stations. ' + delta(c.empty - (first ? first.empty : c.empty))],
+      ['f', 'c-full', 'Stations with no free docks', fmt(c.full), col('full'), 'Nowhere to return a bike. ' + delta(c.full - (first ? first.full : c.full))]
     ];
-    $('kpis').innerHTML = tiles.map(function (t) { return '<div class="kpi ' + t[0] + '"><span class="kpi-label">' + t[1] + '</span><span class="kpi-value">' + t[2] + '</span><span class="kpi-sub">' + t[3] + '</span></div>'; }).join('');
+    $('kpis').innerHTML = cells.map(function (t) { return '<div class="cell"><span class="lab">' + (t[1] ? '<i class="sw ' + t[1] + '"></i>' : '') + t[2] + '</span><span class="val">' + t[3] + '</span>' + miniSpark(t[4], k, t[0]) + '<span class="sub">' + t[5] + '</span></div>'; }).join('');
     // reading: which district concentrates the empty stations
-    var byD = {}; stations.forEach(function (s) { if (!s.hood) return; var d = byD[s.hood.district] || (byD[s.hood.district] = { n: 0, e: 0 }); d.n++; if (s.cls === 'empty') d.e++; });
-    var worst = Object.keys(byD).filter(function (k) { return byD[k].n >= 5; }).sort(function (a, b) { return byD[b].e / byD[b].n - byD[a].e / byD[a].n; })[0];
-    $('insight').innerHTML = c.empty + c.full === 0 ? 'Every working station has both bikes and free docks right now.' :
-      'Right now <strong>' + fmt((c.empty + c.full) / c.n * 100) + '% of stations fail one of their two jobs</strong>: ' + c.empty + ' have no bike to take and ' + c.full + ' have no dock to return one.' +
-      (worst && byD[worst].e ? ' The shortage is sharpest in <strong>' + esc(worst) + '</strong>, where ' + byD[worst].e + ' of ' + byD[worst].n + ' stations are empty.' : '');
+    var byD = {}; list.forEach(function (s) { if (!s.hood) return; var d = byD[s.hood.district] || (byD[s.hood.district] = { n: 0, e: 0 }); d.n++; if (s.cls === 'empty') d.e++; });
+    var worst = Object.keys(byD).filter(function (q) { return byD[q].n >= 5; }).sort(function (a, b) { return byD[b].e / byD[b].n - byD[a].e / byD[a].n; })[0];
+    var live = state.frame == null, when = live ? 'Right now' : 'At ' + hhmm(HIST[state.frame].t), fail = live ? ' fail' : ' failed', have = live ? ' have' : ' had';
+    $('insight').innerHTML = c.empty + c.full === 0 ? when + ' every working station ' + (live ? 'has' : 'had') + ' both bikes and free docks.' :
+      when + ' <strong>' + fmt((c.empty + c.full) / c.n * 100) + '% of stations' + fail + ' one of their two jobs</strong>: ' + c.empty + have + ' no bike to take and ' + c.full + have + ' no dock to return one.' +
+      (worst && byD[worst].e ? ' The shortage ' + (live ? 'is' : 'was') + ' sharpest in <strong>' + esc(worst) + '</strong>, where ' + byD[worst].e + ' of ' + byD[worst].n + ' stations ' + (live ? 'are' : 'were') + ' empty.' : '');
   }
 
   // ---------- map
@@ -347,7 +531,7 @@ tbody tr:hover td { background: var(--accent-soft); }
   function applyView() {
     svg.setAttribute('viewBox', view.x.toFixed(1) + ' ' + view.y.toFixed(1) + ' ' + view.w.toFixed(1) + ' ' + view.h.toFixed(1));
     var k = scale(), zoomBoost = Math.min(1.9, Math.max(1, Math.sqrt(home.w / view.w)));
-    Array.prototype.forEach.call($('gStations').children, function (el) { var s = stations[+el.dataset.i]; if (s) el.setAttribute('r', (s.rpx * zoomBoost / k).toFixed(2)); });
+    Array.prototype.forEach.call($('gStations').children, function (el) { var s = stations[+el.dataset.i]; if (s) el.setAttribute('r', (rOf(s) * zoomBoost / k).toFixed(2)); });
     svg.classList.toggle('zoomed', view.w < home.w * 0.98);
   }
   function zoomBy(f, cx, cy) {
@@ -363,42 +547,85 @@ tbody tr:hover td { background: var(--accent-soft); }
     docksKm: { label: 'Bike share docks per km²', d: 0 }, stopsKm: { label: 'Bus stops per km²', d: 0 },
     cycleKm2: { label: 'Cycle routes, km per km²', d: 1 }, vul: { label: 'Vulnerability level (2021)' }
   };
-  function hoodFill(b, qs) {
-    if (state.metric === 'vul') return b.vulLabel ? { fill: 'var(--warn)', op: { Low: 0.1, Medium: 0.45, High: 0.9 }[b.vulLabel] } : null;
-    var v = b[state.metric]; if (!(v > 0)) return { fill: 'var(--accent)', op: 0.03 };
+  function hoodFill(b, qs, metric) {
+    if (metric === 'vul') return b.vulLabel ? { fill: 'var(--warn)', op: { Low: 0.12, Medium: 0.45, High: 0.9 }[b.vulLabel] } : null;
+    var v = b[metric]; if (!(v > 0)) return null;
     var c = 0; qs.forEach(function (q) { if (v > q) c++; }); return { fill: 'var(--accent)', op: 0.14 + c * 0.19 };
   }
-  function renderMap() {
-    var hot = state.mode === 'hood', qs = quantiles(hoods.map(function (b) { return b[state.metric]; }));
-    $('gBarrios').innerHTML = hoods.map(function (b, i) {
-      var f = hot ? hoodFill(b, qs) : null, sel = state.sel && state.sel.k === 'h' && state.sel.i === i;
-      return '<path class="barrio' + (hot ? ' hot' : '') + (sel ? ' sel' : '') + '" d="' + b.path + '"' + (hot ? ' data-k="h" data-i="' + i + '"' : ' pointer-events="none"') + '/>' +
-        (f ? '<path d="' + b.path + '" pointer-events="none" fill="' + f.fill + '" fill-opacity="' + f.op.toFixed(2) + '" stroke="none"/>' : '');
+  // neighbourhood outlines, drawn once in <defs> and reused by the main map and every atlas plate
+  function hoodLayer(metric, hot) {
+    var qs = metric ? quantiles(hoods.map(function (b) { return b[metric]; })) : [];
+    return hoods.map(function (b, i) {
+      var f = metric ? hoodFill(b, qs, metric) : null, sel = hot && state.sel && state.sel.k === 'h' && state.sel.i === i;
+      return '<use href="#hp' + i + '" class="barrio' + (hot ? ' hot' : '') + (sel ? ' sel' : '') + '"' + (hot ? ' data-k="h" data-i="' + i + '"' : ' pointer-events="none"') + '/>' +
+        (f ? '<use href="#hp' + i + '" pointer-events="none" fill="' + f.fill + '" fill-opacity="' + f.op.toFixed(2) + '" stroke="none"/>' : '');
     }).join('');
+  }
+  function buildDefs() {
+    var h = hoods.map(function (b, i) { return '<path id="hp' + i + '" vector-effect="non-scaling-stroke" d="' + b.path + '"/>'; }).join('');
+    if (EXTRA) {
+      var d = '', p = '', i, x, y;
+      EXTRA.cycle.forEach(function (c) { for (i = 0; i < c.length; i += 2) { x = i ? x + c[i] : c[i]; y = i ? y + c[i + 1] : c[i + 1]; d += (i ? 'L' : 'M') + px(x / 1e5).toFixed(1) + ' ' + py(y / 1e5).toFixed(1); } });
+      for (i = 0; i < EXTRA.stops.length; i += 2) p += 'M' + px(EXTRA.stops[i] / 1e5).toFixed(1) + ' ' + py(EXTRA.stops[i + 1] / 1e5).toFixed(1) + 'h.01';
+      h += '<path id="cycPath" vector-effect="non-scaling-stroke" d="' + d + '"/><path id="busPath" vector-effect="non-scaling-stroke" d="' + p + '"/>';
+    }
+    $('hoodDefs').innerHTML = h;
+  }
+  // station rounds: the layer decides what the colour and the size measure
+  var DOTS = { bike: 1, change: 1, trouble: 1 };
+  function rOf(s) { if (state.mode === 'change') return 2.4 + Math.sqrt(Math.abs(dayStats()[s.n].delta)) * 1.9; if (state.mode === 'trouble') return 2.4 + dayStats()[s.n].share * 9; return s.rpx; }
+  function stClass(s) {
+    if (state.mode === 'bike') return 'c-' + s.cls;
+    var o = dayStats()[s.n];
+    if (state.mode === 'change') return o.delta > 0 ? 'c-gain' : o.delta < 0 ? 'c-loss' : 'c-flat';
+    return !o.share ? 'c-flat' : o.eN >= o.fN ? 'c-empty' : 'c-full';
+  }
+  function stCls(s, i) {
+    var dim = (state.mode === 'bike' && state.filter !== 'all' && s.cls !== state.filter) || (state.district && (!s.hood || s.hood.district !== state.district));
+    return 'st ' + stClass(s) + (dim ? ' dim' : '') + (state.sel && state.sel.k === 's' && state.sel.i === i ? ' sel' : '');
+  }
+  function repaintStations() { // replay: restyle in place, so each round fades from one capture to the next
+    var list = cur();
+    Array.prototype.forEach.call($('gStations').children, function (el) { var i = +el.dataset.i; if (list[i]) el.setAttribute('class', stCls(list[i], i)); });
+  }
+  function renderMap() {
+    var hot = state.mode === 'hood';
+    $('gBarrios').innerHTML = hoodLayer(hot ? state.metric : null, hot);
+    $('gCycle').innerHTML = EXTRA && state.cycle ? '<use href="#cycPath" class="cyc"/>' : '';
+    $('gStops').innerHTML = EXTRA && state.stops ? '<use href="#busPath" class="bus"/>' : '';
     var tr = SNAP.traffic || {}, max = Math.max.apply(0, segs.map(function (t) { return tr[t.id] > 0 ? tr[t.id] : 0; })) || 1;
     $('gTraffic').innerHTML = state.mode !== 'traffic' ? '' : segs.map(function (t, i) {
       var c = trafficClass(tr[t.id], max), sel = state.sel && state.sel.k === 't' && state.sel.i === i;
       return '<path class="seg' + (c ? '' : ' nodata') + (sel ? ' sel' : '') + '" data-k="t" data-i="' + i + '" d="' + t.path + '" stroke-width="' + (c ? 1 + c * 1.25 : 1.2) + '" stroke-opacity="' + (c ? 0.3 + c * 0.14 : 0.8) + '"/>';
     }).join('');
-    $('gStations').innerHTML = state.mode !== 'bike' ? '' : stations.map(function (s, i) { return { s: s, i: i }; }).sort(function (a, b) { return b.s.total - a.s.total; }).map(function (o) {
-      var s = o.s, dim = (state.filter !== 'all' && s.cls !== state.filter) || (state.district && (!s.hood || s.hood.district !== state.district));
-      var sel = state.sel && state.sel.k === 's' && stations[state.sel.i] && stations[state.sel.i].n === s.n;
-      return '<circle class="st c-' + s.cls + (dim ? ' dim' : '') + (sel ? ' sel' : '') + '" data-k="s" data-i="' + o.i + '" cx="' + s.x.toFixed(1) + '" cy="' + s.y.toFixed(1) + '" r="1"/>';
+    var list = cur();
+    $('gStations').innerHTML = !DOTS[state.mode] ? '' : list.map(function (s, i) { return { s: s, i: i }; }).sort(function (a, b) { return rOf(b.s) - rOf(a.s); }).map(function (o) {
+      return '<circle class="' + stCls(o.s, o.i) + '" data-k="s" data-i="' + o.i + '" cx="' + o.s.x.toFixed(1) + '" cy="' + o.s.y.toFixed(1) + '" r="1"/>';
     }).join('');
     applyView(); renderLegend();
   }
+  function sw(cls, label) { return '<span><i class="sw ' + cls + '"></i>' + label + '</span>'; }
   function renderLegend() {
-    var h = '';
-    if (state.mode === 'bike') h = ['empty', 'low', 'mid', 'high', 'full', 'off'].map(function (c) { return '<span><i class="sw c-' + c + '" style="background:var(--' + c + ')"></i>' + CLS_LABEL[c] + '</span>'; }).join('') + '<span>Circle size: number of docks</span>';
-    else if (state.mode === 'traffic') h = '<span><i class="sw ln" style="border-top-width:1.5px;opacity:.45"></i>Lighter flow</span><span><i class="sw ln" style="border-top-width:5px"></i>Heavier flow (latest sensor reading)</span><span><i class="sw ln" style="border-top:2px dashed var(--off)"></i>Sensor not reporting</span>';
-    else if (state.metric === 'vul') h = ['Low', 'Medium', 'High'].map(function (l, i) { return '<span><i class="sw sq" style="background:var(--warn);opacity:' + [0.15, 0.5, 0.95][i] + '"></i>' + l + ' vulnerability</span>'; }).join('') + '<span><i class="sw sq" style="background:var(--land)"></i>Not published</span>';
+    var h = '', m = state.mode;
+    if (m === 'bike') h = ['empty', 'low', 'mid', 'high', 'full', 'off'].map(function (c) { return sw('c-' + c, CLS_LABEL[c]); }).join('') + '<span>Round size: number of docks</span>';
+    else if (m === 'change') h = HIST.length < 2 ? '<span>This layer needs at least two saved captures.</span>' : sw('c-gain', 'More bikes than at ' + t0()) + sw('c-loss', 'Fewer bikes') + sw('c-flat', 'No change') + '<span>Round size: bikes gained or lost</span>';
+    else if (m === 'trouble') h = HIST.length < 2 ? '<span>This layer needs at least two saved captures.</span>' : sw('c-empty', 'Mostly empty') + sw('c-full', 'Mostly full') + sw('c-flat', 'Never failed today') + '<span>Round size: share of today\'s captures spent empty or full</span>';
+    else if (m === 'traffic') h = sw('ln t1', 'Lighter flow') + sw('ln t5', 'Heavier flow (latest sensor reading)') + sw('ln nd', 'Sensor not reporting');
+    else if (state.metric === 'vul') h = ['Low', 'Medium', 'High'].map(function (l, i) { return '<span><i class="sw sq" style="background:var(--warn);opacity:' + [0.2, 0.5, 0.95][i] + '"></i>' + l + ' vulnerability</span>'; }).join('') + '<span><i class="sw sq" style="background:var(--land)"></i>Not published</span>';
     else h = '<span>' + METRIC[state.metric].label + ':</span><span><i class="sw sq" style="background:var(--accent);opacity:.18"></i>lowest fifth</span><span><i class="sw sq" style="background:var(--accent);opacity:.52"></i>middle</span><span><i class="sw sq" style="background:var(--accent);opacity:.9"></i>highest fifth</span><span><i class="sw sq" style="background:var(--land)"></i>none</span>';
+    if (EXTRA && state.cycle) h += sw('ln cy', 'Cycle network');
+    if (EXTRA && state.stops) h += sw('bd', 'Bus stops');
     $('legend').innerHTML = h;
   }
 
   // ---------- tooltips and selection
   function describe(k, i) {
-    if (k === 's') { var s = stations[i]; return '<b>' + esc(s.address || s.name) + '</b>' + (s.inService ? s.available + ' bikes, ' + s.free + ' free docks' : 'Out of service') + '<br>' + CLS_LABEL[s.cls]; }
+    if (k === 's') {
+      var s = cur()[i], h = '<b>' + esc(s.address || s.name) + '</b>', o = dayStats()[s.n];
+      if (state.mode === 'change') return h + signed(o.delta) + ' bikes since ' + t0() + '<br>' + s.available + ' bikes now';
+      if (state.mode === 'trouble') return h + 'Empty in ' + o.eN + ', full in ' + o.fN + '<br>of ' + o.seen + ' captures today';
+      return h + (s.inService ? s.available + ' bikes, ' + s.free + ' free docks' : 'Out of service') + '<br>' + CLS_LABEL[s.cls];
+    }
     if (k === 't') { var t = segs[i], v = SNAP.traffic[t.id]; return '<b>' + esc(t.name) + '</b>' + (v >= 0 ? 'Latest reading: ' + fmt(v) : 'Sensor not reporting') + (t.imv ? '<br>Average daily intensity: ' + fmt(t.imv) : ''); }
     var b = hoods[i]; return '<b>' + esc(b.name) + '</b>' + esc(b.district) + '<br>' + (state.metric === 'vul' ? (b.vulLabel ? b.vulLabel + ' vulnerability' : 'Vulnerability not published') : METRIC[state.metric].label + ': ' + fmt(b[state.metric], METRIC[state.metric].d));
   }
@@ -416,8 +643,9 @@ tbody tr:hover td { background: var(--accent-soft); }
       if (k === 's') { var s = stations[i], w = home.w / 5; view = { x: s.x - w / 2, y: s.y - w * (home.h / home.w) / 2, w: w, h: w * (home.h / home.w) }; }
       if (k === 'h') view = fitBox(hoods[i].box, 0.6);
     }
-    renderMap(); renderDetail();
+    renderMap(); renderDetail(); markCrate();
   }
+  function markCrate() { Array.prototype.forEach.call($('crate').querySelectorAll('.cd'), function (el) { el.classList.toggle('sel', !!state.sel && state.sel.k === 's' && +el.dataset.i === state.sel.i); }); }
   var drag = null;
   svg.addEventListener('pointerdown', function (ev) { drag = { x: ev.clientX, y: ev.clientY, vx: view.x, vy: view.y, moved: false, id: ev.pointerId, target: ev.target, touch: ev.pointerType === 'touch' }; });
   svg.addEventListener('pointermove', function (ev) {
@@ -441,7 +669,7 @@ tbody tr:hover td { background: var(--accent-soft); }
   svg.addEventListener('wheel', function (ev) { ev.preventDefault(); var p = toSvg(ev); zoomBy(ev.deltaY > 0 ? 1.25 : 0.8, p.x, p.y); }, { passive: false });
   $('zoomIn').addEventListener('click', function () { zoomBy(0.62); });
   $('zoomOut').addEventListener('click', function () { zoomBy(1.6); });
-  $('zoomReset').addEventListener('click', function () { state.district = ''; $('districtSel').value = ''; view = Object.assign({}, home); renderMap(); renderRanking(); });
+  $('zoomReset').addEventListener('click', function () { setDistrict(''); });
   window.addEventListener('resize', function () { if (view) applyView(); });
 
   // ---------- detail panel
@@ -453,56 +681,66 @@ tbody tr:hover td { background: var(--accent-soft); }
   }
   function renderDetail() {
     var sel = state.sel, h = '';
-    if (!sel) { $('detail').innerHTML = ''; return; }
+    if (!sel) { $('detail').innerHTML = '<div class="panel-head"><h3>Nothing selected</h3></div><p class="muted small">Select a station, a street segment or a neighbourhood on the map to see its figures here.</p>'; return; }
     if (sel.k === 's') {
-      var s = stations[sel.i], series = HIST.map(function (x) { var r = x.s.find(function (q) { return q[0] === s.n; }); return r ? r[1] : null; }).filter(function (v) { return v != null; });
-      h = '<div class="panel-head"><h3>Station ' + s.n + '</h3><span class="muted" style="font-size:12.5px">' + CLS_LABEL[s.cls] + '</span></div>' +
+      var s = cur()[sel.i], o = dayStats()[s.n], series = HIST.map(function (x) { var r = x.s.find(function (q) { return q[0] === s.n; }); return r ? r[1] : null; }).filter(function (v) { return v != null; });
+      h = '<div class="panel-head"><h3>Station ' + s.n + '</h3><span class="muted small">' + CLS_LABEL[s.cls] + (state.frame == null ? '' : ' at ' + hhmm(HIST[state.frame].t)) + '</span></div>' +
         '<p class="detail-name">' + esc(s.address || s.name) + '</p>' +
-        '<p class="muted" style="font-size:13px">' + (s.hood ? esc(s.hood.name) + ', ' + esc(s.hood.district) : '') + '</p>' +
-        '<div class="fillbar" title="Share of working docks holding a bike"><i style="width:' + (s.ratio == null ? 0 : s.ratio * 100).toFixed(0) + '%;background:var(--' + s.cls + ')"></i></div>' +
-        '<dl class="pairs"><dt>Bikes available</dt><dd>' + s.available + '</dd><dt>Free docks</dt><dd>' + s.free + '</dd><dt>Docks installed</dt><dd>' + s.total + '</dd><dt>Docks out of use</dt><dd>' + Math.max(0, s.total - s.inService) + '</dd></dl>' +
-        (series.length > 1 ? '<p class="muted" style="font-size:12.5px">Bikes here since ' + hhmm(HIST[0].t) + ': from ' + Math.min.apply(0, series) + ' to ' + Math.max.apply(0, series) + '</p>' + spark(series, 'a') : '');
+        '<p class="muted small">' + (s.hood ? esc(s.hood.name) + ', ' + esc(s.hood.district) : '') + '</p>' +
+        '<div class="fillbar" title="Share of working docks holding a bike"><i class="c-' + s.cls + '" style="width:' + (s.ratio == null ? 0 : s.ratio * 100).toFixed(0) + '%"></i></div>' +
+        '<dl class="pairs"><dt>Bikes available</dt><dd>' + s.available + '</dd><dt>Free docks</dt><dd>' + s.free + '</dd><dt>Docks installed</dt><dd>' + s.total + '</dd><dt>Docks out of use</dt><dd>' + Math.max(0, s.total - s.inService) + '</dd>' +
+        (HIST.length > 1 ? '<dt>Bikes since ' + t0() + '</dt><dd>' + signed(o.delta) + '</dd><dt>Captures empty today</dt><dd>' + o.eN + ' of ' + o.seen + '</dd><dt>Captures full today</dt><dd>' + o.fN + ' of ' + o.seen + '</dd>' : '') + '</dl>' +
+        (series.length > 1 ? '<p class="muted small">Bikes here since ' + t0() + ': from ' + Math.min.apply(0, series) + ' to ' + Math.max.apply(0, series) + '</p>' + spark(series, 'a') : '');
     } else if (sel.k === 't') {
       var t = segs[sel.i], v = SNAP.traffic[t.id];
       h = '<div class="panel-head"><h3>Traffic segment ' + esc(t.id) + '</h3></div><p class="detail-name">' + esc(t.name) + '</p>' +
         '<dl class="pairs"><dt>Latest sensor reading</dt><dd>' + (v >= 0 ? fmt(v) : 'not reporting') + '</dd><dt>Average daily intensity</dt><dd>' + (t.imv ? fmt(t.imv) : 'n/a') + '</dd></dl>' +
-        '<p class="muted" style="font-size:12.5px">Figures as published by the city. The portal does not state the unit of the reading.</p>';
+        '<p class="muted small">Figures as published by the city. The portal does not state the unit of the reading.</p>';
     } else {
-      var b = hoods[sel.i], now = stations.filter(function (s) { return s.hood === b; }), c = cityStats(now);
-      h = '<div class="panel-head"><h3>Neighbourhood</h3><span class="muted" style="font-size:12.5px">' + esc(b.district) + '</span></div><p class="detail-name">' + esc(b.name) + '</p>' +
+      var b = hoods[sel.i], c = cityStats(stations.filter(function (q) { return q.hood === b; }));
+      h = '<div class="panel-head"><h3>Neighbourhood</h3><span class="muted small">' + esc(b.district) + '</span></div><p class="detail-name">' + esc(b.name) + '</p>' +
         '<dl class="pairs"><dt>Area</dt><dd>' + fmt(b.km2, 2) + ' km²</dd><dt>Bike share stations</dt><dd>' + b.stations + '</dd><dt>Docks per km²</dt><dd>' + fmt(b.docksKm) + '</dd><dt>Bikes available now</dt><dd>' + c.bikes + '</dd><dt>Bus stops</dt><dd>' + b.stops + ' (' + b.lines + ' lines)</dd><dt>Cycle routes</dt><dd>' + fmt(b.cycleKm, 1) + ' km</dd><dt>Vulnerability 2021</dt><dd>' + (b.vulLabel || 'not published') + '</dd></dl>';
     }
     $('detail').innerHTML = h;
   }
 
-  // ---------- ranking panel (changes with the layer)
+  // ---------- ranking panels (they change with the layer)
   function inDistrict(b) { return !state.district || (b && b.district === state.district); }
+  function rankPanel(title, swCls, count, body) { return '<div class="panel"><div class="panel-head"><h3>' + (swCls ? '<i class="sw ' + swCls + '"></i>' : '') + title + '</h3><span class="num muted small">' + count + '</span></div>' + body + '</div>'; }
+  function rankList(title, swCls, a, row, more, none) {
+    return rankPanel(title, swCls, a.length, a.length ? '<ul class="rank">' + a.slice(0, 5).map(row).join('') + '</ul>' + (a.length > 5 ? '<p class="more">and ' + (a.length - 5) + ' more, ' + more + '</p>' : '') : '<p class="muted small">' + (none || 'None right now.') + '</p>');
+  }
+  function stRow(val) { return function (o) { return '<li data-k="s" data-i="' + o.i + '" tabindex="0" role="button"><span class="rk-name">' + esc(o.s.address || o.s.name) + '</span><span class="rk-val">' + val(o) + '</span><span class="rk-sub">' + (o.s.hood ? esc(o.s.hood.name) : '') + '</span></li>'; }; }
   function renderRanking() {
-    var h = '', where = state.district ? ' in ' + esc(state.district) : '';
-    if (state.mode === 'bike') {
-      var list = function (cls, title) {
-        var a = stations.map(function (s, i) { return { s: s, i: i }; }).filter(function (o) { return o.s.cls === cls && inDistrict(o.s.hood); }).sort(function (x, y) { return y.s.total - x.s.total; });
-        return '<div class="panel-head"><h3><i class="dot" style="background:var(--' + cls + ')"></i>' + title + where + '</h3><span class="num muted">' + a.length + '</span></div>' +
-          (a.length ? '<ul class="rank">' + a.slice(0, 5).map(function (o) { return '<li data-k="s" data-i="' + o.i + '" tabindex="0"><span class="rk-name">' + esc(o.s.address || o.s.name) + '</span><span class="rk-val">' + o.s.total + ' docks</span><span class="rk-sub">' + (o.s.hood ? esc(o.s.hood.name) : '') + '</span></li>'; }).join('') + '</ul>' + (a.length > 5 ? '<p class="more">and ' + (a.length - 5) + ' more, largest first</p>' : '') : '<p class="muted" style="font-size:13.5px">None right now.</p>');
-      };
-      h = list('empty', 'No bikes to take') + '<div style="height:6px"></div>' + list('full', 'No dock to return');
-    } else if (state.mode === 'traffic') {
+    var h = '', where = state.district ? ' in ' + esc(state.district) : '', m = state.mode, d = dayStats();
+    var pool = cur().map(function (s, i) { return { s: s, i: i, o: d[s.n] }; }).filter(function (o) { return inDistrict(o.s.hood); });
+    if (m === 'bike') {
+      var by = function (cls) { return pool.filter(function (o) { return o.s.cls === cls; }).sort(function (x, y) { return y.s.total - x.s.total; }); }, docks = stRow(function (o) { return o.s.total + ' docks'; });
+      h = rankList('No bikes to take' + where, 'c-empty', by('empty'), docks, 'largest first') + rankList('No dock to return' + where, 'c-full', by('full'), docks, 'largest first');
+    } else if (m === 'change') {
+      var moved = stRow(function (o) { return signed(o.o.delta) + ' bikes'; }), wait = 'Needs at least two saved captures.';
+      h = rankList('Losing bikes since ' + t0() + where, 'c-loss', pool.filter(function (o) { return o.o.delta < 0; }).sort(function (x, y) { return x.o.delta - y.o.delta; }), moved, 'largest drop first', HIST.length < 2 ? wait : 'None so far.') +
+        rankList('Gaining bikes since ' + t0() + where, 'c-gain', pool.filter(function (o) { return o.o.delta > 0; }).sort(function (x, y) { return y.o.delta - x.o.delta; }), moved, 'largest gain first', HIST.length < 2 ? wait : 'None so far.');
+    } else if (m === 'trouble') {
+      var times = function (key) { return stRow(function (o) { return o.o[key] + ' of ' + o.o.seen + ' captures'; }); };
+      h = rankList('Most often empty today' + where, 'c-empty', pool.filter(function (o) { return o.o.eN > 0; }).sort(function (x, y) { return y.o.eN - x.o.eN || y.s.total - x.s.total; }), times('eN'), 'most often first', 'No station has been empty in today\'s captures.') +
+        rankList('Most often full today' + where, 'c-full', pool.filter(function (o) { return o.o.fN > 0; }).sort(function (x, y) { return y.o.fN - x.o.fN || y.s.total - x.s.total; }), times('fN'), 'most often first', 'No station has been full in today\'s captures.');
+    } else if (m === 'traffic') {
       var tr = SNAP.traffic, a = segs.map(function (t, i) { return { t: t, i: i, v: tr[t.id] }; }).filter(function (o) { return o.v > 0; }).sort(function (x, y) { return y.v - x.v; }), max = a.length ? a[0].v : 1;
-      var rep = segs.filter(function (t) { return tr[t.id] >= 0; }).length;
-      var ts = SNAP.trafficState, mon = ts ? ts.flowing + ts.dense + ts.congested + ts.closed : 0;
-      h = (ts && mon ? '<div class="panel-head"><h3>Traffic state now</h3><span class="num muted">' + mon + ' segments</span></div><dl class="pairs"><dt>Flowing freely</dt><dd>' + ts.flowing + ' (' + fmt(ts.flowing / mon * 100) + '%)</dd><dt>Dense</dt><dd>' + ts.dense + '</dd><dt>Congested</dt><dd>' + ts.congested + '</dd><dt>Closed</dt><dd>' + ts.closed + '</dd></dl><div style="height:6px"></div>' : '') +
-        '<div class="panel-head"><h3>Busiest segments now</h3><span class="num muted">' + rep + ' of ' + segs.length + ' reporting</span></div><ul class="rank">' +
-        a.slice(0, 8).map(function (o) { return '<li data-k="t" data-i="' + o.i + '" tabindex="0"><span class="rk-name">' + esc(o.t.name) + '</span><span class="rk-val">' + fmt(o.v) + '</span><span class="rk-bar"><i style="width:' + (o.v / max * 100).toFixed(0) + '%"></i></span></li>'; }).join('') + '</ul>';
+      var rep = segs.filter(function (t) { return tr[t.id] >= 0; }).length, ts = SNAP.trafficState, mon = ts ? ts.flowing + ts.dense + ts.congested + ts.closed : 0;
+      h = rankPanel('Busiest segments now', '', rep + ' of ' + segs.length + ' reporting', '<ul class="rank">' + a.slice(0, 6).map(function (o) { return '<li data-k="t" data-i="' + o.i + '" tabindex="0" role="button"><span class="rk-name">' + esc(o.t.name) + '</span><span class="rk-val">' + fmt(o.v) + '</span><span class="rk-bar"><i style="width:' + (o.v / max * 100).toFixed(0) + '%"></i></span></li>'; }).join('') + '</ul>') +
+        (ts && mon ? rankPanel('Traffic state now', '', mon + ' segments', '<dl class="pairs"><dt>Flowing freely</dt><dd>' + ts.flowing + ' (' + fmt(ts.flowing / mon * 100) + '%)</dd><dt>Dense</dt><dd>' + ts.dense + '</dd><dt>Congested</dt><dd>' + ts.congested + '</dd><dt>Closed</dt><dd>' + ts.closed + '</dd></dl>') : '');
     } else {
-      var pool = hoods.map(function (b, i) { return { b: b, i: i }; }).filter(function (o) { return inDistrict(o.b); });
+      var hp = hoods.map(function (b, i) { return { b: b, i: i }; }).filter(function (o) { return inDistrict(o.b); });
+      var hoodRow = function (val, sub) { return function (o) { return '<li data-k="h" data-i="' + o.i + '" tabindex="0" role="button"><span class="rk-name">' + esc(o.b.name) + '</span><span class="rk-val">' + val(o.b) + '</span><span class="rk-sub">' + sub(o.b) + '</span></li>'; }; };
       if (state.metric === 'vul') {
-        var hi = pool.filter(function (o) { return o.b.vulLabel === 'High'; }).sort(function (x, y) { return x.b.docksKm - y.b.docksKm; });
-        h = '<div class="panel-head"><h3>High vulnerability' + where + '</h3><span class="num muted">' + hi.length + '</span></div>' + (hi.length ? '<ul class="rank">' + hi.map(function (o) { return '<li data-k="h" data-i="' + o.i + '" tabindex="0"><span class="rk-name">' + esc(o.b.name) + '</span><span class="rk-val">' + fmt(o.b.docksKm) + ' docks/km²</span><span class="rk-sub">' + o.b.stations + ' stations, ' + o.b.stops + ' bus stops</span></li>'; }).join('') + '</ul><p class="more">Sorted by bike share coverage, lowest first.</p>' : '<p class="muted" style="font-size:13.5px">None in this selection.</p>');
+        var hi = hp.filter(function (o) { return o.b.vulLabel === 'High'; }).sort(function (x, y) { return x.b.docksKm - y.b.docksKm; });
+        h = rankPanel('High vulnerability' + where, '', hi.length, hi.length ? '<ul class="rank">' + hi.map(hoodRow(function (b) { return fmt(b.docksKm) + ' docks/km²'; }, function (b) { return b.stations + ' stations, ' + b.stops + ' bus stops'; })).join('') + '</ul><p class="more">Sorted by bike share coverage, lowest first.</p>' : '<p class="muted small">None in this selection.</p>');
       } else {
-        var m = METRIC[state.metric], srt = pool.slice().sort(function (x, y) { return y.b[state.metric] - x.b[state.metric]; }), none = srt.filter(function (o) { return !(o.b[state.metric] > 0); }).length;
-        h = '<div class="panel-head"><h3>Best covered' + where + '</h3><span class="muted" style="font-size:12.5px">' + m.label + '</span></div><ul class="rank">' +
-          srt.slice(0, 6).map(function (o) { return '<li data-k="h" data-i="' + o.i + '" tabindex="0"><span class="rk-name">' + esc(o.b.name) + '</span><span class="rk-val">' + fmt(o.b[state.metric], m.d) + '</span><span class="rk-sub">' + esc(o.b.district) + '</span></li>'; }).join('') + '</ul>' +
-          '<p class="more">' + none + ' of ' + pool.length + ' neighbourhoods' + where + ' have none at all.</p>';
+        var mt = METRIC[state.metric], key = state.metric, srt = hp.slice().sort(function (x, y) { return y.b[key] - x.b[key]; }), zero = srt.filter(function (o) { return !(o.b[key] > 0); });
+        var row = hoodRow(function (b) { return fmt(b[key], mt.d); }, function (b) { return esc(b.district); });
+        h = rankPanel('Best covered' + where, '', mt.label, '<ul class="rank">' + srt.slice(0, 5).map(row).join('') + '</ul>') +
+          rankPanel('None at all' + where, '', zero.length + ' of ' + hp.length, zero.length ? '<ul class="rank">' + zero.slice(0, 5).map(hoodRow(function () { return '0'; }, function (b) { return esc(b.district); })).join('') + '</ul>' + (zero.length > 5 ? '<p class="more">and ' + (zero.length - 5) + ' more</p>' : '') : '<p class="muted small">Every neighbourhood' + where + ' has some.</p>');
       }
     }
     $('ranking').innerHTML = h;
@@ -535,17 +773,17 @@ tbody tr:hover td { background: var(--accent-soft); }
     var st = HIST.map(histStats), times = HIST.map(function (h) { return h.t; });
     $('charts').innerHTML =
       chart('Bikes available, whole city', [{ name: 'Bikes', c: 'a', t: 'accent', v: st.map(function (s) { return s.bikes; }) }], times) +
-      chart('Stations failing', [{ name: 'No bikes', c: 'e', t: 'empty', v: st.map(function (s) { return s.empty; }) }, { name: 'No free docks', c: 'f', t: 'high', v: st.map(function (s) { return s.full; }) }], times) +
+      chart('Stations failing', [{ name: 'No bikes', c: 'e', t: 'empty', v: st.map(function (s) { return s.empty; }) }, { name: 'No free docks', c: 'f', t: 'full', v: st.map(function (s) { return s.full; }) }], times) +
       chart('Traffic, sum of sensor readings', [{ name: 'All reporting sensors', c: 't', t: 'traffic', v: HIST.map(function (h) { return h.tv; }) }], times, Math.max.apply(0, HIST.map(function (h) { return h.tv; })) * 0.1);
     var d0 = String(HIST[0].t).slice(0, 10), d1 = String(HIST[HIST.length - 1].t).slice(0, 10);
-    $('histNote').textContent = HIST.length + ' captures, ' + (d0 === d1 ? '' : d0 + ' ') + hhmm(HIST[0].t) + ' to ' + hhmm(HIST[HIST.length - 1].t) + ' València time, one every 10 minutes.';
+    $('histNote').textContent = HIST.length + ' captures, ' + (d0 === d1 ? '' : d0 + ' ') + hhmm(HIST[0].t) + ' to ' + hhmm(HIST[HIST.length - 1].t) + ' València time.';
   }
 
   // ---------- neighbourhood table
   var COLS = [['name', 'Neighbourhood'], ['district', 'District'], ['stations', 'Stations'], ['docks', 'Docks'], ['docksKm', 'Docks / km²'], ['stops', 'Bus stops'], ['stopsKm', 'Stops / km²'], ['cycleKm', 'Cycle km'], ['vul', 'Vulnerability']];
   function renderTable() {
     var s = state.sort, max = Math.max.apply(0, hoods.map(function (b) { return b.docksKm; })) || 1;
-    $('hoodTable').tHead.innerHTML = '<tr>' + COLS.map(function (c) { return '<th data-k="' + c[0] + '"' + (s.k === c[0] ? ' aria-sort="' + (s.d > 0 ? 'ascending' : 'descending') + '"' : '') + ' tabindex="0">' + c[1] + (s.k === c[0] ? (s.d > 0 ? ' ↑' : ' ↓') : '') + '</th>'; }).join('') + '</tr>';
+    $('hoodTable').tHead.innerHTML = '<tr>' + COLS.map(function (c) { return '<th data-k="' + c[0] + '"' + (s.k === c[0] ? ' aria-sort="' + (s.d > 0 ? 'ascending' : 'descending') + '"' : '') + ' tabindex="0">' + c[1] + '</th>'; }).join('') + '</tr>';
     var rows = hoods.map(function (b, i) { return { b: b, i: i }; }).sort(function (x, y) {
       var a = x.b[s.k], c = y.b[s.k]; if (a == null && c == null) return 0; if (a == null) return 1; if (c == null) return -1;
       return (typeof a === 'string' ? a.localeCompare(c) : a - c) * s.d;
@@ -558,27 +796,110 @@ tbody tr:hover td { background: var(--accent-soft); }
   $('hoodTable').tHead.addEventListener('click', sortBy); $('hoodTable').tHead.addEventListener('keydown', sortBy);
   $('hoodTable').tBodies[0].addEventListener('click', function (ev) { var tr = ev.target.closest('tr'); if (!tr) return; setMode('hood'); select('h', +tr.dataset.i, true); box.scrollIntoView({ behavior: 'smooth', block: 'center' }); });
 
-  // ---------- controls
-  function setMode(m) {
-    state.mode = m; state.sel = null;
-    Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (t) { t.setAttribute('aria-selected', t.dataset.mode === m ? 'true' : 'false'); });
-    $('bikeTools').hidden = m !== 'bike'; $('metricSel').hidden = m !== 'hood';
-    if (m === 'bike') { var big = 0; stations.forEach(function (s, i) { if (s.total > stations[big].total) big = i; }); state.sel = { k: 's', i: big }; }
-    if (m === 'traffic') { var tr = SNAP.traffic, top = 0; segs.forEach(function (t, i) { if ((tr[t.id] || 0) > (tr[segs[top].id] || 0)) top = i; }); state.sel = { k: 't', i: top }; }
-    if (m === 'hood') { var best = 0; hoods.forEach(function (b, i) { if (b.docksKm > hoods[best].docksKm) best = i; }); state.sel = { k: 'h', i: best }; }
-    renderMap(); renderDetail(); renderRanking();
-  }
-  Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (t) { t.addEventListener('click', function () { setMode(t.dataset.mode); }); });
-  Array.prototype.forEach.call(document.querySelectorAll('.chip'), function (c) { c.addEventListener('click', function () { state.filter = c.dataset.filter; Array.prototype.forEach.call(document.querySelectorAll('.chip'), function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); }); renderMap(); }); });
-  $('metricSel').addEventListener('change', function () { state.metric = this.value; renderMap(); renderRanking(); });
+  // ---------- the crate: one row per district, one round per station, emptiest first
   var districts = []; hoods.forEach(function (b) { if (b.district && districts.indexOf(b.district) < 0) districts.push(b.district); }); districts.sort(function (a, b) { return a.localeCompare(b); });
-  $('districtSel').innerHTML = '<option value="">All districts</option>' + districts.map(function (d) { return '<option>' + esc(d) + '</option>'; }).join('');
-  $('districtSel').addEventListener('change', function () {
-    state.district = this.value;
-    if (!state.district) view = Object.assign({}, home);
-    else { var bx = [1e9, 1e9, -1e9, -1e9]; hoods.forEach(function (b) { if (b.district === state.district) { bx[0] = Math.min(bx[0], b.box[0]); bx[1] = Math.min(bx[1], b.box[1]); bx[2] = Math.max(bx[2], b.box[2]); bx[3] = Math.max(bx[3], b.box[3]); } }); view = fitBox(bx, 0.08); }
-    renderMap(); renderRanking();
+  var CRANK = { empty: 0, low: 1, mid: 2, high: 3, full: 4, off: 5 };
+  function renderCrate() {
+    var by = {}, order = [];
+    cur().forEach(function (s, i) { var d = s.hood ? s.hood.district : 'Not on the district map'; if (!by[d]) { by[d] = []; order.push(d); } by[d].push({ s: s, i: i }); });
+    order.sort(function (a, b) { return by[b].length - by[a].length || a.localeCompare(b); });
+    var none = districts.filter(function (d) { return !by[d]; });
+    $('crate').className = 'crate' + (state.district ? ' has-d' : '');
+    $('crate').innerHTML = order.map(function (d) {
+      var a = by[d].sort(function (x, y) { return CRANK[x.s.cls] - CRANK[y.s.cls] || x.s.n - y.s.n; }), bad = a.filter(function (o) { return o.s.cls === 'empty' || o.s.cls === 'full'; }).length, on = state.district === d;
+      return '<div class="crow' + (on ? ' on' : '') + '">' +
+        (districts.indexOf(d) >= 0 ? '<button type="button" class="cname" data-d="' + esc(d) + '" aria-pressed="' + on + '">' + esc(d) + '</button>' : '<span class="cname">' + esc(d) + '</span>') +
+        '<span class="cds">' + a.map(function (o) { var t = esc(o.s.address || o.s.name) + ': ' + CLS_LABEL[o.s.cls].toLowerCase(); return '<button type="button" class="cd c-' + o.s.cls + (state.sel && state.sel.k === 's' && state.sel.i === o.i ? ' sel' : '') + '" data-i="' + o.i + '" title="' + t + '" aria-label="' + t + '"></button>'; }).join('') + '</span>' +
+        '<span class="ccount num"><b>' + bad + '</b> / ' + a.length + '</span></div>';
+    }).join('') + (none.length ? '<p class="more">No stations in ' + none.map(esc).join(' or ') + '.</p>' : '');
+  }
+  $('crate').addEventListener('click', function (ev) {
+    var n = ev.target.closest('button.cname'), c = ev.target.closest('.cd');
+    if (n) setDistrict(state.district === n.dataset.d ? '' : n.dataset.d);
+    else if (c) { if (!DOTS[state.mode]) setMode('bike'); select('s', +c.dataset.i, true); }
   });
+
+  // ---------- replay of the day: every step is a complete state of the map, the crate and the figures
+  function syncScrub() {
+    var n = HIST.length, show = state.mode === 'bike' && n >= 3;
+    $('scrub').hidden = !show; if (!show) return;
+    $('scrubRange').max = n - 1; $('scrubRange').value = state.frame == null ? n - 1 : state.frame;
+    $('scrubTime').textContent = state.frame == null ? 'Latest, ' + hhmm(SNAP.capturedAt) : 'Capture of ' + hhmm(HIST[state.frame].t);
+    $('playBtn').setAttribute('aria-pressed', state.timer ? 'true' : 'false'); $('playBtn').setAttribute('aria-label', state.timer ? 'Pause the replay' : 'Replay the day');
+  }
+  function setFrame(k) {
+    state.frame = k == null || k >= HIST.length - 1 ? null : Math.max(0, k);
+    repaintStations(); renderKpis(); renderCrate(); renderDetail(); renderRanking(); syncScrub();
+  }
+  function stop() { if (state.timer) { clearInterval(state.timer); state.timer = null; } syncScrub(); }
+  function play() {
+    if (state.timer) { stop(); return; }
+    var k = 0; setFrame(0);
+    state.timer = setInterval(function () { k++; if (k >= HIST.length - 1) { setFrame(null); stop(); } else setFrame(k); }, 650);
+    syncScrub();
+  }
+  $('playBtn').addEventListener('click', play);
+  $('scrubRange').addEventListener('input', function () { stop(); setFrame(+this.value); });
+
+  // ---------- atlas: six plates at the same scale and on the same ground
+  var PLATES = [['docksKm', 'Bike share docks per km²'], ['stopsKm', 'Bus stops per km²'], ['cycleKm2', 'Cycle routes, km per km²'], ['vul', 'Vulnerability level, 2021'], ['cycle', 'Cycle network'], ['stops', 'Bus stops']];
+  function renderAtlas() {
+    var vb = [home.x, home.y, home.w, home.h].map(function (v) { return v.toFixed(0); }).join(' '), n = hoods.length;
+    var lack = function (k) { return hoods.filter(function (b) { return !(b[k] > 0); }).length; }, high = hoods.filter(function (b) { return b.vulLabel === 'High'; });
+    var FACT = {
+      docksKm: lack('docks') + ' of ' + n + ' neighbourhoods have no dock at all.',
+      stopsKm: lack('stops') + ' of ' + n + ' neighbourhoods have no bus stop.',
+      cycleKm2: lack('cycleKm') + ' of ' + n + ' neighbourhoods have no cycle route.',
+      vul: high.length + ' neighbourhoods rated High; ' + high.filter(function (b) { return !b.stations; }).length + ' of them have no bike share station.',
+      cycle: EXTRA ? fmt(EXTRA.cycleKm, 1) + ' km of cycle routes, in ' + fmt(EXTRA.cycle.length) + ' stretches.' : '',
+      stops: EXTRA ? fmt(EXTRA.stops.length / 2) + ' EMT stops in service.' : ''
+    };
+    $('atlasGrid').innerHTML = PLATES.filter(function (p) { return EXTRA || METRIC[p[0]]; }).map(function (p) {
+      var body = METRIC[p[0]] ? hoodLayer(p[0], false) : hoodLayer(null, false) + (p[0] === 'cycle' ? '<use href="#cycPath" class="cyc"/>' : '<use href="#busPath" class="bus"/>');
+      return '<button type="button" class="plate" data-plate="' + p[0] + '"><svg viewBox="' + vb + '" preserveAspectRatio="xMidYMid slice" aria-hidden="true">' + body + '</svg><span class="plate-t">' + p[1] + '</span><span class="plate-f">' + FACT[p[0]] + '</span></button>';
+    }).join('');
+  }
+  $('atlasGrid').addEventListener('click', function (ev) {
+    var p = ev.target.closest('.plate'); if (!p) return; var id = p.dataset.plate;
+    if (METRIC[id]) { state.metric = id; $('metricSel').value = id; setMode('hood'); }
+    else { state.cycle = id === 'cycle'; state.stops = id === 'stops'; syncLayers(); setMode('bike'); }
+    $('maps').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // ---------- controls
+  var each = function (q, fn) { Array.prototype.forEach.call(document.querySelectorAll(q), fn); };
+  function setMode(m) {
+    stop(); state.mode = m; state.sel = null; state.frame = null;
+    each('.tab', function (t) { t.setAttribute('aria-selected', t.dataset.mode === m ? 'true' : 'false'); t.tabIndex = t.dataset.mode === m ? 0 : -1; });
+    $('bikeTools').hidden = m !== 'bike'; $('metricSel').hidden = m !== 'hood';
+    var d = dayStats(), top = 0, tr = SNAP.traffic || {};
+    if (m === 'bike') stations.forEach(function (s, i) { if (s.total > stations[top].total) top = i; });
+    if (m === 'change') stations.forEach(function (s, i) { if (Math.abs(d[s.n].delta) > Math.abs(d[stations[top].n].delta)) top = i; });
+    if (m === 'trouble') stations.forEach(function (s, i) { if (d[s.n].share > d[stations[top].n].share) top = i; });
+    if (m === 'traffic') segs.forEach(function (t, i) { if ((tr[t.id] || 0) > (tr[segs[top].id] || 0)) top = i; });
+    if (m === 'hood') { if (state.metric === 'vul') top = Math.max(0, hoods.findIndex(function (b) { return b.vulLabel === 'High'; })); else hoods.forEach(function (b, i) { if (b[state.metric] > hoods[top][state.metric]) top = i; }); }
+    state.sel = { k: DOTS[m] ? 's' : m === 'traffic' ? 't' : 'h', i: top };
+    renderMap(); renderKpis(); renderCrate(); renderDetail(); renderRanking(); syncScrub();
+  }
+  each('.tab', function (t) { t.addEventListener('click', function () { setMode(t.dataset.mode); }); });
+  document.querySelector('.tabs').addEventListener('keydown', function (ev) {
+    if (ev.key !== 'ArrowRight' && ev.key !== 'ArrowLeft') return;
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab')), i = tabs.indexOf(document.activeElement); if (i < 0) return;
+    var nx = tabs[(i + (ev.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length]; ev.preventDefault(); setMode(nx.dataset.mode); nx.focus();
+  });
+  each('.chip', function (c) { c.addEventListener('click', function () { state.filter = c.dataset.filter; each('.chip', function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); }); renderMap(); }); });
+  function syncLayers() { each('.tog', function (b) { b.setAttribute('aria-pressed', state[b.dataset.layer] ? 'true' : 'false'); }); }
+  each('.tog', function (b) { b.addEventListener('click', function () { state[b.dataset.layer] = !state[b.dataset.layer]; syncLayers(); renderMap(); }); });
+  $('metricSel').addEventListener('change', function () { state.metric = this.value; renderMap(); renderRanking(); });
+  $('districtSel').innerHTML = '<option value="">All districts</option>' + districts.map(function (d) { return '<option>' + esc(d) + '</option>'; }).join('');
+  function setDistrict(d) {
+    state.district = d; $('districtSel').value = d;
+    if (!d) view = Object.assign({}, home);
+    else { var bx = [1e9, 1e9, -1e9, -1e9]; hoods.forEach(function (b) { if (b.district === d) { bx[0] = Math.min(bx[0], b.box[0]); bx[1] = Math.min(bx[1], b.box[1]); bx[2] = Math.max(bx[2], b.box[2]); bx[3] = Math.max(bx[3], b.box[3]); } }); view = fitBox(bx, 0.08); }
+    renderMap(); renderRanking(); renderCrate();
+  }
+  $('districtSel').addEventListener('change', function () { setDistrict(this.value); });
+  each('.nav a', function (a) { a.addEventListener('click', function (ev) { var t = $(a.getAttribute('href').slice(1)); if (t) { ev.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }); });
 
   // ---------- live refresh straight from the city portal (works when the page is opened in a browser)
   function setStatus(note) {
@@ -610,17 +931,21 @@ tbody tr:hover td { background: var(--accent-soft); }
       if (!last || new Date(at.slice(0, 16)) - new Date(String(last.t).slice(0, 16)) >= 4 * 60000) { var valid = Object.keys(tr).map(function (k) { return tr[k]; }).filter(function (v) { return v >= 0; }); HIST.push({ t: at, s: st.map(function (s) { return [s.n, s.available, s.free]; }), tv: valid.reduce(function (a, b) { return a + b; }, 0), tn: valid.length }); }
       state.live = true; setStatus('Read straight from the city portal. Checks again every 5 minutes.'); renderAll();
     }).catch(function () {
-      state.live = false; setStatus(manual ? 'The city portal cannot be reached from this viewer. Open dashboard.html in a browser for live numbers.' : 'Showing the latest saved capture.');
+      state.live = false; setStatus(manual ? 'The city portal cannot be reached from this viewer. Open the web page in a browser for live numbers.' : 'Showing the latest saved capture.');
     });
   }
   $('refreshBtn').addEventListener('click', function () { refresh(true); });
 
-  function renderAll() { renderKpis(); renderMap(); renderDetail(); renderRanking(); renderCharts(); renderTable(); }
+  function renderAll() {
+    cache = { stats: null, day: null, frames: {} }; if (state.frame != null && state.frame >= HIST.length - 1) state.frame = null;
+    renderKpis(); renderMap(); renderCrate(); renderDetail(); renderRanking(); renderCharts(); renderTable(); syncScrub();
+  }
   // first frame: fit the map to the station network, select the largest station
   var bx = [1e9, 1e9, -1e9, -1e9]; stations.forEach(function (s) { bx[0] = Math.min(bx[0], s.x); bx[1] = Math.min(bx[1], s.y); bx[2] = Math.max(bx[2], s.x); bx[3] = Math.max(bx[3], s.y); });
   home = fitBox(bx, 0.06); view = Object.assign({}, home);
+  buildDefs(); if (!EXTRA) $('layerTools').hidden = true; syncLayers();
   setStatus('Showing the latest saved capture.');
-  renderKpis(); renderCharts(); renderTable(); setMode('bike');
+  renderCharts(); renderTable(); setMode('bike'); renderAtlas();
   refresh(false); setInterval(function () { refresh(false); }, 5 * 60000);
 })();
 </script>
