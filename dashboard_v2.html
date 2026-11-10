@@ -15,7 +15,7 @@
   --orange: #F28A1A; --orange-soft: #FFD08A; --on-orange: #0F1B3F;
   --water: #D6E4F8; --land: #FBFCFE; --land-line: #C3CEE4;
   --empty: #D62839; --low: #EE9B2D; --mid: #3A9A52; --high: #4BA3E3; --full: #6A35C9; --off: #98A2B8;
-  --traffic: #C2410C; --warn: #B0306F; --gain: #1A3CAE; --loss: #E0531F; --cycle: #2E8B4A; --bus: #0F1B3F;
+  --traffic: #C2410C; --warn: #B0306F; --gain: #1A3CAE; --loss: #E0531F; --cycle: #5E6E99; --bus: #0F1B3F;
   --focus: #1A3CAE;
   --r: 6px;
   --f: "Archivo", "Segoe UI", system-ui, sans-serif;
@@ -30,7 +30,7 @@
     --orange: #FF9D2E; --orange-soft: #FFD08A; --on-orange: #0F1B3F;
     --water: #0B1640; --land: #172352; --land-line: #33437F;
     --empty: #FF5C6C; --low: #FFB14A; --mid: #58C873; --high: #78C2FF; --full: #A98BFF; --off: #5F6A93;
-    --traffic: #FF8A4C; --warn: #F06AA8; --gain: #8FB0FF; --loss: #FF8552; --cycle: #58C873; --bus: #EBF0FF;
+    --traffic: #FF8A4C; --warn: #F06AA8; --gain: #8FB0FF; --loss: #FF8552; --cycle: #8A97C4; --bus: #EBF0FF;
     --focus: #9BB6FF;
     color-scheme: dark;
   }
@@ -43,7 +43,7 @@
   --orange: #FF9D2E; --orange-soft: #FFD08A; --on-orange: #0F1B3F;
   --water: #0B1640; --land: #172352; --land-line: #33437F;
   --empty: #FF5C6C; --low: #FFB14A; --mid: #58C873; --high: #78C2FF; --full: #A98BFF; --off: #5F6A93;
-  --traffic: #FF8A4C; --warn: #F06AA8; --gain: #8FB0FF; --loss: #FF8552; --cycle: #58C873; --bus: #EBF0FF;
+  --traffic: #FF8A4C; --warn: #F06AA8; --gain: #8FB0FF; --loss: #FF8552; --cycle: #8A97C4; --bus: #EBF0FF;
   --focus: #9BB6FF;
   color-scheme: dark;
 }
@@ -82,7 +82,7 @@ button, select, input { font: inherit; color: inherit; }
 .btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .shell-note { font-size: var(--t-sm); color: var(--shell-muted); min-height: 1.3em; }
 .nav { display: flex; gap: 4px 22px; overflow-x: auto; border-top: 1px solid var(--shell-line); margin-top: 10px; scrollbar-width: none; }
-.nav a { flex: none; padding: 10px 0; color: var(--shell-muted); text-decoration: none; font-size: var(--t-sm); font-weight: 600; font-stretch: 88%; text-transform: uppercase; letter-spacing: .06em; }
+.nav a { flex: none; white-space: nowrap; padding: 10px 0; color: var(--shell-muted); text-decoration: none; font-size: var(--t-sm); font-weight: 600; font-stretch: 88%; text-transform: uppercase; letter-spacing: .06em; }
 .nav a:hover { color: var(--shell-ink); text-decoration: underline; text-decoration-thickness: 2px; text-decoration-color: var(--orange); }
 
 /* ---------- page rhythm */
@@ -198,7 +198,7 @@ button.cname:hover, .cname[aria-pressed="true"] { color: var(--accent); text-dec
 
 /* ---------- atlas */
 .atlas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-.plate { display: grid; gap: 2px; padding: 0 0 12px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); text-align: left; cursor: pointer; overflow: hidden; transition: border-color .15s; }
+.plate { display: grid; align-content: start; gap: 2px; padding: 0 0 12px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); text-align: left; cursor: pointer; overflow: hidden; transition: border-color .15s; }
 .plate:hover { border-color: var(--ink); }
 .plate svg { width: 100%; aspect-ratio: 5 / 4; display: block; background: var(--water); margin-bottom: 8px; pointer-events: none; }
 .plate .cyc { stroke-width: 1.1; } .plate .bus { stroke-width: 2; }
@@ -211,6 +211,7 @@ button.cname:hover, .cname[aria-pressed="true"] { color: var(--accent); text-dec
 .chart { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; min-width: 0; }
 .chart h3 { font-size: var(--t-base); font-weight: 700; }
 .chart svg { width: 100%; height: auto; display: block; }
+.flat-n { margin: 18px 0 6px; font-size: var(--t-xxl); font-weight: 700; font-stretch: 112%; line-height: 1.05; letter-spacing: -.02em; }
 .key { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 4px 0 6px; font-size: var(--t-sm); color: var(--muted); }
 .key span { display: inline-flex; align-items: center; gap: 6px; }
 .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
@@ -230,7 +231,7 @@ th:hover, th[aria-sort] { color: var(--ink); }
 th[aria-sort]::after { content: ""; display: inline-block; margin-left: 6px; border: 4px solid transparent; }
 th[aria-sort="ascending"]::after { border-bottom-color: currentColor; transform: translateY(-2px); }
 th[aria-sort="descending"]::after { border-top-color: currentColor; transform: translateY(2px); }
-tbody tr { cursor: pointer; }
+tbody tr { cursor: pointer; background: var(--surface); }
 tbody tr:hover { background: var(--accent-soft); }
 td:first-child { font-weight: 600; }
 .cellbar { display: inline-block; height: 8px; margin-right: 8px; background: var(--accent); opacity: .55; vertical-align: middle; }
@@ -263,6 +264,13 @@ td:first-child { font-weight: 600; }
   .cell .mini { width: 64px; }
   .brand h1 { font-size: var(--t-lg); }
   .mapbox { height: clamp(340px, 58vh, 480px); }
+  .nav { flex-wrap: wrap; overflow: visible; }
+  .nav a { padding: 8px 0; }
+  th, td { padding: 8px; }
+  th:nth-child(2), td:nth-child(2) { display: none; }
+  th:first-child, td:first-child { position: sticky; left: 0; max-width: 9.5rem; overflow: hidden; text-overflow: ellipsis; }
+  td:first-child { background: inherit; }
+  th:first-child { z-index: 2; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }
 /* wide layout: the map grows to the height of the crate beside it */
@@ -496,7 +504,7 @@ td:first-child { font-weight: 600; }
   function miniSpark(vals, k, cls) {
     if (vals.length < 2) return '';
     var w = 96, h = 28, lo = Math.min.apply(0, vals), hi = Math.max.apply(0, vals); if (hi === lo) { hi += 1; lo -= 1; }
-    var X = function (i) { return 4 + i * (w - 8) / (vals.length - 1); }, Y = function (v) { return 4 + (hi - v) * (h - 8) / (hi - lo); };
+    var f = tx(vals.length), X = function (i) { return 4 + (f ? f[i] : i / (vals.length - 1)) * (w - 8); }, Y = function (v) { return 4 + (hi - v) * (h - 8) / (hi - lo); };
     k = Math.max(0, Math.min(vals.length - 1, k));
     return '<svg class="mini" viewBox="0 0 ' + w + ' ' + h + '" aria-hidden="true"><path class="series ln-' + cls + '" d="M' + vals.map(function (v, i) { return X(i).toFixed(1) + ' ' + Y(v).toFixed(1); }).join('L') + '"/><circle class="pt-' + cls + '" cx="' + X(k).toFixed(1) + '" cy="' + Y(vals[k]).toFixed(1) + '" r="3"/></svg>';
   }
@@ -530,8 +538,8 @@ td:first-child { font-weight: 600; }
   function scale() { var r = svg.getBoundingClientRect(); return Math.min(r.width / view.w, r.height / view.h) || 1; }
   function applyView() {
     svg.setAttribute('viewBox', view.x.toFixed(1) + ' ' + view.y.toFixed(1) + ' ' + view.w.toFixed(1) + ' ' + view.h.toFixed(1));
-    var k = scale(), zoomBoost = Math.min(1.9, Math.max(1, Math.sqrt(home.w / view.w)));
-    Array.prototype.forEach.call($('gStations').children, function (el) { var s = stations[+el.dataset.i]; if (s) el.setAttribute('r', (rOf(s) * zoomBoost / k).toFixed(2)); });
+    var k = scale(), narrow = Math.max(0.55, Math.min(1, svg.getBoundingClientRect().width / 700)), zoomBoost = Math.min(1.9, Math.max(1, Math.sqrt(home.w / view.w)));
+    Array.prototype.forEach.call($('gStations').children, function (el) { var s = stations[+el.dataset.i]; if (s) el.setAttribute('r', (rOf(s) * zoomBoost * narrow / k).toFixed(2)); });
     svg.classList.toggle('zoomed', view.w < home.w * 0.98);
   }
   function zoomBy(f, cx, cy) {
@@ -673,10 +681,12 @@ td:first-child { font-weight: 600; }
   window.addEventListener('resize', function () { if (view) applyView(); });
 
   // ---------- detail panel
+  // share of the day elapsed at each capture, for series that have one value per capture
+  function tx(n) { if (n !== HIST.length || n < 2) return null; var a = HIST.map(function (h) { return +new Date(h.t); }), sp = a[n - 1] - a[0]; return sp ? a.map(function (v) { return (v - a[0]) / sp; }) : null; }
   function spark(vals, cls) {
     if (vals.length < 2) return '';
     var w = 300, h = 54, lo = Math.min.apply(0, vals), hi = Math.max.apply(0, vals); if (hi === lo) { hi += 1; lo = Math.max(0, lo - 1); }
-    var X = function (i) { return 4 + i * (w - 8) / (vals.length - 1); }, Y = function (v) { return 6 + (hi - v) * (h - 12) / (hi - lo); };
+    var f = tx(vals.length), X = function (i) { return 4 + (f ? f[i] : i / (vals.length - 1)) * (w - 8); }, Y = function (v) { return 6 + (hi - v) * (h - 12) / (hi - lo); };
     return '<svg viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="Bikes available since the first capture" style="width:100%;height:auto;display:block"><path class="series ln-' + cls + '" d="M' + vals.map(function (v, i) { return X(i).toFixed(1) + ' ' + Y(v).toFixed(1); }).join('L') + '"/><circle class="pt-' + cls + '" cx="' + X(vals.length - 1).toFixed(1) + '" cy="' + Y(vals[vals.length - 1]).toFixed(1) + '" r="3.5"/></svg>';
   }
   function renderDetail() {
@@ -757,7 +767,7 @@ td:first-child { font-weight: 600; }
     var step = Math.max(niceStep(hi - lo), 1);
     lo = Math.floor(lo / step) * step; hi = Math.ceil(hi / step) * step; if (hi === lo) hi = lo + step;
     var L = Math.max(34, 12 + fmt(hi).length * 6.4);
-    var n = times.length, X = function (i) { return n < 2 ? (L + W - R) / 2 : L + i * (W - L - R) / (n - 1); }, Y = function (v) { return T + (hi - v) * (H - T - B) / (hi - lo); };
+    var n = times.length, ms = times.map(function (t) { return +new Date(t); }), span = ms[n - 1] - ms[0], X = function (i) { return n < 2 || !span ? (L + W - R) / 2 : L + (ms[i] - ms[0]) / span * (W - L - R); }, Y = function (v) { return T + (hi - v) * (H - T - B) / (hi - lo); };
     var g = '', ticks = Math.round((hi - lo) / step), every = Math.ceil(ticks / 4);
     for (var k = 0; k <= ticks; k += every) { var v = lo + k * step; g += '<line class="grid-line" x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(v).toFixed(1) + '" y2="' + Y(v).toFixed(1) + '"/><text class="axis-t" x="' + (L - 6) + '" y="' + (Y(v) + 3.5).toFixed(1) + '" text-anchor="end">' + fmt(v, step < 1 ? 1 : 0) + '</text>'; }
     var xi = n < 2 ? [0] : n < 6 ? [0, n - 1] : [0, Math.floor((n - 1) / 2), n - 1];
@@ -770,11 +780,11 @@ td:first-child { font-weight: 600; }
   }
   function renderCharts() {
     if (!HIST.length) { $('charts').innerHTML = ''; $('histNote').textContent = 'No saved captures yet.'; return; }
-    var st = HIST.map(histStats), times = HIST.map(function (h) { return h.t; });
+    var st = HIST.map(histStats), times = HIST.map(function (h) { return h.t; }), tv = HIST.map(function (h) { return h.tv; }), flat = HIST.length > 1 && Math.max.apply(0, tv) === Math.min.apply(0, tv);
     $('charts').innerHTML =
       chart('Bikes available, whole city', [{ name: 'Bikes', c: 'a', t: 'accent', v: st.map(function (s) { return s.bikes; }) }], times) +
       chart('Stations failing', [{ name: 'No bikes', c: 'e', t: 'empty', v: st.map(function (s) { return s.empty; }) }, { name: 'No free docks', c: 'f', t: 'full', v: st.map(function (s) { return s.full; }) }], times) +
-      chart('Traffic, sum of sensor readings', [{ name: 'All reporting sensors', c: 't', t: 'traffic', v: HIST.map(function (h) { return h.tv; }) }], times, Math.max.apply(0, HIST.map(function (h) { return h.tv; })) * 0.1);
+      (flat ? '<div class="chart"><h3>Traffic, sum of sensor readings</h3><div class="key"><span><i class="dot" style="background:var(--traffic)"></i>All reporting sensors</span></div><p class="flat-n num">' + fmt(tv[0]) + '</p><p class="muted small">The city portal has returned the same reading in all ' + HIST.length + ' captures since ' + hhmm(HIST[0].t) + ', so there is no change to draw yet.</p></div>' : chart('Traffic, sum of sensor readings', [{ name: 'All reporting sensors', c: 't', t: 'traffic', v: tv }], times, Math.max.apply(0, tv) * 0.1));
     var d0 = String(HIST[0].t).slice(0, 10), d1 = String(HIST[HIST.length - 1].t).slice(0, 10);
     $('histNote').textContent = HIST.length + ' captures, ' + (d0 === d1 ? '' : d0 + ' ') + hhmm(HIST[0].t) + ' to ' + hhmm(HIST[HIST.length - 1].t) + ' València time.';
   }
@@ -789,11 +799,12 @@ td:first-child { font-weight: 600; }
       return (typeof a === 'string' ? a.localeCompare(c) : a - c) * s.d;
     });
     $('hoodTable').tBodies[0].innerHTML = rows.map(function (o) {
-      var b = o.b; return '<tr data-i="' + o.i + '"><td>' + esc(b.name) + '</td><td>' + esc(b.district) + '</td><td>' + b.stations + '</td><td>' + b.docks + '</td><td><i class="cellbar" style="width:' + (b.docksKm / max * 56).toFixed(0) + 'px"></i>' + fmt(b.docksKm) + '</td><td>' + b.stops + '</td><td>' + fmt(b.stopsKm) + '</td><td>' + fmt(b.cycleKm, 1) + '</td><td>' + (b.vulLabel ? '<span class="lvl ' + b.vulLabel + '">' + b.vulLabel + '</span>' : '<span class="muted">n/a</span>') + '</td></tr>';
+      var b = o.b; return '<tr data-i="' + o.i + '" tabindex="0"><td>' + esc(b.name) + '</td><td>' + esc(b.district) + '</td><td>' + b.stations + '</td><td>' + b.docks + '</td><td><i class="cellbar" style="width:' + (b.docksKm / max * 56).toFixed(0) + 'px"></i>' + fmt(b.docksKm) + '</td><td>' + b.stops + '</td><td>' + fmt(b.stopsKm) + '</td><td>' + fmt(b.cycleKm, 1) + '</td><td>' + (b.vulLabel ? '<span class="lvl ' + b.vulLabel + '">' + b.vulLabel + '</span>' : '<span class="muted">n/a</span>') + '</td></tr>';
     }).join('');
   }
   function sortBy(ev) { var th = ev.target.closest('th'); if (!th || (ev.type === 'keydown' && ev.key !== 'Enter')) return; var k = th.dataset.k; state.sort = { k: k, d: state.sort.k === k ? -state.sort.d : (k === 'name' || k === 'district' ? 1 : -1) }; renderTable(); }
   $('hoodTable').tHead.addEventListener('click', sortBy); $('hoodTable').tHead.addEventListener('keydown', sortBy);
+  $('hoodTable').tBodies[0].addEventListener('keydown', function (ev) { if (ev.key === 'Enter' && ev.target.closest('tr')) ev.target.closest('tr').click(); });
   $('hoodTable').tBodies[0].addEventListener('click', function (ev) { var tr = ev.target.closest('tr'); if (!tr) return; setMode('hood'); select('h', +tr.dataset.i, true); box.scrollIntoView({ behavior: 'smooth', block: 'center' }); });
 
   // ---------- the crate: one row per district, one round per station, emptiest first
