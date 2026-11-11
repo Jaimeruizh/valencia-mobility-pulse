@@ -2,9 +2,9 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 093,La Creu Coberta,Jesús,0.375,1,20,16,7,3,1.38,2.6,Low
 104,La Fonteta S.Lluis,Quatre Carreres,0.239,2,30,9,8,3,0.02,2.5,Medium
 175,Rafalell-Vistabella,Pobles del Nord,2.129,0,0,0,0,0,0,,
-142,Cami de Vera,Benimaclet,0.828,2,30,24,1,1,2.48,2.9,Low
+142,Cami de Vera,Benimaclet,0.828,2,30,25,1,1,2.48,2.9,Low
 181,Benimamet,Pobles de l'Oest,1.479,2,25,8,21,1,1.59,,
-182,Beniferri,Pobles de l'Oest,0.535,2,35,15,3,2,1.7,,
+182,Beniferri,Pobles de l'Oest,0.535,2,35,16,3,2,1.7,,
 195,El Palmar,Pobles del Sud,36.922,0,0,0,8,2,0,,
 194,El Saler,Pobles del Sud,8.24,0,0,0,11,2,9.22,,
 196,El Perellonet,Pobles del Sud,4.92,0,0,0,17,1,0,,
@@ -17,43 +17,43 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 051,Marxalenes,La Saïdia,0.391,4,79,55,13,12,3.73,2.4,Medium
 043,El Calvari,Campanar,0.094,1,20,5,4,5,1.77,1.9,High
 052,Morvedre,La Saïdia,0.429,2,30,24,13,9,3.41,2.3,High
-053,Trinitat,La Saïdia,0.596,4,75,42,10,13,4.7,2.8,Low
-013,El Carme,Ciutat Vella,0.384,5,100,12,4,3,1.95,3.2,Low
+053,Trinitat,La Saïdia,0.596,4,75,41,10,13,4.7,2.8,Low
+013,El Carme,Ciutat Vella,0.384,5,100,13,4,3,1.95,3.2,Low
 031,El Botanic,Extramurs,0.37,2,31,8,7,10,3.62,3,Low
 061,Exposicio,El Pla del Real,0.382,4,125,6,11,14,4.7,2.9,Low
 012,La Xerea,Ciutat Vella,0.312,3,60,5,6,17,2.64,3,Low
 015,El Mercat,Ciutat Vella,0.173,2,34,0,4,6,0,2.8,Low
 014,El Pilar,Ciutat Vella,0.162,0,0,0,5,8,0.27,2.8,Low
-022,El Pla del Remei,L'Eixample,0.387,4,86,3,15,19,2.06,2.9,Low
-131,L'Illa Perduda,Algirós,0.232,3,56,53,6,4,0.41,2.6,Low
-034,Arrancapins,Extramurs,0.875,9,190,44,21,17,8.56,3.2,Low
+022,El Pla del Remei,L'Eixample,0.387,4,86,2,15,19,2.06,2.9,Low
+131,L'Illa Perduda,Algirós,0.232,3,56,52,6,4,0.41,2.6,Low
+034,Arrancapins,Extramurs,0.875,9,190,47,21,17,8.56,3.2,Low
 032,La Roqueta,Extramurs,0.231,2,50,1,8,15,2.12,2.7,Low
 091,La Raiosa,Jesús,0.376,4,66,48,15,8,3.6,2.5,Medium
 084,Safranar,Patraix,0.442,3,50,21,10,3,0.6,2.9,Low
 153,Sant Llorens,Rascanya,1.534,4,75,50,9,2,3.49,3.7,Low
 102,En Corts,Quatre Carreres,0.364,2,38,37,15,5,2.33,2.2,High
 103,Malilla,Quatre Carreres,2.508,7,155,71,32,5,9.41,3.3,Low
-063,Jaume Roig,El Pla del Real,0.187,1,20,5,7,9,0.7,2.6,Low
-141,Benimaclet,Benimaclet,0.752,5,89,51,19,8,5.1,3.1,Low
-064,Ciutat Universitaria,El Pla del Real,0.274,5,136,4,10,11,3.38,3,Low
-161,Benicalap,Benicalap,1.721,11,199,57,36,10,12.76,3.4,Low
+063,Jaume Roig,El Pla del Real,0.187,1,20,7,7,9,0.7,2.6,Low
+141,Benimaclet,Benimaclet,0.752,5,89,52,19,8,5.1,3.1,Low
+064,Ciutat Universitaria,El Pla del Real,0.274,5,136,5,10,11,3.38,3,Low
+161,Benicalap,Benicalap,1.721,11,199,62,36,10,12.76,3.4,Low
 055,Sant Antoni,La Saïdia,0.25,1,20,19,5,5,0.66,2.6,Low
-062,Mestalla,El Pla del Real,0.844,6,125,9,28,15,10.08,3.2,Low
-122,Albors,Camins al Grau,0.256,3,55,40,6,5,1.7,2.8,Low
+062,Mestalla,El Pla del Real,0.844,6,125,8,28,15,10.08,3.2,Low
+122,Albors,Camins al Grau,0.256,3,55,39,6,5,1.7,2.8,Low
 133,L'Amistat,Algirós,0.209,2,46,12,8,8,1.17,2.4,Medium
 114,Betero,Poblats Marítims,0.267,1,15,15,6,4,4.59,2.4,Medium
 112,Cabanyal-Canyamelar,Poblats Marítims,1.351,11,198,143,37,8,6.54,2.9,Low
-135,La Carrasca,Algirós,1.948,13,351,32,17,6,10.52,3.7,Low
-113,La Malva-Rosa,Poblats Marítims,0.734,6,105,83,23,7,5.1,2.8,Low
-134,La Vega Baixa,Algirós,0.191,2,39,1,5,6,0.89,2.7,Low
-121,Aiora,Camins al Grau,0.652,7,144,137,8,4,4.3,2.4,Medium
-132,Ciutat Jardi,Algirós,0.364,3,80,51,10,6,2.24,2.5,Medium
+135,La Carrasca,Algirós,1.948,13,351,28,17,6,10.52,3.7,Low
+113,La Malva-Rosa,Poblats Marítims,0.734,6,105,84,23,7,5.1,2.8,Low
+134,La Vega Baixa,Algirós,0.191,2,39,0,5,6,0.89,2.7,Low
+121,Aiora,Camins al Grau,0.652,7,144,136,8,4,4.3,2.4,Medium
+132,Ciutat Jardi,Algirós,0.364,3,80,41,10,6,2.24,2.5,Medium
 115,Natzaret,Poblats Marítims,0.917,2,30,18,12,4,0.74,2.7,Low
 106,La Punta,Quatre Carreres,6.216,1,20,10,44,8,8.14,2.9,Low
 111,El Grau,Poblats Marítims,5.234,3,54,33,15,7,4.66,2.6,Low
-021,Russafa,L'Eixample,0.877,7,139,73,28,12,13.88,3.3,Low
-023,La Gran Via,L'Eixample,0.467,6,116,23,17,11,3.38,2.9,Low
-101,Montolivet,Quatre Carreres,0.475,5,98,66,23,11,2.69,2.3,High
+021,Russafa,L'Eixample,0.877,7,139,70,28,12,13.88,3.3,Low
+023,La Gran Via,L'Eixample,0.467,6,116,25,17,11,3.38,2.9,Low
+101,Montolivet,Quatre Carreres,0.475,5,98,69,23,11,2.69,2.3,High
 074,La Fontsanta,L'Olivereta,0.323,3,58,8,14,7,2.55,2.5,Medium
 083,Vara de Quart,Patraix,1.035,4,70,13,13,5,4.14,2.9,Low
 081,Patraix,Patraix,0.622,3,45,22,20,9,7.13,2.9,Low
