@@ -36,7 +36,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 37,Peris y Valero - Luis Santángel,Russafa,L'Eixample,-0.36644,39.46094,20,0,20
 38,Peris y Valero - Cabo Jubi,Russafa,L'Eixample,-0.37025,39.4594,14,1,15
 39,Peris y Valero - Cuba,Russafa,L'Eixample,-0.37393,39.45785,16,2,19
-40,"Barcas, 11",Sant Francesc,Ciutat Vella,-0.37482,39.47047,1,22,26
+40,"Barcas, 11",Sant Francesc,Ciutat Vella,-0.37482,39.47047,0,23,26
 41,Antiguo: General Urrutia - Granada,Montolivet,Quatre Carreres,-0.36478,39.45891,18,1,20
 42,Av. de la Plata (Museo Fallero),Montolivet,Quatre Carreres,-0.35866,39.45878,9,11,20
 43,Escultor José Capuz - Oriente,Montolivet,Quatre Carreres,-0.36115,39.45948,20,0,20
@@ -44,10 +44,10 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 45,Hermanos Maristas - Amado Granel (Ant. General Urrutia),Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.36186,39.45382,11,4,15
 46,Pintor Luis Arcas - Inst. Obrero Valenciano,Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.35879,39.45551,17,2,20
 47,Autopista del Saler - Puente Monteolivete,Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.35542,39.45651,0,17,20
-48,Antonio Ferrandis - General Urrutia,Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.35855,39.45081,11,8,20
+48,Antonio Ferrandis - General Urrutia,Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.35855,39.45081,11,9,20
 49,Ricardo Muñoz Suay - María José Victoria Fuster (C.C. El Saler),Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.35711,39.45299,0,24,25
 50,Autopista del Saler - Antonio Ferrandis (C.C. El Saler),Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.35286,39.45332,1,28,40
-51,Moreras (Oceanográfico),Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.34723,39.45218,2,18,20
+51,Moreras (Oceanográfico),Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.34723,39.45218,3,17,20
 52,Luis García Berlanga Martí - Menorca,Penya-Roja,Camins al Grau,-0.34634,39.45603,10,15,25
 53,Alameda - Pintor Maella,Penya-Roja,Camins al Grau,-0.34814,39.45676,13,12,25
 54,Plaza de Europa,Penya-Roja,Camins al Grau,-0.35269,39.45978,14,6,20
@@ -75,7 +75,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 76,Campoamor - Músico Ginés,Ciutat Jardi,Algirós,-0.34346,39.47008,15,4,19
 77,Molinell - Calderón de la Barca,Trinitat,La Saïdia,-0.36567,39.48497,13,7,20
 78,Aragón - Vicente Sancho Tello,Mestalla,El Pla del Real,-0.35869,39.46995,17,3,20
-79,Aragón - Ernesto Ferrer,Mestalla,El Pla del Real,-0.35724,39.47278,12,8,20
+79,Aragón - Ernesto Ferrer,Mestalla,El Pla del Real,-0.35724,39.47278,11,9,20
 80,Amadeo de Saboya (frente Ayuntamiento),Mestalla,El Pla del Real,-0.3623,39.47374,0,24,25
 81,Micer Mascó - Rodriguez Fornos,Exposicio,El Pla del Real,-0.36098,39.47513,14,6,20
 82,Guillem de Castro (Torres de Quart),El Carme,Ciutat Vella,-0.38391,39.47606,9,5,15
@@ -88,9 +88,9 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 89,"Blasco Ibañez, 23 (F. Filosofía y Psicología)",Ciutat Universitaria,El Pla del Real,-0.35932,39.4778,0,30,30
 90,"Blasco Ibañez, 32 (F. Filología)",Exposicio,El Pla del Real,-0.35897,39.47673,0,40,40
 91,Grabador Jordan - Escultor Pastor,La Fonteta S.Lluis,Quatre Carreres,-0.36757,39.44413,5,9,15
-92,Blasco Ibañez - Aragón,Mestalla,El Pla del Real,-0.35597,39.47586,6,14,20
+92,Blasco Ibañez - Aragón,Mestalla,El Pla del Real,-0.35597,39.47586,7,13,20
 93,Blasco Ibañez - Poeta Durán Tortajada,Ciutat Jardi,Algirós,-0.34381,39.47228,22,13,38
-94,Blasco Ibañez - Clariano,La Vega Baixa,Algirós,-0.35158,39.47538,11,7,20
+94,Blasco Ibañez - Clariano,La Vega Baixa,Algirós,-0.35158,39.47538,10,8,20
 95,Naranjos (Magisterio),La Carrasca,Algirós,-0.34612,39.47984,0,32,33
 96,Blasco Ibañez - Yecla,L'Amistat,Algirós,-0.34821,39.47355,8,13,21
 97,Blasco Ibañez 121,Ciutat Jardi,Algirós,-0.34313,39.47307,7,16,23
@@ -119,7 +119,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 120,Doctor Vicente Zaragozá - Emilio Baró,Benimaclet,Benimaclet,-0.36205,39.48488,17,1,18
 121,Murta - Sant Eperit,Benimaclet,Benimaclet,-0.35877,39.48618,14,0,15
 122,Músico Hipólito Martínez - Diógenes López Mecho,Cami de Vera,Benimaclet,-0.35407,39.48449,10,5,15
-123,Albocácer - Vinaroz,Sant Llorens,Rascanya,-0.36484,39.48767,17,3,20
+123,Albocácer - Vinaroz,Sant Llorens,Rascanya,-0.36484,39.48767,18,2,20
 124,Azagador de Alboraya - Dolores Marqués,Benimaclet,Benimaclet,-0.36196,39.4885,10,15,25
 125,"Masquefa, 42 - 44",Cami de Vera,Benimaclet,-0.35862,39.48969,4,11,15
 126,Alfahuir - José Chabas Bordehore,Sant Llorens,Rascanya,-0.3601,39.4931,7,13,20
@@ -185,7 +185,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 187,Ángel Villena - Ausias March,La Fonteta S.Lluis,Quatre Carreres,-0.36882,39.44796,5,10,15
 188,Hospital Nueva Fe (consultas externas),Malilla,Quatre Carreres,-0.37516,39.44462,0,40,40
 189,Hospital Nueva Fe (administración),Malilla,Quatre Carreres,-0.37707,39.44478,0,30,30
-190,Cra. Malilla - Bulevar Sur,Malilla,Quatre Carreres,-0.38002,39.44653,4,11,15
+190,Cra. Malilla - Bulevar Sur,Malilla,Quatre Carreres,-0.38002,39.44653,5,10,15
 191,Esparraguera - Cra. Malilla,Malilla,Quatre Carreres,-0.37887,39.45033,4,11,15
 192,Cra. Malilla - Oltá,Malilla,Quatre Carreres,-0.37871,39.45264,11,8,20
 193,Uruguay - Carteros,La Raiosa,Jesús,-0.38672,39.45515,18,2,20

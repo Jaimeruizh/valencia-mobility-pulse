@@ -30,9 +30,9 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 032,La Roqueta,Extramurs,0.231,2,50,16,8,15,2.12,2.7,Low
 091,La Raiosa,Jesús,0.376,4,66,51,15,8,3.6,2.5,Medium
 084,Safranar,Patraix,0.442,3,50,24,10,3,0.6,2.9,Low
-153,Sant Llorens,Rascanya,1.534,4,75,34,9,2,3.49,3.7,Low
+153,Sant Llorens,Rascanya,1.534,4,75,35,9,2,3.49,3.7,Low
 102,En Corts,Quatre Carreres,0.364,2,38,24,15,5,2.33,2.2,High
-103,Malilla,Quatre Carreres,2.508,7,155,40,32,5,9.41,3.3,Low
+103,Malilla,Quatre Carreres,2.508,7,155,41,32,5,9.41,3.3,Low
 063,Jaume Roig,El Pla del Real,0.187,1,20,7,7,9,0.7,2.6,Low
 141,Benimaclet,Benimaclet,0.752,5,89,65,19,8,5.1,3.1,Low
 064,Ciutat Universitaria,El Pla del Real,0.274,5,136,6,10,11,3.38,3,Low
@@ -45,7 +45,7 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 112,Cabanyal-Canyamelar,Poblats Marítims,1.351,11,198,128,37,8,6.54,2.9,Low
 135,La Carrasca,Algirós,1.948,13,351,42,17,6,10.52,3.7,Low
 113,La Malva-Rosa,Poblats Marítims,0.734,6,105,42,23,7,5.1,2.8,Low
-134,La Vega Baixa,Algirós,0.191,2,39,17,5,6,0.89,2.7,Low
+134,La Vega Baixa,Algirós,0.191,2,39,16,5,6,0.89,2.7,Low
 121,Aiora,Camins al Grau,0.652,7,144,108,8,4,4.3,2.4,Medium
 132,Ciutat Jardi,Algirós,0.364,3,80,44,10,6,2.24,2.5,Medium
 115,Natzaret,Poblats Marítims,0.917,2,30,14,12,4,0.74,2.7,Low
@@ -73,7 +73,7 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 105,Na Rovella,Quatre Carreres,0.537,3,49,33,15,5,2.61,2.5,Medium
 125,Penya-Roja,Camins al Grau,0.908,6,125,59,25,7,10.15,3.4,Low
 123,La Creu del Grau,Camins al Grau,0.39,2,40,26,16,6,1.24,2.5,Medium
-107,Ciutat de les Arts i de les Ciencies,Quatre Carreres,0.994,7,160,42,18,8,4.47,3.4,Low
+107,Ciutat de les Arts i de les Ciencies,Quatre Carreres,0.994,7,160,43,18,8,4.47,3.4,Low
 172,Poble Nou,Pobles del Nord,2.935,0,0,0,12,2,1.51,,
 174,Les Cases de Barcena,Pobles del Nord,1.203,0,0,0,5,1,1.22,,
 175,Mahuella-Tauladella,Pobles del Nord,1.045,0,0,0,0,0,0.88,,
@@ -83,7 +83,7 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 192,Castellar-L'Oliveral,Pobles del Sud,2.99,0,0,0,28,2,0.71,,
 191,El Forn D'Alcedo,Pobles del Sud,1.201,0,0,0,3,2,0,,
 197,La Torre,Pobles del Sud,0.42,0,0,0,8,3,0.97,,
-016,Sant Francesc,Ciutat Vella,0.439,6,146,6,27,26,0.69,3,Low
+016,Sant Francesc,Ciutat Vella,0.439,6,146,5,27,26,0.69,3,Low
 094,Sant Marcel.Li,Jesús,0.331,3,57,32,8,7,4.42,2.4,Medium
 151,Els Orriols,Rascanya,0.397,3,60,27,19,4,3.01,2.3,High
 011,La Seu,Ciutat Vella,0.221,2,34,0,3,9,0.85,2.9,Low
