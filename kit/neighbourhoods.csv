@@ -12,48 +12,48 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 173,Carpesa,Pobles del Nord,2.259,0,0,0,6,1,0,,
 177,Borboto,Pobles del Nord,1.422,0,0,0,3,1,0,,
 171,Benifaraig,Pobles del Nord,1.424,0,0,0,8,1,0,,
-152,Torrefiel,Rascanya,0.701,6,95,39,27,7,3.71,3,Low
+152,Torrefiel,Rascanya,0.701,6,95,40,27,7,3.71,3,Low
 054,Tormos,La Saïdia,0.28,2,40,11,6,6,1.73,2.6,Low
-051,Marxalenes,La Saïdia,0.391,4,79,47,13,12,3.73,2.4,Medium
+051,Marxalenes,La Saïdia,0.391,4,79,48,13,12,3.73,2.4,Medium
 043,El Calvari,Campanar,0.094,1,20,13,4,5,1.77,1.9,High
 052,Morvedre,La Saïdia,0.429,2,30,18,13,9,3.41,2.3,High
-053,Trinitat,La Saïdia,0.596,4,75,28,10,13,4.7,2.8,Low
+053,Trinitat,La Saïdia,0.596,4,75,27,10,13,4.7,2.8,Low
 013,El Carme,Ciutat Vella,0.384,5,100,48,4,3,1.95,3.2,Low
 031,El Botanic,Extramurs,0.37,2,31,15,7,10,3.62,3,Low
-061,Exposicio,El Pla del Real,0.382,4,125,18,11,14,4.7,2.9,Low
-012,La Xerea,Ciutat Vella,0.312,3,60,14,6,17,2.64,3,Low
+061,Exposicio,El Pla del Real,0.382,4,125,17,11,14,4.7,2.9,Low
+012,La Xerea,Ciutat Vella,0.312,3,60,13,6,17,2.64,3,Low
 015,El Mercat,Ciutat Vella,0.173,2,34,10,4,6,0,2.8,Low
 014,El Pilar,Ciutat Vella,0.162,0,0,0,5,8,0.27,2.8,Low
 022,El Pla del Remei,L'Eixample,0.387,4,86,2,15,19,2.06,2.9,Low
 131,L'Illa Perduda,Algirós,0.232,3,56,47,6,4,0.41,2.6,Low
-034,Arrancapins,Extramurs,0.875,9,190,92,21,17,8.56,3.2,Low
+034,Arrancapins,Extramurs,0.875,9,190,93,21,17,8.56,3.2,Low
 032,La Roqueta,Extramurs,0.231,2,50,17,8,15,2.12,2.7,Low
 091,La Raiosa,Jesús,0.376,4,66,50,15,8,3.6,2.5,Medium
 084,Safranar,Patraix,0.442,3,50,23,10,3,0.6,2.9,Low
 153,Sant Llorens,Rascanya,1.534,4,75,32,9,2,3.49,3.7,Low
 102,En Corts,Quatre Carreres,0.364,2,38,26,15,5,2.33,2.2,High
-103,Malilla,Quatre Carreres,2.508,7,155,39,32,5,9.41,3.3,Low
+103,Malilla,Quatre Carreres,2.508,7,155,40,32,5,9.41,3.3,Low
 063,Jaume Roig,El Pla del Real,0.187,1,20,3,7,9,0.7,2.6,Low
-141,Benimaclet,Benimaclet,0.752,5,89,65,19,8,5.1,3.1,Low
-064,Ciutat Universitaria,El Pla del Real,0.274,5,136,8,10,11,3.38,3,Low
+141,Benimaclet,Benimaclet,0.752,5,89,66,19,8,5.1,3.1,Low
+064,Ciutat Universitaria,El Pla del Real,0.274,5,136,6,10,11,3.38,3,Low
 161,Benicalap,Benicalap,1.721,11,199,59,36,10,12.76,3.4,Low
 055,Sant Antoni,La Saïdia,0.25,1,20,5,5,5,0.66,2.6,Low
-062,Mestalla,El Pla del Real,0.844,6,125,74,28,15,10.08,3.2,Low
-122,Albors,Camins al Grau,0.256,3,55,38,6,5,1.7,2.8,Low
-133,L'Amistat,Algirós,0.209,2,46,32,8,8,1.17,2.4,Medium
+062,Mestalla,El Pla del Real,0.844,6,125,70,28,15,10.08,3.2,Low
+122,Albors,Camins al Grau,0.256,3,55,39,6,5,1.7,2.8,Low
+133,L'Amistat,Algirós,0.209,2,46,33,8,8,1.17,2.4,Medium
 114,Betero,Poblats Marítims,0.267,1,15,14,6,4,4.59,2.4,Medium
 112,Cabanyal-Canyamelar,Poblats Marítims,1.351,11,198,122,37,8,6.54,2.9,Low
-135,La Carrasca,Algirós,1.948,13,351,39,17,6,10.52,3.7,Low
+135,La Carrasca,Algirós,1.948,13,351,38,17,6,10.52,3.7,Low
 113,La Malva-Rosa,Poblats Marítims,0.734,6,105,39,23,7,5.1,2.8,Low
 134,La Vega Baixa,Algirós,0.191,2,39,16,5,6,0.89,2.7,Low
 121,Aiora,Camins al Grau,0.652,7,144,104,8,4,4.3,2.4,Medium
-132,Ciutat Jardi,Algirós,0.364,3,80,59,10,6,2.24,2.5,Medium
+132,Ciutat Jardi,Algirós,0.364,3,80,61,10,6,2.24,2.5,Medium
 115,Natzaret,Poblats Marítims,0.917,2,30,14,12,4,0.74,2.7,Low
 106,La Punta,Quatre Carreres,6.216,1,20,9,44,8,8.14,2.9,Low
 111,El Grau,Poblats Marítims,5.234,3,54,26,15,7,4.66,2.6,Low
-021,Russafa,L'Eixample,0.877,7,139,81,28,12,13.88,3.3,Low
-023,La Gran Via,L'Eixample,0.467,6,116,70,17,11,3.38,2.9,Low
-101,Montolivet,Quatre Carreres,0.475,5,98,69,23,11,2.69,2.3,High
+021,Russafa,L'Eixample,0.877,7,139,79,28,12,13.88,3.3,Low
+023,La Gran Via,L'Eixample,0.467,6,116,69,17,11,3.38,2.9,Low
+101,Montolivet,Quatre Carreres,0.475,5,98,70,23,11,2.69,2.3,High
 074,La Fontsanta,L'Olivereta,0.323,3,58,9,14,7,2.55,2.5,Medium
 083,Vara de Quart,Patraix,1.035,4,70,18,13,5,4.14,2.9,Low
 081,Patraix,Patraix,0.622,3,45,23,20,9,7.13,2.9,Low
@@ -73,7 +73,7 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 105,Na Rovella,Quatre Carreres,0.537,3,49,32,15,5,2.61,2.5,Medium
 125,Penya-Roja,Camins al Grau,0.908,6,125,58,25,7,10.15,3.4,Low
 123,La Creu del Grau,Camins al Grau,0.39,2,40,27,16,6,1.24,2.5,Medium
-107,Ciutat de les Arts i de les Ciencies,Quatre Carreres,0.994,7,160,40,18,8,4.47,3.4,Low
+107,Ciutat de les Arts i de les Ciencies,Quatre Carreres,0.994,7,160,39,18,8,4.47,3.4,Low
 172,Poble Nou,Pobles del Nord,2.935,0,0,0,12,2,1.51,,
 174,Les Cases de Barcena,Pobles del Nord,1.203,0,0,0,5,1,1.22,,
 175,Mahuella-Tauladella,Pobles del Nord,1.045,0,0,0,0,0,0.88,,
@@ -83,7 +83,7 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 192,Castellar-L'Oliveral,Pobles del Sud,2.99,0,0,0,28,2,0.71,,
 191,El Forn D'Alcedo,Pobles del Sud,1.201,0,0,0,3,2,0,,
 197,La Torre,Pobles del Sud,0.42,0,0,0,8,3,0.97,,
-016,Sant Francesc,Ciutat Vella,0.439,6,146,12,27,26,0.69,3,Low
+016,Sant Francesc,Ciutat Vella,0.439,6,146,9,27,26,0.69,3,Low
 094,Sant Marcel.Li,Jesús,0.331,3,57,32,8,7,4.42,2.4,Medium
 151,Els Orriols,Rascanya,0.397,3,60,28,19,4,3.01,2.3,High
 011,La Seu,Ciutat Vella,0.221,2,34,1,3,9,0.85,2.9,Low
