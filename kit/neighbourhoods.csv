@@ -1,6 +1,6 @@
 code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_available_now,bus_stops,bus_lines,cycle_route_km,vulnerability_index_2021,vulnerability_level_2021
-093,La Creu Coberta,Jesús,0.375,1,20,11,7,3,1.38,2.6,Low
-104,La Fonteta S.Lluis,Quatre Carreres,0.239,2,30,9,8,3,0.02,2.5,Medium
+093,La Creu Coberta,Jesús,0.375,1,20,10,7,3,1.38,2.6,Low
+104,La Fonteta S.Lluis,Quatre Carreres,0.239,2,30,8,8,3,0.02,2.5,Medium
 175,Rafalell-Vistabella,Pobles del Nord,2.129,0,0,0,0,0,0,,
 142,Cami de Vera,Benimaclet,0.828,2,30,14,1,1,2.48,2.9,Low
 181,Benimamet,Pobles de l'Oest,1.479,2,25,2,21,1,1.59,,
@@ -22,7 +22,7 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 031,El Botanic,Extramurs,0.37,2,31,15,7,10,3.62,3,Low
 061,Exposicio,El Pla del Real,0.382,4,125,16,11,14,4.7,2.9,Low
 012,La Xerea,Ciutat Vella,0.312,3,60,12,6,17,2.64,3,Low
-015,El Mercat,Ciutat Vella,0.173,2,34,9,4,6,0,2.8,Low
+015,El Mercat,Ciutat Vella,0.173,2,34,10,4,6,0,2.8,Low
 014,El Pilar,Ciutat Vella,0.162,0,0,0,5,8,0.27,2.8,Low
 022,El Pla del Remei,L'Eixample,0.387,4,86,4,15,19,2.06,2.9,Low
 131,L'Illa Perduda,Algirós,0.232,3,56,48,6,4,0.41,2.6,Low
@@ -35,7 +35,7 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 103,Malilla,Quatre Carreres,2.508,7,155,41,32,5,9.41,3.3,Low
 063,Jaume Roig,El Pla del Real,0.187,1,20,7,7,9,0.7,2.6,Low
 141,Benimaclet,Benimaclet,0.752,5,89,66,19,8,5.1,3.1,Low
-064,Ciutat Universitaria,El Pla del Real,0.274,5,136,6,10,11,3.38,3,Low
+064,Ciutat Universitaria,El Pla del Real,0.274,5,136,7,10,11,3.38,3,Low
 161,Benicalap,Benicalap,1.721,11,199,60,36,10,12.76,3.4,Low
 055,Sant Antoni,La Saïdia,0.25,1,20,6,5,5,0.66,2.6,Low
 062,Mestalla,El Pla del Real,0.844,6,125,71,28,15,10.08,3.2,Low
@@ -43,15 +43,15 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 133,L'Amistat,Algirós,0.209,2,46,27,8,8,1.17,2.4,Medium
 114,Betero,Poblats Marítims,0.267,1,15,15,6,4,4.59,2.4,Medium
 112,Cabanyal-Canyamelar,Poblats Marítims,1.351,11,198,130,37,8,6.54,2.9,Low
-135,La Carrasca,Algirós,1.948,13,351,42,17,6,10.52,3.7,Low
-113,La Malva-Rosa,Poblats Marítims,0.734,6,105,42,23,7,5.1,2.8,Low
+135,La Carrasca,Algirós,1.948,13,351,43,17,6,10.52,3.7,Low
+113,La Malva-Rosa,Poblats Marítims,0.734,6,105,43,23,7,5.1,2.8,Low
 134,La Vega Baixa,Algirós,0.191,2,39,16,5,6,0.89,2.7,Low
-121,Aiora,Camins al Grau,0.652,7,144,107,8,4,4.3,2.4,Medium
+121,Aiora,Camins al Grau,0.652,7,144,106,8,4,4.3,2.4,Medium
 132,Ciutat Jardi,Algirós,0.364,3,80,42,10,6,2.24,2.5,Medium
 115,Natzaret,Poblats Marítims,0.917,2,30,14,12,4,0.74,2.7,Low
 106,La Punta,Quatre Carreres,6.216,1,20,10,44,8,8.14,2.9,Low
 111,El Grau,Poblats Marítims,5.234,3,54,26,15,7,4.66,2.6,Low
-021,Russafa,L'Eixample,0.877,7,139,76,28,12,13.88,3.3,Low
+021,Russafa,L'Eixample,0.877,7,139,77,28,12,13.88,3.3,Low
 023,La Gran Via,L'Eixample,0.467,6,116,67,17,11,3.38,2.9,Low
 101,Montolivet,Quatre Carreres,0.475,5,98,73,23,11,2.69,2.3,High
 074,La Fontsanta,L'Olivereta,0.323,3,58,7,14,7,2.55,2.5,Medium
@@ -66,7 +66,7 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 041,Campanar,Campanar,0.989,8,175,36,32,14,7.21,3.7,Low
 042,Les Tendetes,Campanar,0.258,1,20,5,7,6,2.62,2.7,Low
 095,Cami Real,Jesús,1.478,2,35,10,10,6,4.38,3,Low
-085,Favara,Patraix,0.28,2,35,7,4,3,0,2.8,Low
+085,Favara,Patraix,0.28,2,35,8,4,3,0,2.8,Low
 082,Sant Isidre,Patraix,0.495,4,65,32,10,3,3.42,3,Low
 092,L'Hort de Senabre,Jesús,0.427,1,17,5,12,7,1.39,2.5,Medium
 124,Cami Fondo,Camins al Grau,0.159,1,19,10,8,4,0,2.5,Medium
