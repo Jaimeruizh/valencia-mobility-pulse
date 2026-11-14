@@ -125,6 +125,17 @@ section { display: grid; gap: 14px; min-width: 0; scroll-margin-top: 12px; }
 .sel-box { min-height: 32px; padding: 4px 8px; border: 1px solid var(--line-strong); border-radius: var(--r); background: var(--surface); font-size: var(--t-sm); max-width: 100%; }
 .sel-box:hover { border-color: var(--ink); }
 .mapbox { position: relative; height: clamp(360px, 62vh, 620px); background: var(--water); overflow: hidden; }
+/* night: a navy veil over the ground, under the stations, so they stay lit */
+#nightVeil { fill: #060d2e; opacity: calc(var(--night, 0) * .74); pointer-events: none; transition: opacity .6s; }
+.clock { position: absolute; top: 10px; right: 10px; z-index: 1; display: flex; align-items: center; gap: 9px; padding: 6px 12px 6px 6px; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--surface); color: var(--ink); pointer-events: none; box-shadow: 0 2px 10px rgba(4, 8, 23, .12); }
+.clock svg { width: 34px; height: 34px; flex: none; }
+.clock .face { fill: var(--surface); stroke: var(--ink); stroke-width: 1.4; }
+.clock .tick { stroke: var(--ink); stroke-width: 1.2; stroke-linecap: round; opacity: .55; }
+.clock .hand { stroke: var(--ink); stroke-linecap: round; transition: transform .4s; transform-origin: 20px 20px; }
+.clock .hand.m { stroke: var(--accent); }
+.clock b { display: block; font-size: 17px; font-weight: 700; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.clock small { display: block; font-size: 11px; color: var(--muted); line-height: 1.2; white-space: nowrap; }
+.clock .sky { font-size: 15px; line-height: 1; }
 #map { width: 100%; height: 100%; display: block; touch-action: pan-y; cursor: grab; user-select: none; }
 #map.zoomed { touch-action: none; }
 #map.dragging { cursor: grabbing; }
@@ -141,7 +152,7 @@ section { display: grid; gap: 14px; min-width: 0; scroll-margin-top: 12px; }
 .st.c-flat { opacity: .55; }
 .st.dim { opacity: .14; }
 .st:hover, .st.sel { stroke: var(--ink); stroke-width: 2.4; opacity: 1; }
-.zoom { position: absolute; top: 10px; right: 10px; display: grid; gap: 4px; }
+.zoom { position: absolute; top: 66px; right: 10px; display: grid; gap: 4px; }
 .zoom button, .play { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid var(--line-strong); border-radius: var(--r); background: var(--surface); cursor: pointer; }
 .zoom button:hover, .play:hover { border-color: var(--ink); }
 .zoom svg, .play svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
@@ -359,7 +370,12 @@ td:first-child { font-weight: 600; }
           </div>
         </div>
         <div class="mapbox" id="mapbox">
-          <svg id="map" role="img" aria-label="Map of València"><g id="gBarrios"></g><g id="gCycle"></g><g id="gStops"></g><g id="gTraffic"></g><g id="gStations"></g></svg>
+          <svg id="map" role="img" aria-label="Map of València"><g id="gBarrios"></g><g id="gCycle"></g><g id="gStops"></g><g id="gTraffic"></g><rect id="nightVeil" x="-100000" y="-100000" width="200000" height="200000"/><g id="gStations"></g></svg>
+          <div class="clock" id="clock" aria-live="off">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><circle class="face" cx="20" cy="20" r="18"/><path class="tick" d="M20 4v3M36 20h-3M20 36v-3M4 20h3"/><line class="hand h" id="clockH" x1="20" y1="20" x2="20" y2="11" stroke-width="2.6"/><line class="hand m" id="clockM" x1="20" y1="20" x2="20" y2="7" stroke-width="1.8"/><circle cx="20" cy="20" r="1.8" fill="currentColor"/></svg>
+            <span><b id="clockTime">--:--</b><small id="clockDay"></small></span>
+            <span class="sky" id="clockSky" aria-hidden="true"></span>
+          </div>
           <div class="zoom">
             <button type="button" id="zoomIn" aria-label="Zoom in"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg></button>
             <button type="button" id="zoomOut" aria-label="Zoom out"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10"/></svg></button>
@@ -831,7 +847,32 @@ td:first-child { font-weight: 600; }
   });
 
   // ---------- replay of the day: every step is a complete state of the map, the crate and the figures
+  // ---------- clock and night: the time of the capture on screen; the ground darkens with the sun's height in València
+  function sunElevation(ms) { // degrees above the horizon, for València (39.47 N, 0.376 W)
+    var d = new Date(ms), start = Date.UTC(d.getUTCFullYear(), 0, 0), n = Math.floor((ms - start) / 864e5);
+    var B = 2 * Math.PI * (n - 81) / 364, eot = 9.87 * Math.sin(2 * B) - 7.53 * Math.cos(B) - 1.5 * Math.sin(B);
+    var decl = 23.44 * Math.sin(2 * Math.PI * (284 + n) / 365) * Math.PI / 180, lat = 39.47 * Math.PI / 180;
+    var solarMin = d.getUTCHours() * 60 + d.getUTCMinutes() + 4 * -0.376 + eot, ha = (solarMin / 4 - 180) * Math.PI / 180;
+    return Math.asin(Math.sin(lat) * Math.sin(decl) + Math.cos(lat) * Math.cos(decl) * Math.cos(ha)) * 180 / Math.PI;
+  }
+  var DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  function applyClock() {
+    var iso = state.frame == null ? SNAP.capturedAt : HIST[state.frame].t, ms = Date.parse(iso);
+    if (!iso || isNaN(ms)) return;
+    var h = +String(iso).slice(11, 13), m = +String(iso).slice(14, 16), y = +String(iso).slice(0, 4), mo = +String(iso).slice(5, 7), dd = +String(iso).slice(8, 10);
+    var wd = new Date(Date.UTC(y, mo - 1, dd)).getUTCDay();
+    $('clockTime').textContent = hhmm(iso);
+    $('clockDay').textContent = DAYS[wd] + ' ' + dd + ' ' + MONTHS[mo - 1] + (state.frame == null ? ' · latest' : '');
+    $('clockH').style.transform = 'rotate(' + ((h % 12) * 30 + m * 0.5) + 'deg)';
+    $('clockM').style.transform = 'rotate(' + (m * 6) + 'deg)';
+    var el = sunElevation(ms), night = Math.max(0, Math.min(1, (4 - el) / 14)); // full day above 4°, full night below -10°
+    $('mapbox').style.setProperty('--night', night.toFixed(3));
+    $('clockSky').textContent = el > 4 ? '☀️' : el > -6 ? '🌅' : '🌙';
+    $('clock').title = el > 4 ? 'Daylight' : el > -6 ? 'Dawn or dusk' : 'Night';
+  }
+
   function syncScrub() {
+    applyClock();
     var n = HIST.length, show = state.mode === 'bike' && n >= 3;
     $('scrub').hidden = !show; if (!show) return;
     $('scrubRange').max = n - 1; $('scrubRange').value = state.frame == null ? n - 1 : state.frame;
