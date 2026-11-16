@@ -1,6 +1,6 @@
 station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_total
 1,C/GUILLEM DE CASTRO esquina con C/NA JORDANA,El Carme,Ciutat Vella,-0.38293,39.48004,1,24,25
-2,Salvador Giner - C. Museo,El Carme,Ciutat Vella,-0.37975,39.47989,1,11,15
+2,Salvador Giner - C. Museo,El Carme,Ciutat Vella,-0.37975,39.47989,0,12,15
 3,Plaza del Musico López Chavarri,El Carme,Ciutat Vella,-0.38029,39.47684,0,20,20
 4,Plaza de la Virgen - Bailía,La Seu,Ciutat Vella,-0.37534,39.47675,0,24,25
 5,Plaza Poeta Llorente,La Xerea,Ciutat Vella,-0.37114,39.4769,0,14,15
@@ -16,7 +16,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 15,Ribera - Plaza Ayuntamiento,Sant Francesc,Ciutat Vella,-0.37564,39.46909,0,33,34
 17,Xátiva - Bailén (Estación del Norte),La Roqueta,Extramurs,-0.37726,39.46747,1,26,30
 19,Juan Llorens - Quart,La Petxina,Extramurs,-0.39159,39.47437,1,14,15
-20,Quart - Fernando el Católico,El Botanic,Extramurs,-0.38785,39.47503,0,16,16
+20,Quart - Fernando el Católico,El Botanic,Extramurs,-0.38785,39.47503,1,15,16
 21,Juan Llorens - Literato Gabriel Miró,La Petxina,Extramurs,-0.39021,39.47237,2,14,16
 22,Angel Guimerá - Juan Llorens,Arrancapins,Extramurs,-0.38835,39.46979,1,14,15
 23,Fernando el Católico - Erudito Orellana,Arrancapins,Extramurs,-0.38618,39.47163,2,17,19
@@ -130,11 +130,11 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 132,Platero Suárez - Milagrosa,Morvedre,La Saïdia,-0.37343,39.48529,4,11,15
 133,Alfambra - Poeta Monmeneu,Morvedre,La Saïdia,-0.37588,39.48276,5,9,15
 134,Maximiliano Thous - Luz Casanova,Sant Antoni,La Saïdia,-0.37334,39.48766,11,9,20
-135,Constitución - Reus,Marxalenes,La Saïdia,-0.3785,39.4857,19,1,20
+135,Constitución - Reus,Marxalenes,La Saïdia,-0.3785,39.4857,18,2,20
 136,Economista Gay - Constitución,Tormos,La Saïdia,-0.37561,39.48994,19,1,20
-137,Economista Gay - Luis Crumiere,Tormos,La Saïdia,-0.3799,39.48903,5,15,20
+137,Economista Gay - Luis Crumiere,Tormos,La Saïdia,-0.3799,39.48903,6,14,20
 138,San Pancracio - Periodista Llorente,Marxalenes,La Saïdia,-0.38422,39.48819,1,19,20
-139,Reus - Alquería de la Estrella,Marxalenes,La Saïdia,-0.38287,39.48571,4,11,15
+139,Reus - Alquería de la Estrella,Marxalenes,La Saïdia,-0.38287,39.48571,5,10,15
 140,Campanar - Nicasio Benlloch,El Calvari,Campanar,-0.3896,39.488,2,16,20
 141,Gregorio Gea - Padre Ferris,Les Tendetes,Campanar,-0.38516,39.48327,0,19,20
 142,Gregorio Gea - Profesor Beltrán Báguena,Campanar,Campanar,-0.38966,39.48192,1,23,25
@@ -159,7 +159,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 162,Armada Española - Mariano Cuber,Cabanyal-Canyamelar,Poblats Marítims,-0.3298,39.4636,18,0,19
 163,Paseo Neptuno 32-34,Cabanyal-Canyamelar,Poblats Marítims,-0.3234,39.46444,0,19,20
 164,Pavía - Columbretes,Cabanyal-Canyamelar,Poblats Marítims,-0.32463,39.46846,1,15,17
-165,Pavía - Espadán,Cabanyal-Canyamelar,Poblats Marítims,-0.32457,39.47141,3,17,20
+165,Pavía - Espadán,Cabanyal-Canyamelar,Poblats Marítims,-0.32457,39.47141,4,16,20
 166,Don Vicente Guillot - Progreso,Cabanyal-Canyamelar,Poblats Marítims,-0.32881,39.47335,14,0,15
 167,Pavía - Acequia de la Cadena,La Malva-Rosa,Poblats Marítims,-0.32461,39.47491,17,3,20
 168,Malvarrosa - Río Tajo,La Malva-Rosa,Poblats Marítims,-0.32789,39.47687,15,0,15
@@ -168,7 +168,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 171,Gran Canaria - Ingeniero Manuel Maese,La Malva-Rosa,Poblats Marítims,-0.32901,39.48306,9,6,15
 172,Pío XII - Campanar,Campanar,Campanar,-0.39335,39.48146,0,20,20
 173,Pío XII - Monestir de Poblet,Campanar,Campanar,-0.39468,39.48454,0,20,20
-174,Monduber - Peset Aleixandre,Benicalap,Benicalap,-0.38665,39.48944,13,6,19
+174,Monduber - Peset Aleixandre,Benicalap,Benicalap,-0.38665,39.48944,12,7,19
 175,Juan XXIII - Domingo Gómez,Torrefiel,Rascanya,-0.38271,39.49259,7,8,15
 176,Cno. Moncada - Pedro Patricio Mey,Torrefiel,Rascanya,-0.37885,39.49202,6,13,20
 177,Alcudia de Crespins - Pedro Patricio Mey,Torrefiel,Rascanya,-0.37349,39.49355,13,0,15
@@ -228,7 +228,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 231,Alcañiz - Cambrils,Torrefiel,Rascanya,-0.37862,39.49507,6,9,15
 232,San Vicente Paul - Santiago Rusiñol,Sant Llorens,Rascanya,-0.36575,39.49464,6,7,15
 233,San Juan Bosco - Santiago Rusiñol,Els Orriols,Rascanya,-0.36944,39.49716,11,3,15
-234,Plaza Músico Espí,Torrefiel,Rascanya,-0.37364,39.4965,3,11,15
+234,Plaza Músico Espí,Torrefiel,Rascanya,-0.37364,39.4965,4,10,15
 235,Conde Torrefiel - Cecilio Plá,Torrefiel,Rascanya,-0.3772,39.49805,2,13,15
 236,Rio Segre - Rafael Company,Benicalap,Benicalap,-0.38228,39.49507,0,15,15
 237,Levante U.D. - Ecuador,Benicalap,Benicalap,-0.39104,39.49476,0,15,15
@@ -266,7 +266,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 269,"Campamento, 81",Benimamet,Pobles de l'Oest,-0.42626,39.49991,9,6,15
 270,Ninot - Regino Mas,Ciutat Fallera,Benicalap,-0.39289,39.50008,8,8,16
 271,Salvador Cerveró - Carlos Cortina,Benicalap,Benicalap,-0.38989,39.49928,6,9,15
-272,Vicente la Roda - Ingeniero Fausto Elio,La Malva-Rosa,Poblats Marítims,-0.33219,39.48062,9,6,15
+272,Vicente la Roda - Ingeniero Fausto Elio,La Malva-Rosa,Poblats Marítims,-0.33219,39.48062,10,5,15
 273,Moraira - Alta del Mar,Natzaret,Poblats Marítims,-0.33327,39.45031,14,0,15
 274,San Francisco de Paula - Castell de Pop,Natzaret,Poblats Marítims,-0.33319,39.44807,13,2,15
 275,Moreras - Rona de Nazaret,La Punta,Quatre Carreres,-0.33507,39.45231,14,5,20
