@@ -16,7 +16,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 15,Ribera - Plaza Ayuntamiento,Sant Francesc,Ciutat Vella,-0.37564,39.46909,0,33,34
 17,Xátiva - Bailén (Estación del Norte),La Roqueta,Extramurs,-0.37726,39.46747,1,26,30
 19,Juan Llorens - Quart,La Petxina,Extramurs,-0.39159,39.47437,1,14,15
-20,Quart - Fernando el Católico,El Botanic,Extramurs,-0.38785,39.47503,1,15,16
+20,Quart - Fernando el Católico,El Botanic,Extramurs,-0.38785,39.47503,0,16,16
 21,Juan Llorens - Literato Gabriel Miró,La Petxina,Extramurs,-0.39021,39.47237,2,14,16
 22,Angel Guimerá - Juan Llorens,Arrancapins,Extramurs,-0.38835,39.46979,1,14,15
 23,Fernando el Católico - Erudito Orellana,Arrancapins,Extramurs,-0.38618,39.47163,2,17,19
@@ -135,7 +135,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 137,Economista Gay - Luis Crumiere,Tormos,La Saïdia,-0.3799,39.48903,5,15,20
 138,San Pancracio - Periodista Llorente,Marxalenes,La Saïdia,-0.38422,39.48819,1,19,20
 139,Reus - Alquería de la Estrella,Marxalenes,La Saïdia,-0.38287,39.48571,4,11,15
-140,Campanar - Nicasio Benlloch,El Calvari,Campanar,-0.3896,39.488,3,15,20
+140,Campanar - Nicasio Benlloch,El Calvari,Campanar,-0.3896,39.488,2,16,20
 141,Gregorio Gea - Padre Ferris,Les Tendetes,Campanar,-0.38516,39.48327,0,19,20
 142,Gregorio Gea - Profesor Beltrán Báguena,Campanar,Campanar,-0.38966,39.48192,1,23,25
 143,Pio XII - Menéndez PIdal (Nuevo Centro),Campanar,Campanar,-0.39094,39.47954,1,28,30
@@ -177,7 +177,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 180,Doctor Waksman - Nieves,En Corts,Quatre Carreres,-0.37068,39.45602,19,1,20
 181,"Zapadores, 23",Montolivet,Quatre Carreres,-0.36819,39.458,7,8,15
 182,Ausias March - Pianista Amparo Iturbi,Malilla,Quatre Carreres,-0.37497,39.45543,17,4,21
-183,Ausias March - Av. de la Plata,En Corts,Quatre Carreres,-0.37228,39.45262,13,5,18
+183,Ausias March - Av. de la Plata,En Corts,Quatre Carreres,-0.37228,39.45262,12,6,18
 184,Bombero Ramón Duart - Hermanos Maristas,Na Rovella,Quatre Carreres,-0.36557,39.45278,5,10,15
 185,Ebanista Caselles - Ausias March,Na Rovella,Quatre Carreres,-0.3705,39.45004,14,1,15
 186,Benifairó de Valldigna - Joaquín Benlloch,Malilla,Quatre Carreres,-0.37402,39.45039,1,12,14
@@ -203,7 +203,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 206,Periodista Gil Sumbiela - Poeta Serrano Clavero,Benicalap,Benicalap,-0.38901,39.49271,8,7,15
 207,"Giorgeta, 64",La Raiosa,Jesús,-0.38191,39.45539,1,14,15
 208,Carteros - Mossen Febrer,La Creu Coberta,Jesús,-0.38858,39.45169,5,15,20
-209,Gaspar Aguilar - Músico Penella,L'Hort de Senabre,Jesús,-0.39328,39.4519,14,2,17
+209,Gaspar Aguilar - Músico Penella,L'Hort de Senabre,Jesús,-0.39328,39.4519,15,1,17
 210,Campos Crespo - Juan de Garay,Favara,Patraix,-0.39672,39.45555,10,5,15
 211,Fray Junípero Serra - Vall d'Uixó,Safranar,Patraix,-0.39776,39.45873,4,11,15
 212,Fray Juanípero Serra - Torrente,Vara de Quart,Patraix,-0.4004,39.46148,0,15,15
@@ -213,7 +213,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 216,Av. del Cid - Burgos,Nou Moles,L'Olivereta,-0.39946,39.46916,1,14,17
 217,Pintor Stolz - Nueve de Octubre,Nou Moles,L'Olivereta,-0.4046,39.47033,5,20,25
 218,Olimpia Arozena Torres - Juan Bautista Vives,Nou Moles,L'Olivereta,-0.39738,39.47074,7,8,15
-219,Castán Tobeñas - Rincon de Ademuz,Nou Moles,L'Olivereta,-0.40303,39.47266,9,8,18
+219,Castán Tobeñas - Rincon de Ademuz,Nou Moles,L'Olivereta,-0.40303,39.47266,8,9,18
 220,Castán Tobeñas - Patriques,Nou Moles,L'Olivereta,-0.39832,39.47386,8,8,16
 221,Manuel de Falla - Hernández Lázaro,Sant Pau,Campanar,-0.40285,39.47527,12,8,20
 222,Maestro Rodrigo - Manuel de Falla,Campanar,Campanar,-0.39728,39.47689,4,16,20
@@ -245,7 +245,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 248,Tres Cruces - Jose Maria Mortes Lerma,Vara de Quart,Patraix,-0.40497,39.46284,1,19,20
 249,Tres Cruces - Segunda República Española,Vara de Quart,Patraix,-0.40274,39.45951,1,13,15
 250,Tres Cruces - Pio XI,Sant Isidre,Patraix,-0.40081,39.45635,0,15,15
-251,Arquitecto Segura del Lago - Camino Nuevo de Picaña,Sant Isidre,Patraix,-0.40441,39.45583,11,3,15
+251,Arquitecto Segura del Lago - Camino Nuevo de Picaña,Sant Isidre,Patraix,-0.40441,39.45583,10,4,15
 252,Dels Gremis - Campos Crespo,Sant Isidre,Patraix,-0.40357,39.45029,4,16,20
 253,José Meliá Castelló - Campos Crespo,Sant Isidre,Patraix,-0.4011,39.45273,8,7,15
 254,Doctor Tomás Sala - Carteros,Sant Marcel.Li,Jesús,-0.38992,39.44771,7,11,19
