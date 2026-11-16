@@ -7,9 +7,9 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 6,Guillem de Castro - San Pedro Pascual,El Botanic,Extramurs,-0.38408,39.4728,1,14,15
 7,Plaza del Mercado - Taula de Canvis,El Mercat,Ciutat Vella,-0.37919,39.47487,1,17,19
 8,Plaza de la Reina - Mar,La Seu,Ciutat Vella,-0.3753,39.47388,0,9,9
-9,Plaza de Tetuán,La Xerea,Ciutat Vella,-0.36993,39.47436,7,18,25
+9,Plaza de Tetuán,La Xerea,Ciutat Vella,-0.36993,39.47436,8,17,25
 10,Hospital - Horno del Hospital,Sant Francesc,Ciutat Vella,-0.38261,39.47082,0,15,15
-11,Plaza Ayuntamiento - Cotanda,Sant Francesc,Ciutat Vella,-0.37678,39.47119,2,25,27
+11,Plaza Ayuntamiento - Cotanda,Sant Francesc,Ciutat Vella,-0.37678,39.47119,1,26,27
 12,Calle Salvá - Calle Poeta Querol (Antigua ubicación MINYANA),La Xerea,Ciutat Vella,-0.37401,39.47197,0,19,20
 13,Alfonso el Magnánimo - Nave,Sant Francesc,Ciutat Vella,-0.37087,39.47206,1,22,24
 14,Huesca - Barón de Cárcer,Sant Francesc,Ciutat Vella,-0.37972,39.46897,1,19,20
@@ -21,7 +21,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 22,Angel Guimerá - Juan Llorens,Arrancapins,Extramurs,-0.38835,39.46979,1,14,15
 23,Fernando el Católico - Erudito Orellana,Arrancapins,Extramurs,-0.38618,39.47163,2,17,19
 24,Fernando el Católico - Cuenca,Arrancapins,Extramurs,-0.38403,39.46908,0,20,20
-25,"Alberique, 18 (Abastos)",Arrancapins,Extramurs,-0.38861,39.46773,8,15,23
+25,"Alberique, 18 (Abastos)",Arrancapins,Extramurs,-0.38861,39.46773,7,16,23
 26,San José de Calasanz - Salas Quiroga,Arrancapins,Extramurs,-0.38586,39.46634,0,15,15
 27,San Vicente Martir - Doctor Vilá Barberá,Arrancapins,Extramurs,-0.38185,39.46336,4,16,20
 28,Navarro Reverter - Grabador Esteve,El Pla del Remei,L'Eixample,-0.36775,39.47158,3,25,29
@@ -37,17 +37,17 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 38,Peris y Valero - Cabo Jubi,Russafa,L'Eixample,-0.37025,39.4594,2,13,15
 39,Peris y Valero - Cuba,Russafa,L'Eixample,-0.37393,39.45785,15,2,19
 40,"Barcas, 11",Sant Francesc,Ciutat Vella,-0.37482,39.47047,0,26,26
-41,Antiguo: General Urrutia - Granada,Montolivet,Quatre Carreres,-0.36478,39.45891,20,0,20
+41,Antiguo: General Urrutia - Granada,Montolivet,Quatre Carreres,-0.36478,39.45891,19,1,20
 42,Av. de la Plata (Museo Fallero),Montolivet,Quatre Carreres,-0.35866,39.45878,19,1,20
 43,Escultor José Capuz - Oriente,Montolivet,Quatre Carreres,-0.36115,39.45948,20,0,20
 44,Antigua: General Urrutia - Av. de la Plata,Na Rovella,Quatre Carreres,-0.36301,39.45643,16,2,19
 45,Hermanos Maristas - Amado Granel (Ant. General Urrutia),Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.36186,39.45382,12,2,15
 46,Pintor Luis Arcas - Inst. Obrero Valenciano,Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.35879,39.45551,4,15,20
 47,Autopista del Saler - Puente Monteolivete,Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.35542,39.45651,0,15,20
-48,Antonio Ferrandis - General Urrutia,Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.35855,39.45081,7,13,20
+48,Antonio Ferrandis - General Urrutia,Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.35855,39.45081,6,14,20
 49,Ricardo Muñoz Suay - María José Victoria Fuster (C.C. El Saler),Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.35711,39.45299,1,24,25
 50,Autopista del Saler - Antonio Ferrandis (C.C. El Saler),Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.35286,39.45332,0,40,40
-51,Moreras (Oceanográfico),Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.34723,39.45218,2,18,20
+51,Moreras (Oceanográfico),Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.34723,39.45218,3,17,20
 52,Luis García Berlanga Martí - Menorca,Penya-Roja,Camins al Grau,-0.34634,39.45603,16,8,25
 53,Alameda - Pintor Maella,Penya-Roja,Camins al Grau,-0.34814,39.45676,6,18,25
 54,Plaza de Europa,Penya-Roja,Camins al Grau,-0.35269,39.45978,4,15,20
@@ -58,7 +58,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 59,Baleares - Río Escalona,Penya-Roja,Camins al Grau,-0.35455,39.46309,2,13,15
 60,Baleares - Lebón,Cami Fondo,Camins al Grau,-0.35178,39.46223,12,7,19
 61,Vicent Vidal - Pintor Maella,La Creu del Grau,Camins al Grau,-0.34783,39.46129,19,1,20
-62,Menorca - Baleares,La Creu del Grau,Camins al Grau,-0.34215,39.45981,20,0,20
+62,Menorca - Baleares,La Creu del Grau,Camins al Grau,-0.34215,39.45981,19,1,20
 63,Av Puerto 19 (Telefónica),Mestalla,El Pla del Real,-0.35841,39.46778,18,1,20
 64,Av. Puerto 61-63,Albors,Camins al Grau,-0.3542,39.46652,17,3,20
 65,Av. Puerto - Doctor Manuel Candela,Aiora,Camins al Grau,-0.35084,39.46552,18,0,19
@@ -126,7 +126,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 128,Alfahuir - Peñiscola,Els Orriols,Rascanya,-0.36754,39.48877,14,10,25
 129,Almazora - Benimuslem,Trinitat,La Saïdia,-0.36995,39.48598,17,2,20
 130,Convento Carmelitas - Alboraya,Trinitat,La Saïdia,-0.37021,39.48324,8,7,15
-131,"CALLE SANTA AMALIA  2, esquina POETA BODRIA",Trinitat,La Saïdia,-0.37291,39.48142,5,9,20
+131,"CALLE SANTA AMALIA  2, esquina POETA BODRIA",Trinitat,La Saïdia,-0.37291,39.48142,4,10,20
 132,Platero Suárez - Milagrosa,Morvedre,La Saïdia,-0.37343,39.48529,4,11,15
 133,Alfambra - Poeta Monmeneu,Morvedre,La Saïdia,-0.37588,39.48276,5,9,15
 134,Maximiliano Thous - Luz Casanova,Sant Antoni,La Saïdia,-0.37334,39.48766,11,9,20
@@ -184,7 +184,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 187,Ángel Villena - Ausias March,La Fonteta S.Lluis,Quatre Carreres,-0.36882,39.44796,13,2,15
 188,Hospital Nueva Fe (consultas externas),Malilla,Quatre Carreres,-0.37516,39.44462,8,32,40
 189,Hospital Nueva Fe (administración),Malilla,Quatre Carreres,-0.37707,39.44478,7,23,30
-190,Cra. Malilla - Bulevar Sur,Malilla,Quatre Carreres,-0.38002,39.44653,2,13,15
+190,Cra. Malilla - Bulevar Sur,Malilla,Quatre Carreres,-0.38002,39.44653,3,12,15
 191,Esparraguera - Cra. Malilla,Malilla,Quatre Carreres,-0.37887,39.45033,4,11,15
 192,Cra. Malilla - Oltá,Malilla,Quatre Carreres,-0.37871,39.45264,11,9,20
 193,Uruguay - Carteros,La Raiosa,Jesús,-0.38672,39.45515,10,10,20
@@ -211,8 +211,8 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 214,"Santa Cruz de Tenerife, 21",Tres Forques,L'Olivereta,-0.40058,39.46493,2,13,15
 215,Músico Ayllón - Francisco Dolz,Tres Forques,L'Olivereta,-0.39675,39.46567,5,10,15
 216,Av. del Cid - Burgos,Nou Moles,L'Olivereta,-0.39946,39.46916,1,14,17
-217,Pintor Stolz - Nueve de Octubre,Nou Moles,L'Olivereta,-0.4046,39.47033,6,19,25
-218,Olimpia Arozena Torres - Juan Bautista Vives,Nou Moles,L'Olivereta,-0.39738,39.47074,6,9,15
+217,Pintor Stolz - Nueve de Octubre,Nou Moles,L'Olivereta,-0.4046,39.47033,5,20,25
+218,Olimpia Arozena Torres - Juan Bautista Vives,Nou Moles,L'Olivereta,-0.39738,39.47074,7,8,15
 219,Castán Tobeñas - Rincon de Ademuz,Nou Moles,L'Olivereta,-0.40303,39.47266,9,8,18
 220,Castán Tobeñas - Patriques,Nou Moles,L'Olivereta,-0.39832,39.47386,8,8,16
 221,Manuel de Falla - Hernández Lázaro,Sant Pau,Campanar,-0.40285,39.47527,12,8,20
