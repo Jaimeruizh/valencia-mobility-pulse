@@ -21,7 +21,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 22,Angel Guimerá - Juan Llorens,Arrancapins,Extramurs,-0.38835,39.46979,2,13,15
 23,Fernando el Católico - Erudito Orellana,Arrancapins,Extramurs,-0.38618,39.47163,0,19,19
 24,Fernando el Católico - Cuenca,Arrancapins,Extramurs,-0.38403,39.46908,1,19,20
-25,"Alberique, 18 (Abastos)",Arrancapins,Extramurs,-0.38861,39.46773,5,18,23
+25,"Alberique, 18 (Abastos)",Arrancapins,Extramurs,-0.38861,39.46773,4,19,23
 26,San José de Calasanz - Salas Quiroga,Arrancapins,Extramurs,-0.38586,39.46634,10,5,15
 27,San Vicente Martir - Doctor Vilá Barberá,Arrancapins,Extramurs,-0.38185,39.46336,4,16,20
 28,Navarro Reverter - Grabador Esteve,El Pla del Remei,L'Eixample,-0.36775,39.47158,0,28,29
@@ -30,7 +30,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 31,Salamanca - Conde Altea,La Gran Via,L'Eixample,-0.36503,39.46737,1,14,19
 32,Conde Altea - Almirante Cadarso,La Gran Via,L'Eixample,-0.36825,39.46601,0,16,20
 33,Germanías - Ruzafa,Russafa,L'Eixample,-0.37399,39.46482,0,20,20
-34,Regne de Valencia - Doctor Sumsi,La Gran Via,L'Eixample,-0.36996,39.46412,4,13,17
+34,Regne de Valencia - Doctor Sumsi,La Gran Via,L'Eixample,-0.36996,39.46412,3,14,17
 35,Regne de Valencia - Almirante Cadarso,La Gran Via,L'Eixample,-0.36699,39.46375,2,8,20
 36,Plaza de los Fueros - Conde Trenor,El Carme,Ciutat Vella,-0.37544,39.47907,1,24,25
 37,Peris y Valero - Luis Santángel,Russafa,L'Eixample,-0.36644,39.46094,12,8,20
@@ -110,14 +110,14 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 112,Manuel Broseta i Pont - Naranjos,La Carrasca,Algirós,-0.34228,39.47858,0,40,40
 113,UPV Caminos,La Carrasca,Algirós,-0.34361,39.48128,0,38,38
 114,UPV Informática,La Carrasca,Algirós,-0.34659,39.4818,0,30,30
-115,Cataluña - Doctor Vicente Zaragozá,Benimaclet,Benimaclet,-0.35215,39.48156,2,14,16
+115,Cataluña - Doctor Vicente Zaragozá,Benimaclet,Benimaclet,-0.35215,39.48156,3,13,16
 116,Doctor Vicente Zaragozá - Ramón Asensio,Benimaclet,Benimaclet,-0.35756,39.48325,9,5,15
 117,Gascó Oliag - Primado Reig,Ciutat Universitaria,El Pla del Real,-0.35707,39.47925,7,21,30
 118,Gómez Ferrer - Álvaro de Bazán,Ciutat Universitaria,El Pla del Real,-0.36042,39.48047,14,5,20
 119,Jaime Roig - Bachiller,Jaume Roig,El Pla del Real,-0.36323,39.48252,7,12,20
 120,Doctor Vicente Zaragozá - Emilio Baró,Benimaclet,Benimaclet,-0.36205,39.48488,13,5,18
-121,Murta - Sant Eperit,Benimaclet,Benimaclet,-0.35877,39.48618,8,6,15
-122,Músico Hipólito Martínez - Diógenes López Mecho,Cami de Vera,Benimaclet,-0.35407,39.48449,14,1,15
+121,Murta - Sant Eperit,Benimaclet,Benimaclet,-0.35877,39.48618,10,4,15
+122,Músico Hipólito Martínez - Diógenes López Mecho,Cami de Vera,Benimaclet,-0.35407,39.48449,13,2,15
 123,Albocácer - Vinaroz,Sant Llorens,Rascanya,-0.36484,39.48767,19,0,20
 124,Azagador de Alboraya - Dolores Marqués,Benimaclet,Benimaclet,-0.36196,39.4885,24,1,25
 125,"Masquefa, 42 - 44",Cami de Vera,Benimaclet,-0.35862,39.48969,12,3,15
@@ -134,7 +134,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 136,Economista Gay - Constitución,Tormos,La Saïdia,-0.37561,39.48994,19,1,20
 137,Economista Gay - Luis Crumiere,Tormos,La Saïdia,-0.3799,39.48903,11,9,20
 138,San Pancracio - Periodista Llorente,Marxalenes,La Saïdia,-0.38422,39.48819,20,0,20
-139,Reus - Alquería de la Estrella,Marxalenes,La Saïdia,-0.38287,39.48571,15,0,15
+139,Reus - Alquería de la Estrella,Marxalenes,La Saïdia,-0.38287,39.48571,14,1,15
 140,Campanar - Nicasio Benlloch,El Calvari,Campanar,-0.3896,39.488,13,7,20
 141,Gregorio Gea - Padre Ferris,Les Tendetes,Campanar,-0.38516,39.48327,9,10,20
 142,Gregorio Gea - Profesor Beltrán Báguena,Campanar,Campanar,-0.38966,39.48192,0,24,25
@@ -150,8 +150,8 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 153,Llano de la Zaidía - Doctor Olóriz,Marxalenes,La Saïdia,-0.38059,39.48306,3,20,24
 154,Pescadores - Progreso,Cabanyal-Canyamelar,Poblats Marítims,-0.32955,39.46988,15,0,15
 155,Salamanca - Reina Doña Germana,La Gran Via,L'Eixample,-0.36308,39.46495,7,11,20
-156,Puerto Rico - Cuba,Russafa,L'Eixample,-0.37635,39.46096,2,11,15
-157,Pérez Galdós - Marqués de Zenete,Arrancapins,Extramurs,-0.38737,39.46405,2,18,20
+156,Puerto Rico - Cuba,Russafa,L'Eixample,-0.37635,39.46096,3,10,15
+157,Pérez Galdós - Marqués de Zenete,Arrancapins,Extramurs,-0.38737,39.46405,3,17,20
 158,Doctor Lluch - Virgen del Sufragio,Cabanyal-Canyamelar,Poblats Marítims,-0.32772,39.4667,15,0,15
 159,Francisco Cubells - San José de la Vega,Cabanyal-Canyamelar,Poblats Marítims,-0.33472,39.46345,15,0,17
 160,José María de Haro - Justo y Pastor,L'Illa Perduda,Algirós,-0.33898,39.46734,20,0,20
@@ -197,7 +197,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 200,Av. del Cid - Julián Peña,Nou Moles,L'Olivereta,-0.39321,39.46774,5,10,15
 201,Perez Galdós - Nou Moles,Nou Moles,L'Olivereta,-0.39367,39.47171,3,17,20
 202,Pechina - Teruel,La Petxina,Extramurs,-0.39333,39.47622,3,17,20
-203,Reina Violante - Escultor García Mas,Sant Pau,Campanar,-0.40118,39.48461,8,7,15
+203,Reina Violante - Escultor García Mas,Sant Pau,Campanar,-0.40118,39.48461,7,8,15
 204,Corts Valencianes - General Avilés,Sant Pau,Campanar,-0.39659,39.48584,0,20,20
 205,Nicasio Benlloch - Amics dels Corpus,Benicalap,Benicalap,-0.39309,39.48929,13,10,24
 206,Periodista Gil Sumbiela - Poeta Serrano Clavero,Benicalap,Benicalap,-0.38901,39.49271,3,12,15
