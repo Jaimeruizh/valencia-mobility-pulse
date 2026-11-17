@@ -1,5 +1,4 @@
 captured_at,bikes_available,docks_free,stations_no_bikes,stations_no_free_docks,stations_out_of_service,traffic_reading_sum,traffic_sensors_reporting,segments_flowing,segments_dense,segments_congested,segments_closed
-2026-11-14T23:40:00+01:00,1963,3285,27,17,1,382069,354,408,1,0,4
 2026-11-14T23:50:00+01:00,1975,3273,26,15,1,382069,354,408,1,0,4
 2026-11-15T00:00:00+01:00,1948,3299,31,14,1,382069,354,408,1,0,4
 2026-11-15T00:10:00+01:00,1951,3298,32,14,1,382069,354,409,0,0,4
@@ -395,3 +394,4 @@ captured_at,bikes_available,docks_free,stations_no_bikes,stations_no_free_docks,
 2026-11-17T23:10:00+01:00,2067,3197,36,26,0,382069,354,407,0,0,6
 2026-11-17T23:20:00+01:00,2069,3195,37,29,0,382069,354,407,0,0,6
 2026-11-17T23:30:00+01:00,2084,3180,38,33,0,382069,354,407,0,0,6
+2026-11-17T23:40:00+01:00,2101,3162,35,29,0,382069,354,407,0,0,6
