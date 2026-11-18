@@ -5,7 +5,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 4,Plaza de la Virgen - Bailía,La Seu,Ciutat Vella,-0.37534,39.47675,0,24,25
 5,Plaza Poeta Llorente,La Xerea,Ciutat Vella,-0.37114,39.4769,0,15,15
 6,Guillem de Castro - San Pedro Pascual,El Botanic,Extramurs,-0.38408,39.4728,4,11,15
-7,Plaza del Mercado - Taula de Canvis,El Mercat,Ciutat Vella,-0.37919,39.47487,0,19,19
+7,Plaza del Mercado - Taula de Canvis,El Mercat,Ciutat Vella,-0.37919,39.47487,1,18,19
 8,Plaza de la Reina - Mar,La Seu,Ciutat Vella,-0.3753,39.47388,0,9,9
 9,Plaza de Tetuán,La Xerea,Ciutat Vella,-0.36993,39.47436,0,25,25
 10,Hospital - Horno del Hospital,Sant Francesc,Ciutat Vella,-0.38261,39.47082,1,14,15
@@ -80,7 +80,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 79,Aragón - Ernesto Ferrer,Mestalla,El Pla del Real,-0.35724,39.47278,20,0,20
 80,Amadeo de Saboya (frente Ayuntamiento),Mestalla,El Pla del Real,-0.3623,39.47374,0,25,25
 81,Micer Mascó - Rodriguez Fornos,Exposicio,El Pla del Real,-0.36098,39.47513,3,17,20
-82,Guillem de Castro (Torres de Quart),El Carme,Ciutat Vella,-0.38391,39.47606,3,10,15
+82,Guillem de Castro (Torres de Quart),El Carme,Ciutat Vella,-0.38391,39.47606,4,9,15
 83,General Elio - Llano del Real,Exposicio,El Pla del Real,-0.36697,39.47759,0,25,25
 84,"Serrería, 67",L'Illa Perduda,Algirós,-0.33523,39.46712,15,0,15
 85,Blasco Ibañez - Jaime Roig,Ciutat Universitaria,El Pla del Real,-0.36472,39.47946,1,22,23

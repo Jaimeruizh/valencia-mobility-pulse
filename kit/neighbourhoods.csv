@@ -18,11 +18,11 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 043,El Calvari,Campanar,0.094,1,20,10,4,5,1.77,1.9,High
 052,Morvedre,La Saïdia,0.429,2,30,29,13,9,3.41,2.3,High
 053,Trinitat,La Saïdia,0.596,4,75,36,10,13,4.7,2.8,Low
-013,El Carme,Ciutat Vella,0.384,5,100,5,4,3,1.95,3.2,Low
+013,El Carme,Ciutat Vella,0.384,5,100,6,4,3,1.95,3.2,Low
 031,El Botanic,Extramurs,0.37,2,31,7,7,10,3.62,3,Low
 061,Exposicio,El Pla del Real,0.382,4,125,6,11,14,4.7,2.9,Low
 012,La Xerea,Ciutat Vella,0.312,3,60,1,6,17,2.64,3,Low
-015,El Mercat,Ciutat Vella,0.173,2,34,2,4,6,0,2.8,Low
+015,El Mercat,Ciutat Vella,0.173,2,34,3,4,6,0,2.8,Low
 014,El Pilar,Ciutat Vella,0.162,0,0,0,5,8,0.27,2.8,Low
 022,El Pla del Remei,L'Eixample,0.387,6,127,0,15,19,2.06,2.9,Low
 131,L'Illa Perduda,Algirós,0.232,3,56,53,6,4,0.41,2.6,Low
