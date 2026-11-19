@@ -34,7 +34,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 33,Germanías - Ruzafa,Russafa,L'Eixample,-0.37399,39.46482,1,19,20
 34,Regne de Valencia - Doctor Sumsi,La Gran Via,L'Eixample,-0.36996,39.46412,3,13,17
 35,Regne de Valencia - Almirante Cadarso,La Gran Via,L'Eixample,-0.36699,39.46375,5,5,20
-36,Plaza de los Fueros - Conde Trenor,El Carme,Ciutat Vella,-0.37544,39.47907,0,25,25
+36,Plaza de los Fueros - Conde Trenor,El Carme,Ciutat Vella,-0.37544,39.47907,1,24,25
 37,Peris y Valero - Luis Santángel,Russafa,L'Eixample,-0.36644,39.46094,16,4,20
 38,Peris y Valero - Cabo Jubi,Russafa,L'Eixample,-0.37025,39.4594,13,2,15
 39,Peris y Valero - Cuba,Russafa,L'Eixample,-0.37393,39.45785,15,2,19
@@ -61,7 +61,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 60,Baleares - Lebón,Cami Fondo,Camins al Grau,-0.35178,39.46223,18,1,19
 61,Vicent Vidal - Pintor Maella,La Creu del Grau,Camins al Grau,-0.34783,39.46129,20,0,20
 62,Menorca - Baleares,La Creu del Grau,Camins al Grau,-0.34215,39.45981,20,0,20
-63,Av Puerto 19 (Telefónica),Mestalla,El Pla del Real,-0.35841,39.46778,4,14,20
+63,Av Puerto 19 (Telefónica),Mestalla,El Pla del Real,-0.35841,39.46778,5,14,20
 64,Av. Puerto 61-63,Albors,Camins al Grau,-0.3542,39.46652,20,0,20
 65,Av. Puerto - Doctor Manuel Candela,Aiora,Camins al Grau,-0.35084,39.46552,18,0,19
 66,Guillem de Anglesola - Av. Puerto,Aiora,Camins al Grau,-0.34626,39.46427,25,0,25
@@ -131,9 +131,9 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 130,Convento Carmelitas - Alboraya,Trinitat,La Saïdia,-0.37021,39.48324,10,5,15
 131,"CALLE SANTA AMALIA  2, esquina POETA BODRIA",Trinitat,La Saïdia,-0.37291,39.48142,0,19,20
 132,Platero Suárez - Milagrosa,Morvedre,La Saïdia,-0.37343,39.48529,14,1,15
-133,Alfambra - Poeta Monmeneu,Morvedre,La Saïdia,-0.37588,39.48276,6,9,15
+133,Alfambra - Poeta Monmeneu,Morvedre,La Saïdia,-0.37588,39.48276,5,10,15
 134,Maximiliano Thous - Luz Casanova,Sant Antoni,La Saïdia,-0.37334,39.48766,6,13,20
-135,Constitución - Reus,Marxalenes,La Saïdia,-0.3785,39.4857,20,0,20
+135,Constitución - Reus,Marxalenes,La Saïdia,-0.3785,39.4857,19,1,20
 136,Economista Gay - Constitución,Tormos,La Saïdia,-0.37561,39.48994,14,6,20
 137,Economista Gay - Luis Crumiere,Tormos,La Saïdia,-0.3799,39.48903,9,11,20
 138,San Pancracio - Periodista Llorente,Marxalenes,La Saïdia,-0.38422,39.48819,10,10,20
@@ -165,7 +165,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 165,Pavía - Espadán,Cabanyal-Canyamelar,Poblats Marítims,-0.32457,39.47141,9,11,20
 166,Don Vicente Guillot - Progreso,Cabanyal-Canyamelar,Poblats Marítims,-0.32881,39.47335,15,0,15
 167,Pavía - Acequia de la Cadena,La Malva-Rosa,Poblats Marítims,-0.32461,39.47491,3,17,20
-168,Malvarrosa - Río Tajo,La Malva-Rosa,Poblats Marítims,-0.32789,39.47687,14,0,15
+168,Malvarrosa - Río Tajo,La Malva-Rosa,Poblats Marítims,-0.32789,39.47687,13,1,15
 169,Pavía (Instituto Isabel de Villena),La Malva-Rosa,Poblats Marítims,-0.32465,39.47879,6,14,20
 170,Isabel de Villena - Mendizábal,La Malva-Rosa,Poblats Marítims,-0.32533,39.48297,16,4,20
 171,Gran Canaria - Ingeniero Manuel Maese,La Malva-Rosa,Poblats Marítims,-0.32901,39.48306,15,0,15
@@ -235,7 +235,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 235,Conde Torrefiel - Cecilio Plá,Torrefiel,Rascanya,-0.3772,39.49805,3,12,15
 236,Rio Segre - Rafael Company,Benicalap,Benicalap,-0.38228,39.49507,0,15,15
 237,Levante U.D. - Ecuador,Benicalap,Benicalap,-0.39104,39.49476,8,7,15
-238,San Jose Artesano - Francisco Morote Greus,Ciutat Fallera,Benicalap,-0.39438,39.49745,3,12,15
+238,San Jose Artesano - Francisco Morote Greus,Ciutat Fallera,Benicalap,-0.39438,39.49745,2,13,15
 239,Florista - T4 (Palau de Congressos),Beniferri,Pobles de l'Oest,-0.39996,39.49699,8,11,20
 240,Camp del Turia - Corts Valencianes,Benicalap,Benicalap,-0.40155,39.495,4,16,20
 241,La Vall d'Albaida - Corts Valencianes,Sant Pau,Campanar,-0.40189,39.49298,7,8,15
