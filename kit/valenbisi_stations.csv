@@ -9,7 +9,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 8,Plaza de la Reina - Mar,La Seu,Ciutat Vella,-0.3753,39.47388,0,9,9
 9,Plaza de Tetuán,La Xerea,Ciutat Vella,-0.36993,39.47436,7,18,25
 10,Hospital - Horno del Hospital,Sant Francesc,Ciutat Vella,-0.38261,39.47082,4,11,15
-11,Plaza Ayuntamiento - Cotanda,Sant Francesc,Ciutat Vella,-0.37678,39.47119,1,26,27
+11,Plaza Ayuntamiento - Cotanda,Sant Francesc,Ciutat Vella,-0.37678,39.47119,0,27,27
 12,Calle Salvá - Calle Poeta Querol (Antigua ubicación MINYANA),La Xerea,Ciutat Vella,-0.37401,39.47197,0,20,20
 13,Alfonso el Magnánimo - Nave,Sant Francesc,Ciutat Vella,-0.37087,39.47206,0,23,24
 14,Huesca - Barón de Cárcer,Sant Francesc,Ciutat Vella,-0.37972,39.46897,0,20,20
@@ -49,7 +49,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 48,Antonio Ferrandis - General Urrutia,Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.35855,39.45081,8,12,20
 49,Ricardo Muñoz Suay - María José Victoria Fuster (C.C. El Saler),Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.35711,39.45299,15,10,25
 50,Autopista del Saler - Antonio Ferrandis (C.C. El Saler),Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.35286,39.45332,1,39,40
-51,Moreras (Oceanográfico),Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.34723,39.45218,15,5,20
+51,Moreras (Oceanográfico),Ciutat de les Arts i de les Ciencies,Quatre Carreres,-0.34723,39.45218,16,4,20
 52,Luis García Berlanga Martí - Menorca,Penya-Roja,Camins al Grau,-0.34634,39.45603,8,17,25
 53,Alameda - Pintor Maella,Penya-Roja,Camins al Grau,-0.34814,39.45676,15,10,25
 54,Plaza de Europa,Penya-Roja,Camins al Grau,-0.35269,39.45978,8,12,20
@@ -67,7 +67,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 66,Guillem de Anglesola - Av. Puerto,Aiora,Camins al Grau,-0.34626,39.46427,25,0,25
 67,Juan Verdeguer - Toneleros,El Grau,Poblats Marítims,-0.3368,39.45886,14,0,14
 68,Av. Puerto - José Aguilar,Aiora,Camins al Grau,-0.34173,39.4628,18,0,20
-69,Av. Puerto - Serrería,Aiora,Camins al Grau,-0.33872,39.46195,20,1,25
+69,Av. Puerto - Serrería,Aiora,Camins al Grau,-0.33872,39.46195,21,0,25
 70,"Colón, 44",El Pla del Remei,L'Eixample,-0.37124,39.46959,0,20,20
 71,Av. Puerto - Plaza Tribunal de les Aigües,El Grau,Poblats Marítims,-0.33353,39.46038,16,3,20
 72,Ramiro de Maeztu - Peris Brell,Aiora,Camins al Grau,-0.34645,39.46726,12,2,15
@@ -138,7 +138,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 137,Economista Gay - Luis Crumiere,Tormos,La Saïdia,-0.3799,39.48903,12,8,20
 138,San Pancracio - Periodista Llorente,Marxalenes,La Saïdia,-0.38422,39.48819,5,15,20
 139,Reus - Alquería de la Estrella,Marxalenes,La Saïdia,-0.38287,39.48571,10,5,15
-140,Campanar - Nicasio Benlloch,El Calvari,Campanar,-0.3896,39.488,9,11,20
+140,Campanar - Nicasio Benlloch,El Calvari,Campanar,-0.3896,39.488,10,10,20
 141,Gregorio Gea - Padre Ferris,Les Tendetes,Campanar,-0.38516,39.48327,15,5,20
 142,Gregorio Gea - Profesor Beltrán Báguena,Campanar,Campanar,-0.38966,39.48192,1,24,25
 143,Pio XII - Menéndez PIdal (Nuevo Centro),Campanar,Campanar,-0.39094,39.47954,0,28,30
@@ -150,10 +150,10 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 149,Peris y Valero - Salamanca,La Gran Via,L'Eixample,-0.3618,39.46293,19,1,20
 151,Jerónimo Monsoriu - Alcalde Cano Coloma,Aiora,Camins al Grau,-0.33712,39.46467,19,0,20
 152,Reina Doña María - Cádiz,Russafa,L'Eixample,-0.37271,39.46093,0,15,15
-153,Llano de la Zaidía - Doctor Olóriz,Marxalenes,La Saïdia,-0.38059,39.48306,7,17,24
+153,Llano de la Zaidía - Doctor Olóriz,Marxalenes,La Saïdia,-0.38059,39.48306,8,16,24
 154,Pescadores - Progreso,Cabanyal-Canyamelar,Poblats Marítims,-0.32955,39.46988,8,6,15
 155,Salamanca - Reina Doña Germana,La Gran Via,L'Eixample,-0.36308,39.46495,5,13,20
-156,Puerto Rico - Cuba,Russafa,L'Eixample,-0.37635,39.46096,0,13,15
+156,Puerto Rico - Cuba,Russafa,L'Eixample,-0.37635,39.46096,1,12,15
 157,Pérez Galdós - Marqués de Zenete,Arrancapins,Extramurs,-0.38737,39.46405,8,12,20
 158,Doctor Lluch - Virgen del Sufragio,Cabanyal-Canyamelar,Poblats Marítims,-0.32772,39.4667,2,13,15
 159,Francisco Cubells - San José de la Vega,Cabanyal-Canyamelar,Poblats Marítims,-0.33472,39.46345,9,4,17
@@ -187,7 +187,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 187,Ángel Villena - Ausias March,La Fonteta S.Lluis,Quatre Carreres,-0.36882,39.44796,7,8,15
 188,Hospital Nueva Fe (consultas externas),Malilla,Quatre Carreres,-0.37516,39.44462,20,20,40
 189,Hospital Nueva Fe (administración),Malilla,Quatre Carreres,-0.37707,39.44478,3,27,30
-190,Cra. Malilla - Bulevar Sur,Malilla,Quatre Carreres,-0.38002,39.44653,5,10,15
+190,Cra. Malilla - Bulevar Sur,Malilla,Quatre Carreres,-0.38002,39.44653,6,9,15
 191,Esparraguera - Cra. Malilla,Malilla,Quatre Carreres,-0.37887,39.45033,10,5,15
 192,Cra. Malilla - Oltá,Malilla,Quatre Carreres,-0.37871,39.45264,9,11,20
 193,Uruguay - Carteros,La Raiosa,Jesús,-0.38672,39.45515,19,1,20
@@ -226,7 +226,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 226,Corts Valencianes - La Safor,Benicalap,Benicalap,-0.39886,39.49086,3,27,30
 227,San Clemente - Hospital Arnau de Vilanova,Sant Pau,Campanar,-0.40293,39.49025,6,14,20
 228,Doctor Nicasio Benlloch - L'Horta Sud,Benicalap,Benicalap,-0.39867,39.49369,2,13,15
-229,Aitana - Florista,Benicalap,Benicalap,-0.39481,39.4931,7,9,16
+229,Aitana - Florista,Benicalap,Benicalap,-0.39481,39.4931,6,10,16
 230,Poeta Serrano Clavero - General Llorens,Benicalap,Benicalap,-0.38678,39.49475,5,10,15
 231,Alcañiz - Cambrils,Torrefiel,Rascanya,-0.37862,39.49507,3,12,15
 232,San Vicente Paul - Santiago Rusiñol,Sant Llorens,Rascanya,-0.36575,39.49464,10,5,15
@@ -235,7 +235,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 235,Conde Torrefiel - Cecilio Plá,Torrefiel,Rascanya,-0.3772,39.49805,10,5,15
 236,Rio Segre - Rafael Company,Benicalap,Benicalap,-0.38228,39.49507,6,9,15
 237,Levante U.D. - Ecuador,Benicalap,Benicalap,-0.39104,39.49476,1,14,15
-238,San Jose Artesano - Francisco Morote Greus,Ciutat Fallera,Benicalap,-0.39438,39.49745,1,14,15
+238,San Jose Artesano - Francisco Morote Greus,Ciutat Fallera,Benicalap,-0.39438,39.49745,2,13,15
 239,Florista - T4 (Palau de Congressos),Beniferri,Pobles de l'Oest,-0.39996,39.49699,5,15,20
 240,Camp del Turia - Corts Valencianes,Benicalap,Benicalap,-0.40155,39.495,1,18,20
 241,La Vall d'Albaida - Corts Valencianes,Sant Pau,Campanar,-0.40189,39.49298,3,12,15
