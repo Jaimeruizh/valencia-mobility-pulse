@@ -12,7 +12,7 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 173,Carpesa,Pobles del Nord,2.259,0,0,0,6,1,0,,
 177,Borboto,Pobles del Nord,1.422,0,0,0,3,1,0,,
 171,Benifaraig,Pobles del Nord,1.424,0,0,0,8,1,0,,
-152,Torrefiel,Rascanya,0.701,6,95,35,27,7,3.71,3,Low
+152,Torrefiel,Rascanya,0.701,6,95,36,27,7,3.71,3,Low
 054,Tormos,La Saïdia,0.28,2,40,26,6,6,1.73,2.6,Low
 051,Marxalenes,La Saïdia,0.391,4,79,36,13,12,3.73,2.4,Medium
 043,El Calvari,Campanar,0.094,1,20,9,4,5,1.77,1.9,High
@@ -46,8 +46,8 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 135,La Carrasca,Algirós,1.948,13,351,173,17,6,10.52,3.7,Low
 113,La Malva-Rosa,Poblats Marítims,0.734,6,105,42,23,7,5.1,2.8,Low
 134,La Vega Baixa,Algirós,0.191,2,39,38,5,6,0.89,2.7,Low
-121,Aiora,Camins al Grau,0.652,7,144,131,8,4,4.3,2.4,Medium
-132,Ciutat Jardi,Algirós,0.364,3,80,75,10,6,2.24,2.5,Medium
+121,Aiora,Camins al Grau,0.652,7,144,130,8,4,4.3,2.4,Medium
+132,Ciutat Jardi,Algirós,0.364,3,80,76,10,6,2.24,2.5,Medium
 115,Natzaret,Poblats Marítims,0.917,2,30,29,12,4,0.74,2.7,Low
 106,La Punta,Quatre Carreres,6.216,1,20,19,44,8,8.14,2.9,Low
 111,El Grau,Poblats Marítims,5.234,3,54,31,15,7,4.66,2.6,Low
