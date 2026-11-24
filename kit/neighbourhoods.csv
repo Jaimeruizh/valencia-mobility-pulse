@@ -12,17 +12,17 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 173,Carpesa,Pobles del Nord,2.259,0,0,0,6,1,0,,
 177,Borboto,Pobles del Nord,1.422,0,0,0,3,1,0,,
 171,Benifaraig,Pobles del Nord,1.424,0,0,0,8,1,0,,
-152,Torrefiel,Rascanya,0.701,6,95,50,27,7,3.71,3,Low
+152,Torrefiel,Rascanya,0.701,6,95,49,27,7,3.71,3,Low
 054,Tormos,La Saïdia,0.28,2,40,16,6,6,1.73,2.6,Low
 051,Marxalenes,La Saïdia,0.391,4,79,36,13,12,3.73,2.4,Medium
 043,El Calvari,Campanar,0.094,1,20,13,4,5,1.77,1.9,High
 052,Morvedre,La Saïdia,0.429,2,30,30,13,9,3.41,2.3,High
 053,Trinitat,La Saïdia,0.596,4,75,43,10,13,4.7,2.8,Low
-013,El Carme,Ciutat Vella,0.384,5,100,14,4,3,1.95,3.2,Low
+013,El Carme,Ciutat Vella,0.384,5,100,13,4,3,1.95,3.2,Low
 031,El Botanic,Extramurs,0.37,2,31,4,7,10,3.62,3,Low
 061,Exposicio,El Pla del Real,0.382,4,125,6,11,14,4.7,2.9,Low
 012,La Xerea,Ciutat Vella,0.312,3,60,7,6,17,2.64,3,Low
-015,El Mercat,Ciutat Vella,0.173,2,34,5,4,6,0,2.8,Low
+015,El Mercat,Ciutat Vella,0.173,2,34,6,4,6,0,2.8,Low
 014,El Pilar,Ciutat Vella,0.162,0,0,0,5,8,0.27,2.8,Low
 022,El Pla del Remei,L'Eixample,0.387,6,130,0,15,19,2.06,2.9,Low
 131,L'Illa Perduda,Algirós,0.232,3,56,56,6,4,0.41,2.6,Low
@@ -45,7 +45,7 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 112,Cabanyal-Canyamelar,Poblats Marítims,1.351,11,198,130,37,8,6.54,2.9,Low
 135,La Carrasca,Algirós,1.948,13,351,75,17,6,10.52,3.7,Low
 113,La Malva-Rosa,Poblats Marítims,0.734,6,105,75,23,7,5.1,2.8,Low
-134,La Vega Baixa,Algirós,0.191,2,39,29,5,6,0.89,2.7,Low
+134,La Vega Baixa,Algirós,0.191,2,39,28,5,6,0.89,2.7,Low
 121,Aiora,Camins al Grau,0.652,7,144,139,8,4,4.3,2.4,Medium
 132,Ciutat Jardi,Algirós,0.364,3,80,73,10,6,2.24,2.5,Medium
 115,Natzaret,Poblats Marítims,0.917,2,30,17,12,4,0.74,2.7,Low
@@ -73,7 +73,7 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 105,Na Rovella,Quatre Carreres,0.537,3,49,35,15,5,2.61,2.5,Medium
 125,Penya-Roja,Camins al Grau,0.908,6,125,70,25,7,10.15,3.4,Low
 123,La Creu del Grau,Camins al Grau,0.39,2,40,39,16,6,1.24,2.5,Medium
-107,Ciutat de les Arts i de les Ciencies,Quatre Carreres,0.994,7,160,53,18,8,4.47,3.4,Low
+107,Ciutat de les Arts i de les Ciencies,Quatre Carreres,0.994,7,160,52,18,8,4.47,3.4,Low
 172,Poble Nou,Pobles del Nord,2.935,0,0,0,12,2,1.51,,
 174,Les Cases de Barcena,Pobles del Nord,1.203,0,0,0,5,1,1.22,,
 175,Mahuella-Tauladella,Pobles del Nord,1.045,0,0,0,0,0,0.88,,
