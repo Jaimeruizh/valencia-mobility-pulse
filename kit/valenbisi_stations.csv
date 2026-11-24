@@ -2,13 +2,13 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 1,C/GUILLEM DE CASTRO esquina con C/NA JORDANA,El Carme,Ciutat Vella,-0.38293,39.48004,2,23,25
 2,Salvador Giner - C. Museo,El Carme,Ciutat Vella,-0.37975,39.47989,6,8,15
 3,Plaza del Musico López Chavarri,El Carme,Ciutat Vella,-0.38029,39.47684,0,20,20
-4,Plaza de la Virgen - Bailía,La Seu,Ciutat Vella,-0.37534,39.47675,1,23,25
+4,Plaza de la Virgen - Bailía,La Seu,Ciutat Vella,-0.37534,39.47675,0,24,25
 5,Plaza Poeta Llorente,La Xerea,Ciutat Vella,-0.37114,39.4769,7,7,15
 6,Guillem de Castro - San Pedro Pascual,El Botanic,Extramurs,-0.38408,39.4728,1,14,15
 7,Plaza del Mercado - Taula de Canvis,El Mercat,Ciutat Vella,-0.37919,39.47487,0,19,19
 8,Plaza de la Reina - Mar,La Seu,Ciutat Vella,-0.3753,39.47388,0,9,9
 9,Plaza de Tetuán,La Xerea,Ciutat Vella,-0.36993,39.47436,0,25,25
-10,Hospital - Horno del Hospital,Sant Francesc,Ciutat Vella,-0.38261,39.47082,2,13,15
+10,Hospital - Horno del Hospital,Sant Francesc,Ciutat Vella,-0.38261,39.47082,1,14,15
 11,Plaza Ayuntamiento - Cotanda,Sant Francesc,Ciutat Vella,-0.37678,39.47119,0,26,27
 12,Calle Salvá - Calle Poeta Querol (Antigua ubicación MINYANA),La Xerea,Ciutat Vella,-0.37401,39.47197,0,19,20
 13,Alfonso el Magnánimo - Nave,Sant Francesc,Ciutat Vella,-0.37087,39.47206,0,23,24
@@ -25,11 +25,11 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 24,Fernando el Católico - Cuenca,Arrancapins,Extramurs,-0.38403,39.46908,2,17,20
 25,"Alberique, 18 (Abastos)",Arrancapins,Extramurs,-0.38861,39.46773,0,23,23
 26,San José de Calasanz - Salas Quiroga,Arrancapins,Extramurs,-0.38586,39.46634,2,13,15
-27,San Vicente Martir - Doctor Vilá Barberá,Arrancapins,Extramurs,-0.38185,39.46336,1,19,20
+27,San Vicente Martir - Doctor Vilá Barberá,Arrancapins,Extramurs,-0.38185,39.46336,0,20,20
 28,Navarro Reverter - Grabador Esteve,El Pla del Remei,L'Eixample,-0.36775,39.47158,0,29,29
 29,Plaza América - Cirilo Amorós - Sorní,El Pla del Remei,L'Eixample,-0.3653,39.47011,0,20,20
 30,Cirilo Amorós - Jorge Juan (Mercado Colón),El Pla del Remei,L'Eixample,-0.3685,39.4686,0,19,20
-31,Salamanca - Conde Altea,La Gran Via,L'Eixample,-0.36503,39.46737,0,15,19
+31,Salamanca - Conde Altea,La Gran Via,L'Eixample,-0.36503,39.46737,1,14,19
 32,Conde Altea - Almirante Cadarso,La Gran Via,L'Eixample,-0.36825,39.46601,0,17,20
 33,Germanías - Ruzafa,Russafa,L'Eixample,-0.37399,39.46482,0,20,20
 34,Regne de Valencia - Doctor Sumsi,La Gran Via,L'Eixample,-0.36996,39.46412,1,16,17
@@ -141,7 +141,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 140,Campanar - Nicasio Benlloch,El Calvari,Campanar,-0.3896,39.488,13,7,20
 141,Gregorio Gea - Padre Ferris,Les Tendetes,Campanar,-0.38516,39.48327,17,3,20
 142,Gregorio Gea - Profesor Beltrán Báguena,Campanar,Campanar,-0.38966,39.48192,1,24,25
-143,Pio XII - Menéndez PIdal (Nuevo Centro),Campanar,Campanar,-0.39094,39.47954,1,27,30
+143,Pio XII - Menéndez PIdal (Nuevo Centro),Campanar,Campanar,-0.39094,39.47954,2,26,30
 144,Marqués de San Juan - Diputat Lluís Lucía,Campanar,Campanar,-0.39548,39.47878,0,15,15
 145,Plaza Badajoz,Campanar,Campanar,-0.3984,39.48155,1,14,15
 146,Av. Campanar (La Fe),Campanar,Campanar,-0.39116,39.48474,1,29,30
@@ -245,7 +245,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 245,Nueve de Octubre - Cieza,Nou Moles,L'Olivereta,-0.40527,39.47213,1,19,20
 246,Tres Cruces - Hospital General,La Fontsanta,L'Olivereta,-0.40651,39.46909,2,18,20
 247,Tres Cruces - Músico Ayllón,Tres Forques,L'Olivereta,-0.40557,39.46741,1,14,15
-248,Tres Cruces - Jose Maria Mortes Lerma,Vara de Quart,Patraix,-0.40497,39.46284,3,16,20
+248,Tres Cruces - Jose Maria Mortes Lerma,Vara de Quart,Patraix,-0.40497,39.46284,2,17,20
 249,Tres Cruces - Segunda República Española,Vara de Quart,Patraix,-0.40274,39.45951,1,14,15
 250,Tres Cruces - Pio XI,Sant Isidre,Patraix,-0.40081,39.45635,7,8,15
 251,Arquitecto Segura del Lago - Camino Nuevo de Picaña,Sant Isidre,Patraix,-0.40441,39.45583,2,13,15
