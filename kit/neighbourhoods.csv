@@ -22,7 +22,7 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 031,El Botanic,Extramurs,0.37,2,31,4,7,10,3.62,3,Low
 061,Exposicio,El Pla del Real,0.382,4,125,6,11,14,4.7,2.9,Low
 012,La Xerea,Ciutat Vella,0.312,3,60,7,6,17,2.64,3,Low
-015,El Mercat,Ciutat Vella,0.173,2,34,6,4,6,0,2.8,Low
+015,El Mercat,Ciutat Vella,0.173,2,34,7,4,6,0,2.8,Low
 014,El Pilar,Ciutat Vella,0.162,0,0,0,5,8,0.27,2.8,Low
 022,El Pla del Remei,L'Eixample,0.387,6,130,0,15,19,2.06,2.9,Low
 131,L'Illa Perduda,Algirós,0.232,3,56,56,6,4,0.41,2.6,Low
@@ -44,18 +44,18 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 114,Betero,Poblats Marítims,0.267,1,15,15,6,4,4.59,2.4,Medium
 112,Cabanyal-Canyamelar,Poblats Marítims,1.351,11,198,129,37,8,6.54,2.9,Low
 135,La Carrasca,Algirós,1.948,13,351,75,17,6,10.52,3.7,Low
-113,La Malva-Rosa,Poblats Marítims,0.734,6,105,75,23,7,5.1,2.8,Low
+113,La Malva-Rosa,Poblats Marítims,0.734,6,105,74,23,7,5.1,2.8,Low
 134,La Vega Baixa,Algirós,0.191,2,39,28,5,6,0.89,2.7,Low
 121,Aiora,Camins al Grau,0.652,7,144,139,8,4,4.3,2.4,Medium
 132,Ciutat Jardi,Algirós,0.364,3,80,73,10,6,2.24,2.5,Medium
 115,Natzaret,Poblats Marítims,0.917,2,30,17,12,4,0.74,2.7,Low
 106,La Punta,Quatre Carreres,6.216,1,20,17,44,8,8.14,2.9,Low
 111,El Grau,Poblats Marítims,5.234,3,54,26,15,7,4.66,2.6,Low
-021,Russafa,L'Eixample,0.877,7,139,54,28,12,13.88,3.3,Low
+021,Russafa,L'Eixample,0.877,7,139,55,28,12,13.88,3.3,Low
 023,La Gran Via,L'Eixample,0.467,6,116,27,17,11,3.38,2.9,Low
 101,Montolivet,Quatre Carreres,0.475,5,98,81,23,11,2.69,2.3,High
 074,La Fontsanta,L'Olivereta,0.323,3,58,3,14,7,2.55,2.5,Medium
-083,Vara de Quart,Patraix,1.035,4,70,17,13,5,4.14,2.9,Low
+083,Vara de Quart,Patraix,1.035,4,70,16,13,5,4.14,2.9,Low
 081,Patraix,Patraix,0.622,3,45,33,20,9,7.13,2.9,Low
 073,Tres Forques,L'Olivereta,0.527,3,45,12,11,6,3.95,2.5,Medium
 071,Nou Moles,L'Olivereta,0.74,8,146,51,19,9,5.42,2.6,Low
@@ -68,7 +68,7 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 095,Cami Real,Jesús,1.478,2,35,22,10,6,4.38,3,Low
 085,Favara,Patraix,0.28,2,35,17,4,3,0,2.8,Low
 082,Sant Isidre,Patraix,0.495,4,65,27,10,3,3.42,3,Low
-092,L'Hort de Senabre,Jesús,0.427,1,17,15,12,7,1.39,2.5,Medium
+092,L'Hort de Senabre,Jesús,0.427,1,17,16,12,7,1.39,2.5,Medium
 124,Cami Fondo,Camins al Grau,0.159,1,19,17,8,4,0,2.5,Medium
 105,Na Rovella,Quatre Carreres,0.537,3,49,35,15,5,2.61,2.5,Medium
 125,Penya-Roja,Camins al Grau,0.908,6,125,70,25,7,10.15,3.4,Low
