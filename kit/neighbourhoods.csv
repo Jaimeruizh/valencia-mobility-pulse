@@ -12,10 +12,10 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 173,Carpesa,Pobles del Nord,2.259,0,0,0,6,1,0,,
 177,Borboto,Pobles del Nord,1.422,0,0,0,3,1,0,,
 171,Benifaraig,Pobles del Nord,1.424,0,0,0,8,1,0,,
-152,Torrefiel,Rascanya,0.701,6,95,49,27,7,3.71,3,Low
+152,Torrefiel,Rascanya,0.701,6,95,50,27,7,3.71,3,Low
 054,Tormos,La Saïdia,0.28,2,40,16,6,6,1.73,2.6,Low
 051,Marxalenes,La Saïdia,0.391,4,79,36,13,12,3.73,2.4,Medium
-043,El Calvari,Campanar,0.094,1,20,12,4,5,1.77,1.9,High
+043,El Calvari,Campanar,0.094,1,20,13,4,5,1.77,1.9,High
 052,Morvedre,La Saïdia,0.429,2,30,30,13,9,3.41,2.3,High
 053,Trinitat,La Saïdia,0.596,4,75,43,10,13,4.7,2.8,Low
 013,El Carme,Ciutat Vella,0.384,5,100,14,4,3,1.95,3.2,Low
@@ -29,13 +29,13 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 034,Arrancapins,Extramurs,0.875,9,190,33,21,17,8.56,3.2,Low
 032,La Roqueta,Extramurs,0.231,2,50,1,8,15,2.12,2.7,Low
 091,La Raiosa,Jesús,0.376,4,66,40,15,8,3.6,2.5,Medium
-084,Safranar,Patraix,0.442,3,50,22,10,3,0.6,2.9,Low
+084,Safranar,Patraix,0.442,3,50,23,10,3,0.6,2.9,Low
 153,Sant Llorens,Rascanya,1.534,4,75,29,9,2,3.49,3.7,Low
 102,En Corts,Quatre Carreres,0.364,2,38,36,15,5,2.33,2.2,High
 103,Malilla,Quatre Carreres,2.508,7,155,67,32,5,9.41,3.3,Low
 063,Jaume Roig,El Pla del Real,0.187,1,20,10,7,9,0.7,2.6,Low
 141,Benimaclet,Benimaclet,0.752,5,89,70,19,8,5.1,3.1,Low
-064,Ciutat Universitaria,El Pla del Real,0.274,5,136,14,10,11,3.38,3,Low
+064,Ciutat Universitaria,El Pla del Real,0.274,5,136,15,10,11,3.38,3,Low
 161,Benicalap,Benicalap,1.721,11,199,69,36,10,12.76,3.4,Low
 055,Sant Antoni,La Saïdia,0.25,1,20,18,5,5,0.66,2.6,Low
 062,Mestalla,El Pla del Real,0.844,6,125,27,28,15,10.08,3.2,Low

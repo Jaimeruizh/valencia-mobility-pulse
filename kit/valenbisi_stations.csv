@@ -83,7 +83,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 82,Guillem de Castro (Torres de Quart),El Carme,Ciutat Vella,-0.38391,39.47606,5,9,15
 83,General Elio - Llano del Real,Exposicio,El Pla del Real,-0.36697,39.47759,1,24,25
 84,"Serrería, 67",L'Illa Perduda,Algirós,-0.33523,39.46712,15,0,15
-85,Blasco Ibañez - Jaime Roig,Ciutat Universitaria,El Pla del Real,-0.36472,39.47946,0,23,23
+85,Blasco Ibañez - Jaime Roig,Ciutat Universitaria,El Pla del Real,-0.36472,39.47946,1,22,23
 86,Gaspar Aguilar - Vicente Parra,Favara,Patraix,-0.39119,39.45524,17,3,20
 87,Blasco Ibañez - Doctor Gómez Ferrer (Clínico),Ciutat Universitaria,El Pla del Real,-0.36188,39.47852,0,28,33
 88,"Blasco Ibañez, 28 (F. Geografía e Historia)",Exposicio,El Pla del Real,-0.36114,39.47751,0,39,40
@@ -138,7 +138,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 137,Economista Gay - Luis Crumiere,Tormos,La Saïdia,-0.3799,39.48903,6,13,20
 138,San Pancracio - Periodista Llorente,Marxalenes,La Saïdia,-0.38422,39.48819,4,16,20
 139,Reus - Alquería de la Estrella,Marxalenes,La Saïdia,-0.38287,39.48571,11,4,15
-140,Campanar - Nicasio Benlloch,El Calvari,Campanar,-0.3896,39.488,12,8,20
+140,Campanar - Nicasio Benlloch,El Calvari,Campanar,-0.3896,39.488,13,7,20
 141,Gregorio Gea - Padre Ferris,Les Tendetes,Campanar,-0.38516,39.48327,17,3,20
 142,Gregorio Gea - Profesor Beltrán Báguena,Campanar,Campanar,-0.38966,39.48192,1,24,25
 143,Pio XII - Menéndez PIdal (Nuevo Centro),Campanar,Campanar,-0.39094,39.47954,1,27,30
@@ -173,7 +173,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 173,Pío XII - Monestir de Poblet,Campanar,Campanar,-0.39468,39.48454,0,20,20
 174,Monduber - Peset Aleixandre,Benicalap,Benicalap,-0.38665,39.48944,13,6,19
 175,Juan XXIII - Domingo Gómez,Torrefiel,Rascanya,-0.38271,39.49259,11,4,15
-176,Cno. Moncada - Pedro Patricio Mey,Torrefiel,Rascanya,-0.37885,39.49202,11,8,20
+176,Cno. Moncada - Pedro Patricio Mey,Torrefiel,Rascanya,-0.37885,39.49202,12,7,20
 177,Alcudia de Crespins - Pedro Patricio Mey,Torrefiel,Rascanya,-0.37349,39.49355,13,0,15
 178,Reig Genovés - Ramón Contreras Mongrell,Els Orriols,Rascanya,-0.37051,39.49222,20,0,20
 179,Av. de la Plata - Zapadores,Montolivet,Quatre Carreres,-0.36643,39.45547,22,1,23
@@ -194,7 +194,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 194,Estación AVE Joaquín Sorolla,Arrancapins,Extramurs,-0.3818,39.46077,3,37,40
 195,Giorgeta - Roig de Corella,La Raiosa,Jesús,-0.38428,39.45938,6,10,16
 196,Jerónimo Muñoz - Gaspar Aguilar,La Raiosa,Jesús,-0.38807,39.45958,10,2,15
-197,Fontanars dels Aforins - Jacinto Labaila,Safranar,Patraix,-0.39233,39.45818,14,1,15
+197,Fontanars dels Aforins - Jacinto Labaila,Safranar,Patraix,-0.39233,39.45818,15,0,15
 198,Fontanars dels Aforins - Vall d'Uixó,Safranar,Patraix,-0.39532,39.46088,6,14,20
 199,Beato Nicolás Factor - Convento de Jesús,Patraix,Patraix,-0.39156,39.46159,14,1,15
 200,Av. del Cid - Julián Peña,Nou Moles,L'Olivereta,-0.39321,39.46774,13,2,15
