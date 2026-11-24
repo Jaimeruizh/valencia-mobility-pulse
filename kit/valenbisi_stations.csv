@@ -137,7 +137,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 136,Economista Gay - Constitución,Tormos,La Saïdia,-0.37561,39.48994,10,7,20
 137,Economista Gay - Luis Crumiere,Tormos,La Saïdia,-0.3799,39.48903,6,13,20
 138,San Pancracio - Periodista Llorente,Marxalenes,La Saïdia,-0.38422,39.48819,4,16,20
-139,Reus - Alquería de la Estrella,Marxalenes,La Saïdia,-0.38287,39.48571,11,4,15
+139,Reus - Alquería de la Estrella,Marxalenes,La Saïdia,-0.38287,39.48571,10,5,15
 140,Campanar - Nicasio Benlloch,El Calvari,Campanar,-0.3896,39.488,12,8,20
 141,Gregorio Gea - Padre Ferris,Les Tendetes,Campanar,-0.38516,39.48327,17,3,20
 142,Gregorio Gea - Profesor Beltrán Báguena,Campanar,Campanar,-0.38966,39.48192,1,24,25
@@ -145,7 +145,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 144,Marqués de San Juan - Diputat Lluís Lucía,Campanar,Campanar,-0.39548,39.47878,0,15,15
 145,Plaza Badajoz,Campanar,Campanar,-0.3984,39.48155,0,15,15
 146,Av. Campanar (La Fe),Campanar,Campanar,-0.39116,39.48474,1,29,30
-147,Pie de la Cruz - Rejas,El Mercat,Ciutat Vella,-0.38021,39.4732,6,9,15
+147,Pie de la Cruz - Rejas,El Mercat,Ciutat Vella,-0.38021,39.4732,5,10,15
 148,C/Xàtiva 30-32,Russafa,L'Eixample,-0.37538,39.46715,1,34,35
 149,Peris y Valero - Salamanca,La Gran Via,L'Eixample,-0.3618,39.46293,18,2,20
 151,Jerónimo Monsoriu - Alcalde Cano Coloma,Aiora,Camins al Grau,-0.33712,39.46467,20,0,20
@@ -235,7 +235,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 235,Conde Torrefiel - Cecilio Plá,Torrefiel,Rascanya,-0.3772,39.49805,4,10,15
 236,Rio Segre - Rafael Company,Benicalap,Benicalap,-0.38228,39.49507,8,7,15
 237,Levante U.D. - Ecuador,Benicalap,Benicalap,-0.39104,39.49476,3,11,15
-238,San Jose Artesano - Francisco Morote Greus,Ciutat Fallera,Benicalap,-0.39438,39.49745,5,10,15
+238,San Jose Artesano - Francisco Morote Greus,Ciutat Fallera,Benicalap,-0.39438,39.49745,6,9,15
 239,Florista - T4 (Palau de Congressos),Beniferri,Pobles de l'Oest,-0.39996,39.49699,2,17,20
 240,Camp del Turia - Corts Valencianes,Benicalap,Benicalap,-0.40155,39.495,1,19,20
 241,La Vall d'Albaida - Corts Valencianes,Sant Pau,Campanar,-0.40189,39.49298,4,11,15
@@ -259,7 +259,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 259,Pio IX - Músico Cabanilles,Cami Real,Jesús,-0.39302,39.44546,18,2,20
 260,Traginers - Pedrapiquers,Vara de Quart,Patraix,-0.40722,39.45956,5,15,20
 261,Plaza Xuquer - Vinalopó,La Vega Baixa,Algirós,-0.35038,39.47668,14,5,19
-262,Tres Forques - Colonia Española de Mexico,La Fontsanta,L'Olivereta,-0.40923,39.46347,1,19,20
+262,Tres Forques - Colonia Española de Mexico,La Fontsanta,L'Olivereta,-0.40923,39.46347,2,18,20
 263,Padre Esteban Pernet - Casa Misericordia,La Fontsanta,L'Olivereta,-0.40964,39.46704,1,17,18
 264,Av. del Cid - Marconi,La Llum,L'Olivereta,-0.41443,39.46916,5,15,20
 265,Alcasser - Poeta Alberto Lista,Soternes,L'Olivereta,-0.40812,39.47097,4,11,15

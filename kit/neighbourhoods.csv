@@ -8,13 +8,13 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 195,El Palmar,Pobles del Sud,36.922,0,0,0,8,2,0,,
 194,El Saler,Pobles del Sud,8.24,0,0,0,11,2,9.22,,
 196,El Perellonet,Pobles del Sud,4.92,0,0,0,17,1,0,,
-162,Ciutat Fallera,Benicalap,0.498,2,31,7,6,2,0.43,2.3,High
+162,Ciutat Fallera,Benicalap,0.498,2,31,8,6,2,0.43,2.3,High
 173,Carpesa,Pobles del Nord,2.259,0,0,0,6,1,0,,
 177,Borboto,Pobles del Nord,1.422,0,0,0,3,1,0,,
 171,Benifaraig,Pobles del Nord,1.424,0,0,0,8,1,0,,
 152,Torrefiel,Rascanya,0.701,6,95,49,27,7,3.71,3,Low
 054,Tormos,La Saïdia,0.28,2,40,16,6,6,1.73,2.6,Low
-051,Marxalenes,La Saïdia,0.391,4,79,36,13,12,3.73,2.4,Medium
+051,Marxalenes,La Saïdia,0.391,4,79,35,13,12,3.73,2.4,Medium
 043,El Calvari,Campanar,0.094,1,20,12,4,5,1.77,1.9,High
 052,Morvedre,La Saïdia,0.429,2,30,30,13,9,3.41,2.3,High
 053,Trinitat,La Saïdia,0.596,4,75,43,10,13,4.7,2.8,Low
@@ -22,7 +22,7 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 031,El Botanic,Extramurs,0.37,2,31,4,7,10,3.62,3,Low
 061,Exposicio,El Pla del Real,0.382,4,125,6,11,14,4.7,2.9,Low
 012,La Xerea,Ciutat Vella,0.312,3,60,7,6,17,2.64,3,Low
-015,El Mercat,Ciutat Vella,0.173,2,34,6,4,6,0,2.8,Low
+015,El Mercat,Ciutat Vella,0.173,2,34,5,4,6,0,2.8,Low
 014,El Pilar,Ciutat Vella,0.162,0,0,0,5,8,0.27,2.8,Low
 022,El Pla del Remei,L'Eixample,0.387,6,130,0,15,19,2.06,2.9,Low
 131,L'Illa Perduda,Algirós,0.232,3,56,56,6,4,0.41,2.6,Low
@@ -54,7 +54,7 @@ code,neighbourhood,district,area_km2,valenbisi_stations,valenbisi_docks,bikes_av
 021,Russafa,L'Eixample,0.877,7,139,56,28,12,13.88,3.3,Low
 023,La Gran Via,L'Eixample,0.467,6,116,28,17,11,3.38,2.9,Low
 101,Montolivet,Quatre Carreres,0.475,5,98,80,23,11,2.69,2.3,High
-074,La Fontsanta,L'Olivereta,0.323,3,58,3,14,7,2.55,2.5,Medium
+074,La Fontsanta,L'Olivereta,0.323,3,58,4,14,7,2.55,2.5,Medium
 083,Vara de Quart,Patraix,1.035,4,70,16,13,5,4.14,2.9,Low
 081,Patraix,Patraix,0.622,3,45,33,20,9,7.13,2.9,Low
 073,Tres Forques,L'Olivereta,0.527,3,45,12,11,6,3.95,2.5,Medium
