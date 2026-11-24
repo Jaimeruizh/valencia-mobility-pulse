@@ -77,7 +77,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 76,Campoamor - Músico Ginés,Ciutat Jardi,Algirós,-0.34346,39.47008,17,0,19
 77,Molinell - Calderón de la Barca,Trinitat,La Saïdia,-0.36567,39.48497,16,3,20
 78,Aragón - Vicente Sancho Tello,Mestalla,El Pla del Real,-0.35869,39.46995,12,8,20
-79,Aragón - Ernesto Ferrer,Mestalla,El Pla del Real,-0.35724,39.47278,6,14,20
+79,Aragón - Ernesto Ferrer,Mestalla,El Pla del Real,-0.35724,39.47278,5,15,20
 80,Amadeo de Saboya (frente Ayuntamiento),Mestalla,El Pla del Real,-0.3623,39.47374,2,23,25
 81,Micer Mascó - Rodriguez Fornos,Exposicio,El Pla del Real,-0.36098,39.47513,2,18,20
 82,Guillem de Castro (Torres de Quart),El Carme,Ciutat Vella,-0.38391,39.47606,4,10,15
@@ -150,7 +150,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 149,Peris y Valero - Salamanca,La Gran Via,L'Eixample,-0.3618,39.46293,18,2,20
 151,Jerónimo Monsoriu - Alcalde Cano Coloma,Aiora,Camins al Grau,-0.33712,39.46467,20,0,20
 152,Reina Doña María - Cádiz,Russafa,L'Eixample,-0.37271,39.46093,5,10,15
-153,Llano de la Zaidía - Doctor Olóriz,Marxalenes,La Saïdia,-0.38059,39.48306,6,18,24
+153,Llano de la Zaidía - Doctor Olóriz,Marxalenes,La Saïdia,-0.38059,39.48306,5,19,24
 154,Pescadores - Progreso,Cabanyal-Canyamelar,Poblats Marítims,-0.32955,39.46988,12,2,15
 155,Salamanca - Reina Doña Germana,La Gran Via,L'Eixample,-0.36308,39.46495,7,11,20
 156,Puerto Rico - Cuba,Russafa,L'Eixample,-0.37635,39.46096,7,6,15
@@ -198,9 +198,9 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 198,Fontanars dels Aforins - Vall d'Uixó,Safranar,Patraix,-0.39532,39.46088,6,14,20
 199,Beato Nicolás Factor - Convento de Jesús,Patraix,Patraix,-0.39156,39.46159,14,1,15
 200,Av. del Cid - Julián Peña,Nou Moles,L'Olivereta,-0.39321,39.46774,13,2,15
-201,Perez Galdós - Nou Moles,Nou Moles,L'Olivereta,-0.39367,39.47171,6,13,20
+201,Perez Galdós - Nou Moles,Nou Moles,L'Olivereta,-0.39367,39.47171,5,14,20
 202,Pechina - Teruel,La Petxina,Extramurs,-0.39333,39.47622,1,19,20
-203,Reina Violante - Escultor García Mas,Sant Pau,Campanar,-0.40118,39.48461,8,7,15
+203,Reina Violante - Escultor García Mas,Sant Pau,Campanar,-0.40118,39.48461,7,8,15
 204,Corts Valencianes - General Avilés,Sant Pau,Campanar,-0.39659,39.48584,0,20,20
 205,Nicasio Benlloch - Amics dels Corpus,Benicalap,Benicalap,-0.39309,39.48929,14,10,24
 206,Periodista Gil Sumbiela - Poeta Serrano Clavero,Benicalap,Benicalap,-0.38901,39.49271,3,12,15
@@ -214,9 +214,9 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 214,"Santa Cruz de Tenerife, 21",Tres Forques,L'Olivereta,-0.40058,39.46493,6,8,15
 215,Músico Ayllón - Francisco Dolz,Tres Forques,L'Olivereta,-0.39675,39.46567,5,10,15
 216,Av. del Cid - Burgos,Nou Moles,L'Olivereta,-0.39946,39.46916,7,10,17
-217,Pintor Stolz - Nueve de Octubre,Nou Moles,L'Olivereta,-0.4046,39.47033,3,22,25
+217,Pintor Stolz - Nueve de Octubre,Nou Moles,L'Olivereta,-0.4046,39.47033,4,21,25
 218,Olimpia Arozena Torres - Juan Bautista Vives,Nou Moles,L'Olivereta,-0.39738,39.47074,4,11,15
-219,Castán Tobeñas - Rincon de Ademuz,Nou Moles,L'Olivereta,-0.40303,39.47266,7,11,18
+219,Castán Tobeñas - Rincon de Ademuz,Nou Moles,L'Olivereta,-0.40303,39.47266,6,12,18
 220,Castán Tobeñas - Patriques,Nou Moles,L'Olivereta,-0.39832,39.47386,10,6,16
 221,Manuel de Falla - Hernández Lázaro,Sant Pau,Campanar,-0.40285,39.47527,6,14,20
 222,Maestro Rodrigo - Manuel de Falla,Campanar,Campanar,-0.39728,39.47689,0,18,20
@@ -254,7 +254,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 254,Doctor Tomás Sala - Carteros,Sant Marcel.Li,Jesús,-0.38992,39.44771,16,2,19
 255,Tomas de Villarroya - San Vicente,Sant Marcel.Li,Jesús,-0.38603,39.4477,0,18,18
 256,Tres Forques - Turís,Patraix,Patraix,-0.39224,39.46396,11,4,15
-257,"Plaza Salvador Soria, 8",Sant Marcel.Li,Jesús,-0.3891,39.44525,5,15,20
+257,"Plaza Salvador Soria, 8",Sant Marcel.Li,Jesús,-0.3891,39.44525,4,16,20
 258,Pintor Rafael Solves - Jose Soto Mico,Cami Real,Jesús,-0.38914,39.43983,4,11,15
 259,Pio IX - Músico Cabanilles,Cami Real,Jesús,-0.39302,39.44546,18,2,20
 260,Traginers - Pedrapiquers,Vara de Quart,Patraix,-0.40722,39.45956,5,15,20
