@@ -1,11 +1,11 @@
 station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_total
 1,C/GUILLEM DE CASTRO esquina con C/NA JORDANA,El Carme,Ciutat Vella,-0.38293,39.48004,0,25,25
-2,Salvador Giner - C. Museo,El Carme,Ciutat Vella,-0.37975,39.47989,2,11,15
+2,Salvador Giner - C. Museo,El Carme,Ciutat Vella,-0.37975,39.47989,1,12,15
 3,Plaza del Musico López Chavarri,El Carme,Ciutat Vella,-0.38029,39.47684,0,20,20
 4,Plaza de la Virgen - Bailía,La Seu,Ciutat Vella,-0.37534,39.47675,0,24,25
 5,Plaza Poeta Llorente,La Xerea,Ciutat Vella,-0.37114,39.4769,4,10,15
 6,Guillem de Castro - San Pedro Pascual,El Botanic,Extramurs,-0.38408,39.4728,4,11,15
-7,Plaza del Mercado - Taula de Canvis,El Mercat,Ciutat Vella,-0.37919,39.47487,1,17,19
+7,Plaza del Mercado - Taula de Canvis,El Mercat,Ciutat Vella,-0.37919,39.47487,0,18,19
 8,Plaza de la Reina - Mar,La Seu,Ciutat Vella,-0.3753,39.47388,0,9,9
 9,Plaza de Tetuán,La Xerea,Ciutat Vella,-0.36993,39.47436,1,24,25
 10,Hospital - Horno del Hospital,Sant Francesc,Ciutat Vella,-0.38261,39.47082,6,9,15
@@ -53,9 +53,9 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 52,Luis García Berlanga Martí - Menorca,Penya-Roja,Camins al Grau,-0.34634,39.45603,14,11,25
 53,Alameda - Pintor Maella,Penya-Roja,Camins al Grau,-0.34814,39.45676,16,9,25
 54,Plaza de Europa,Penya-Roja,Camins al Grau,-0.35269,39.45978,20,0,20
-55,Francia - Pintor Maella,Penya-Roja,Camins al Grau,-0.34869,39.45934,25,0,25
+55,Francia - Pintor Maella,Penya-Roja,Camins al Grau,-0.34869,39.45934,24,1,25
 56,Francia - Menorca,Penya-Roja,Camins al Grau,-0.34441,39.45842,9,6,15
-57,Alameda - Pintor Monleón,Mestalla,El Pla del Real,-0.35826,39.46448,8,12,20
+57,Alameda - Pintor Monleón,Mestalla,El Pla del Real,-0.35826,39.46448,7,13,20
 58,Plaza España,La Roqueta,Extramurs,-0.38159,39.46622,1,19,20
 59,Baleares - Río Escalona,Penya-Roja,Camins al Grau,-0.35455,39.46309,14,1,15
 60,Baleares - Lebón,Cami Fondo,Camins al Grau,-0.35178,39.46223,19,0,19
@@ -75,7 +75,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 74,Plaza San Felipe Neri (Mercado Algirós),Albors,Camins al Grau,-0.35373,39.46995,20,0,20
 75,República Argentina - Campoamor,L'Amistat,Algirós,-0.3517,39.47211,25,0,25
 76,Campoamor - Músico Ginés,Ciutat Jardi,Algirós,-0.34346,39.47008,17,0,19
-77,Molinell - Calderón de la Barca,Trinitat,La Saïdia,-0.36567,39.48497,8,10,20
+77,Molinell - Calderón de la Barca,Trinitat,La Saïdia,-0.36567,39.48497,7,11,20
 78,Aragón - Vicente Sancho Tello,Mestalla,El Pla del Real,-0.35869,39.46995,6,14,20
 79,Aragón - Ernesto Ferrer,Mestalla,El Pla del Real,-0.35724,39.47278,6,14,20
 80,Amadeo de Saboya (frente Ayuntamiento),Mestalla,El Pla del Real,-0.3623,39.47374,1,24,25
@@ -92,10 +92,10 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 91,Grabador Jordan - Escultor Pastor,La Fonteta S.Lluis,Quatre Carreres,-0.36757,39.44413,13,2,15
 92,Blasco Ibañez - Aragón,Mestalla,El Pla del Real,-0.35597,39.47586,9,11,20
 93,Blasco Ibañez - Poeta Durán Tortajada,Ciutat Jardi,Algirós,-0.34381,39.47228,37,0,38
-94,Blasco Ibañez - Clariano,La Vega Baixa,Algirós,-0.35158,39.47538,16,4,20
+94,Blasco Ibañez - Clariano,La Vega Baixa,Algirós,-0.35158,39.47538,18,2,20
 95,Naranjos (Magisterio),La Carrasca,Algirós,-0.34612,39.47984,3,29,33
-96,Blasco Ibañez - Yecla,L'Amistat,Algirós,-0.34821,39.47355,19,2,21
-97,Blasco Ibañez 121,Ciutat Jardi,Algirós,-0.34313,39.47307,20,3,23
+96,Blasco Ibañez - Yecla,L'Amistat,Algirós,-0.34821,39.47355,18,3,21
+97,Blasco Ibañez 121,Ciutat Jardi,Algirós,-0.34313,39.47307,18,5,23
 98,Justo y Pastor - Duque de Gaeta,Albors,Camins al Grau,-0.34844,39.46968,15,0,15
 99,Blasco Ibañez 166 - Pintor José Mongrell,L'Illa Perduda,Algirós,-0.34048,39.47134,21,0,21
 100,Blasco Ibañez - Mestre Ripoll,La Carrasca,Algirós,-0.33815,39.47163,19,1,20
@@ -115,9 +115,9 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 114,UPV Informática,La Carrasca,Algirós,-0.34659,39.4818,0,30,30
 115,Cataluña - Doctor Vicente Zaragozá,Benimaclet,Benimaclet,-0.35215,39.48156,1,14,16
 116,Doctor Vicente Zaragozá - Ramón Asensio,Benimaclet,Benimaclet,-0.35756,39.48325,13,2,15
-117,Gascó Oliag - Primado Reig,Ciutat Universitaria,El Pla del Real,-0.35707,39.47925,4,25,30
+117,Gascó Oliag - Primado Reig,Ciutat Universitaria,El Pla del Real,-0.35707,39.47925,5,24,30
 118,Gómez Ferrer - Álvaro de Bazán,Ciutat Universitaria,El Pla del Real,-0.36042,39.48047,6,14,20
-119,Jaime Roig - Bachiller,Jaume Roig,El Pla del Real,-0.36323,39.48252,5,14,20
+119,Jaime Roig - Bachiller,Jaume Roig,El Pla del Real,-0.36323,39.48252,6,13,20
 120,Doctor Vicente Zaragozá - Emilio Baró,Benimaclet,Benimaclet,-0.36205,39.48488,16,2,18
 121,Murta - Sant Eperit,Benimaclet,Benimaclet,-0.35877,39.48618,7,8,15
 122,Músico Hipólito Martínez - Diógenes López Mecho,Cami de Vera,Benimaclet,-0.35407,39.48449,10,5,15
@@ -155,11 +155,11 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 155,Salamanca - Reina Doña Germana,La Gran Via,L'Eixample,-0.36308,39.46495,3,14,20
 156,Puerto Rico - Cuba,Russafa,L'Eixample,-0.37635,39.46096,6,7,15
 157,Pérez Galdós - Marqués de Zenete,Arrancapins,Extramurs,-0.38737,39.46405,6,14,20
-158,Doctor Lluch - Virgen del Sufragio,Cabanyal-Canyamelar,Poblats Marítims,-0.32772,39.4667,13,2,15
+158,Doctor Lluch - Virgen del Sufragio,Cabanyal-Canyamelar,Poblats Marítims,-0.32772,39.4667,14,1,15
 159,Francisco Cubells - San José de la Vega,Cabanyal-Canyamelar,Poblats Marítims,-0.33472,39.46345,14,0,17
 160,José María de Haro - Justo y Pastor,L'Illa Perduda,Algirós,-0.33898,39.46734,20,0,20
 161,Mediterráneo - Plaza Cruz de Cañamelar,Cabanyal-Canyamelar,Poblats Marítims,-0.33173,39.46797,14,1,15
-162,Armada Española - Mariano Cuber,Cabanyal-Canyamelar,Poblats Marítims,-0.3298,39.4636,17,1,19
+162,Armada Española - Mariano Cuber,Cabanyal-Canyamelar,Poblats Marítims,-0.3298,39.4636,18,0,19
 163,Paseo Neptuno 32-34,Cabanyal-Canyamelar,Poblats Marítims,-0.3234,39.46444,0,19,20
 164,Pavía - Columbretes,Cabanyal-Canyamelar,Poblats Marítims,-0.32463,39.46846,7,10,17
 165,Pavía - Espadán,Cabanyal-Canyamelar,Poblats Marítims,-0.32457,39.47141,20,0,20
@@ -179,9 +179,9 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 179,Av. de la Plata - Zapadores,Montolivet,Quatre Carreres,-0.36643,39.45547,11,12,23
 180,Doctor Waksman - Nieves,En Corts,Quatre Carreres,-0.37068,39.45602,20,0,20
 181,"Zapadores, 23",Montolivet,Quatre Carreres,-0.36819,39.458,9,6,15
-182,Ausias March - Pianista Amparo Iturbi,Malilla,Quatre Carreres,-0.37497,39.45543,21,0,21
+182,Ausias March - Pianista Amparo Iturbi,Malilla,Quatre Carreres,-0.37497,39.45543,20,1,21
 183,Ausias March - Av. de la Plata,En Corts,Quatre Carreres,-0.37228,39.45262,15,3,18
-184,Bombero Ramón Duart - Hermanos Maristas,Na Rovella,Quatre Carreres,-0.36557,39.45278,3,11,15
+184,Bombero Ramón Duart - Hermanos Maristas,Na Rovella,Quatre Carreres,-0.36557,39.45278,2,12,15
 185,Ebanista Caselles - Ausias March,Na Rovella,Quatre Carreres,-0.3705,39.45004,15,0,15
 186,Benifairó de Valldigna - Joaquín Benlloch,Malilla,Quatre Carreres,-0.37402,39.45039,12,2,14
 187,Ángel Villena - Ausias March,La Fonteta S.Lluis,Quatre Carreres,-0.36882,39.44796,4,11,15
@@ -190,7 +190,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 190,Cra. Malilla - Bulevar Sur,Malilla,Quatre Carreres,-0.38002,39.44653,14,1,15
 191,Esparraguera - Cra. Malilla,Malilla,Quatre Carreres,-0.37887,39.45033,12,3,15
 192,Cra. Malilla - Oltá,Malilla,Quatre Carreres,-0.37871,39.45264,13,7,20
-193,Uruguay - Carteros,La Raiosa,Jesús,-0.38672,39.45515,15,5,20
+193,Uruguay - Carteros,La Raiosa,Jesús,-0.38672,39.45515,14,6,20
 194,Estación AVE Joaquín Sorolla,Arrancapins,Extramurs,-0.3818,39.46077,1,39,40
 195,Giorgeta - Roig de Corella,La Raiosa,Jesús,-0.38428,39.45938,10,6,16
 196,Jerónimo Muñoz - Gaspar Aguilar,La Raiosa,Jesús,-0.38807,39.45958,5,7,15
@@ -205,7 +205,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 205,Nicasio Benlloch - Amics dels Corpus,Benicalap,Benicalap,-0.39309,39.48929,4,20,24
 206,Periodista Gil Sumbiela - Poeta Serrano Clavero,Benicalap,Benicalap,-0.38901,39.49271,3,12,15
 207,"Giorgeta, 64",La Raiosa,Jesús,-0.38191,39.45539,9,6,15
-208,Carteros - Mossen Febrer,La Creu Coberta,Jesús,-0.38858,39.45169,18,2,20
+208,Carteros - Mossen Febrer,La Creu Coberta,Jesús,-0.38858,39.45169,19,1,20
 209,Gaspar Aguilar - Músico Penella,L'Hort de Senabre,Jesús,-0.39328,39.4519,16,1,17
 210,Campos Crespo - Juan de Garay,Favara,Patraix,-0.39672,39.45555,1,14,15
 211,Fray Junípero Serra - Vall d'Uixó,Safranar,Patraix,-0.39776,39.45873,4,11,15
@@ -216,7 +216,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 216,Av. del Cid - Burgos,Nou Moles,L'Olivereta,-0.39946,39.46916,2,15,17
 217,Pintor Stolz - Nueve de Octubre,Nou Moles,L'Olivereta,-0.4046,39.47033,5,20,25
 218,Olimpia Arozena Torres - Juan Bautista Vives,Nou Moles,L'Olivereta,-0.39738,39.47074,7,8,15
-219,Castán Tobeñas - Rincon de Ademuz,Nou Moles,L'Olivereta,-0.40303,39.47266,5,13,18
+219,Castán Tobeñas - Rincon de Ademuz,Nou Moles,L'Olivereta,-0.40303,39.47266,4,14,18
 220,Castán Tobeñas - Patriques,Nou Moles,L'Olivereta,-0.39832,39.47386,11,5,16
 221,Manuel de Falla - Hernández Lázaro,Sant Pau,Campanar,-0.40285,39.47527,3,17,20
 222,Maestro Rodrigo - Manuel de Falla,Campanar,Campanar,-0.39728,39.47689,10,10,20
@@ -255,8 +255,8 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 255,Tomas de Villarroya - San Vicente,Sant Marcel.Li,Jesús,-0.38603,39.4477,6,12,18
 256,Tres Forques - Turís,Patraix,Patraix,-0.39224,39.46396,11,4,15
 257,"Plaza Salvador Soria, 8",Sant Marcel.Li,Jesús,-0.3891,39.44525,7,13,20
-258,Pintor Rafael Solves - Jose Soto Mico,Cami Real,Jesús,-0.38914,39.43983,5,10,15
-259,Pio IX - Músico Cabanilles,Cami Real,Jesús,-0.39302,39.44546,18,2,20
+258,Pintor Rafael Solves - Jose Soto Mico,Cami Real,Jesús,-0.38914,39.43983,3,12,15
+259,Pio IX - Músico Cabanilles,Cami Real,Jesús,-0.39302,39.44546,20,0,20
 260,Traginers - Pedrapiquers,Vara de Quart,Patraix,-0.40722,39.45956,2,18,20
 261,Plaza Xuquer - Vinalopó,La Vega Baixa,Algirós,-0.35038,39.47668,17,2,19
 262,Tres Forques - Colonia Española de Mexico,La Fontsanta,L'Olivereta,-0.40923,39.46347,0,20,20
