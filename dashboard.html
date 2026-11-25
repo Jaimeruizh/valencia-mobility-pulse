@@ -617,7 +617,9 @@ tbody tr:hover td { background: var(--accent-soft); }
 
   function renderAll() { renderKpis(); renderMap(); renderDetail(); renderRanking(); renderCharts(); renderTable(); }
   // first frame: fit the map to the station network, select the largest station
-  var bx = [1e9, 1e9, -1e9, -1e9]; stations.forEach(function (s) { bx[0] = Math.min(bx[0], s.x); bx[1] = Math.min(bx[1], s.y); bx[2] = Math.max(bx[2], s.x); bx[3] = Math.max(bx[3], s.y); });
+  // stations outside the neighbourhood outlines (bad coordinates from the portal) do not count for the frame
+  var cb = [1e9, 1e9, -1e9, -1e9]; hoods.forEach(function (b) { cb[0] = Math.min(cb[0], b.box[0]); cb[1] = Math.min(cb[1], b.box[1]); cb[2] = Math.max(cb[2], b.box[2]); cb[3] = Math.max(cb[3], b.box[3]); });
+  var bx = [1e9, 1e9, -1e9, -1e9]; stations.forEach(function (s) { if (s.x < cb[0] || s.x > cb[2] || s.y < cb[1] || s.y > cb[3]) return; bx[0] = Math.min(bx[0], s.x); bx[1] = Math.min(bx[1], s.y); bx[2] = Math.max(bx[2], s.x); bx[3] = Math.max(bx[3], s.y); });
   home = fitBox(bx, 0.06); view = Object.assign({}, home);
   setStatus('Showing the latest saved capture.');
   renderKpis(); renderCharts(); renderTable(); setMode('bike');
