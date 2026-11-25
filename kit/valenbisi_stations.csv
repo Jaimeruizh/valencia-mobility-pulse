@@ -1,6 +1,6 @@
 station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_total
 1,C/GUILLEM DE CASTRO esquina con C/NA JORDANA,El Carme,Ciutat Vella,-0.38293,39.48004,0,25,25
-2,Salvador Giner - C. Museo,El Carme,Ciutat Vella,-0.37975,39.47989,1,12,15
+2,Salvador Giner - C. Museo,El Carme,Ciutat Vella,-0.37975,39.47989,0,13,15
 3,Plaza del Musico López Chavarri,El Carme,Ciutat Vella,-0.38029,39.47684,0,20,20
 4,Plaza de la Virgen - Bailía,La Seu,Ciutat Vella,-0.37534,39.47675,0,24,25
 5,Plaza Poeta Llorente,La Xerea,Ciutat Vella,-0.37114,39.4769,4,10,15
@@ -34,7 +34,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 33,Germanías - Ruzafa,Russafa,L'Eixample,-0.37399,39.46482,3,17,20
 34,Regne de Valencia - Doctor Sumsi,La Gran Via,L'Eixample,-0.36996,39.46412,1,16,17
 35,Regne de Valencia - Almirante Cadarso,La Gran Via,L'Eixample,-0.36699,39.46375,6,4,20
-36,Plaza de los Fueros - Conde Trenor,El Carme,Ciutat Vella,-0.37544,39.47907,0,25,25
+36,Plaza de los Fueros - Conde Trenor,El Carme,Ciutat Vella,-0.37544,39.47907,1,24,25
 37,Peris y Valero - Luis Santángel,Russafa,L'Eixample,-0.36644,39.46094,18,1,20
 38,Peris y Valero - Cabo Jubi,Russafa,L'Eixample,-0.37025,39.4594,15,0,15
 39,Peris y Valero - Cuba,Russafa,L'Eixample,-0.37393,39.45785,18,0,19
@@ -92,15 +92,15 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 91,Grabador Jordan - Escultor Pastor,La Fonteta S.Lluis,Quatre Carreres,-0.36757,39.44413,13,2,15
 92,Blasco Ibañez - Aragón,Mestalla,El Pla del Real,-0.35597,39.47586,9,11,20
 93,Blasco Ibañez - Poeta Durán Tortajada,Ciutat Jardi,Algirós,-0.34381,39.47228,35,2,38
-94,Blasco Ibañez - Clariano,La Vega Baixa,Algirós,-0.35158,39.47538,18,2,20
+94,Blasco Ibañez - Clariano,La Vega Baixa,Algirós,-0.35158,39.47538,17,3,20
 95,Naranjos (Magisterio),La Carrasca,Algirós,-0.34612,39.47984,3,29,33
-96,Blasco Ibañez - Yecla,L'Amistat,Algirós,-0.34821,39.47355,5,16,21
-97,Blasco Ibañez 121,Ciutat Jardi,Algirós,-0.34313,39.47307,8,15,23
+96,Blasco Ibañez - Yecla,L'Amistat,Algirós,-0.34821,39.47355,4,17,21
+97,Blasco Ibañez 121,Ciutat Jardi,Algirós,-0.34313,39.47307,7,16,23
 98,Justo y Pastor - Duque de Gaeta,Albors,Camins al Grau,-0.34844,39.46968,14,1,15
 99,Blasco Ibañez 166 - Pintor José Mongrell,L'Illa Perduda,Algirós,-0.34048,39.47134,20,1,21
 100,Blasco Ibañez - Mestre Ripoll,La Carrasca,Algirós,-0.33815,39.47163,12,8,20
 101,Marino Blas de Lezo (estación Cabañal Adif),Cabanyal-Canyamelar,Poblats Marítims,-0.33484,39.47023,27,0,30
-102,Ramón Llull - Serpis,La Carrasca,Algirós,-0.34672,39.47583,16,3,20
+102,Ramón Llull - Serpis,La Carrasca,Algirós,-0.34672,39.47583,15,4,20
 103,Rubén Darío - Plaza Fray Luis Colomer,La Carrasca,Algirós,-0.35237,39.47845,11,3,15
 104,Albalat dels Tarongers - Paseo Facultades,La Carrasca,Algirós,-0.34728,39.47839,3,17,20
 105,Aularios Universidad de Valencia,La Carrasca,Algirós,-0.3444,39.47835,0,30,30
@@ -115,7 +115,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 114,UPV Informática,La Carrasca,Algirós,-0.34659,39.4818,0,30,30
 115,Cataluña - Doctor Vicente Zaragozá,Benimaclet,Benimaclet,-0.35215,39.48156,1,14,16
 116,Doctor Vicente Zaragozá - Ramón Asensio,Benimaclet,Benimaclet,-0.35756,39.48325,13,2,15
-117,Gascó Oliag - Primado Reig,Ciutat Universitaria,El Pla del Real,-0.35707,39.47925,8,21,30
+117,Gascó Oliag - Primado Reig,Ciutat Universitaria,El Pla del Real,-0.35707,39.47925,9,20,30
 118,Gómez Ferrer - Álvaro de Bazán,Ciutat Universitaria,El Pla del Real,-0.36042,39.48047,8,12,20
 119,Jaime Roig - Bachiller,Jaume Roig,El Pla del Real,-0.36323,39.48252,7,12,20
 120,Doctor Vicente Zaragozá - Emilio Baró,Benimaclet,Benimaclet,-0.36205,39.48488,15,3,18
@@ -138,7 +138,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 137,Economista Gay - Luis Crumiere,Tormos,La Saïdia,-0.3799,39.48903,3,16,20
 138,San Pancracio - Periodista Llorente,Marxalenes,La Saïdia,-0.38422,39.48819,18,2,20
 139,Reus - Alquería de la Estrella,Marxalenes,La Saïdia,-0.38287,39.48571,15,0,15
-140,Campanar - Nicasio Benlloch,El Calvari,Campanar,-0.3896,39.488,4,16,20
+140,Campanar - Nicasio Benlloch,El Calvari,Campanar,-0.3896,39.488,5,15,20
 141,Gregorio Gea - Padre Ferris,Les Tendetes,Campanar,-0.38516,39.48327,12,8,20
 142,Gregorio Gea - Profesor Beltrán Báguena,Campanar,Campanar,-0.38966,39.48192,0,23,25
 143,Pio XII - Menéndez PIdal (Nuevo Centro),Campanar,Campanar,-0.39094,39.47954,1,26,30
@@ -175,7 +175,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 175,Juan XXIII - Domingo Gómez,Torrefiel,Rascanya,-0.38271,39.49259,5,10,15
 176,Cno. Moncada - Pedro Patricio Mey,Torrefiel,Rascanya,-0.37885,39.49202,17,3,20
 177,Alcudia de Crespins - Pedro Patricio Mey,Torrefiel,Rascanya,-0.37349,39.49355,12,1,15
-178,Reig Genovés - Ramón Contreras Mongrell,Els Orriols,Rascanya,-0.37051,39.49222,20,0,20
+178,Reig Genovés - Ramón Contreras Mongrell,Els Orriols,Rascanya,-0.37051,39.49222,19,1,20
 179,Av. de la Plata - Zapadores,Montolivet,Quatre Carreres,-0.36643,39.45547,11,12,23
 180,Doctor Waksman - Nieves,En Corts,Quatre Carreres,-0.37068,39.45602,20,0,20
 181,"Zapadores, 23",Montolivet,Quatre Carreres,-0.36819,39.458,9,6,15
@@ -184,7 +184,7 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 184,Bombero Ramón Duart - Hermanos Maristas,Na Rovella,Quatre Carreres,-0.36557,39.45278,2,12,15
 185,Ebanista Caselles - Ausias March,Na Rovella,Quatre Carreres,-0.3705,39.45004,15,0,15
 186,Benifairó de Valldigna - Joaquín Benlloch,Malilla,Quatre Carreres,-0.37402,39.45039,12,2,14
-187,Ángel Villena - Ausias March,La Fonteta S.Lluis,Quatre Carreres,-0.36882,39.44796,4,11,15
+187,Ángel Villena - Ausias March,La Fonteta S.Lluis,Quatre Carreres,-0.36882,39.44796,3,12,15
 188,Hospital Nueva Fe (consultas externas),Malilla,Quatre Carreres,-0.37516,39.44462,1,39,40
 189,Hospital Nueva Fe (administración),Malilla,Quatre Carreres,-0.37707,39.44478,0,30,30
 190,Cra. Malilla - Bulevar Sur,Malilla,Quatre Carreres,-0.38002,39.44653,14,1,15
@@ -204,9 +204,9 @@ station,address,neighbourhood,district,lon,lat,bikes_available,docks_free,docks_
 204,Corts Valencianes - General Avilés,Sant Pau,Campanar,-0.39659,39.48584,2,18,20
 205,Nicasio Benlloch - Amics dels Corpus,Benicalap,Benicalap,-0.39309,39.48929,4,20,24
 206,Periodista Gil Sumbiela - Poeta Serrano Clavero,Benicalap,Benicalap,-0.38901,39.49271,3,12,15
-207,"Giorgeta, 64",La Raiosa,Jesús,-0.38191,39.45539,8,7,15
+207,"Giorgeta, 64",La Raiosa,Jesús,-0.38191,39.45539,7,8,15
 208,Carteros - Mossen Febrer,La Creu Coberta,Jesús,-0.38858,39.45169,19,1,20
-209,Gaspar Aguilar - Músico Penella,L'Hort de Senabre,Jesús,-0.39328,39.4519,16,1,17
+209,Gaspar Aguilar - Músico Penella,L'Hort de Senabre,Jesús,-0.39328,39.4519,17,0,17
 210,Campos Crespo - Juan de Garay,Favara,Patraix,-0.39672,39.45555,1,14,15
 211,Fray Junípero Serra - Vall d'Uixó,Safranar,Patraix,-0.39776,39.45873,4,11,15
 212,Fray Juanípero Serra - Torrente,Vara de Quart,Patraix,-0.4004,39.46148,3,12,15
