@@ -226,6 +226,18 @@ Add the briefing as a section at the end of the dashboard titled "What this mean
     </ul>
   </section>
 
+  <section>
+    <h2>Bonus: make your dashboard update itself</h2>
+    <p>GitHub is like Google Drive for code: it stores your files, remembers every version, runs small tasks on a timer (GitHub Actions) and publishes a free web page (GitHub Pages). You create the account yourself; the assistant guides you through the rest.</p>
+    <div class="prompt"><div class="prompt-bar">Update itself with GitHub<button class="copy" type="button">Copy</button></div><pre>I have a dashboard as a single HTML file. The data comes from València's open data portal (opendata.vlci.valencia.es), which only publishes the current moment. Guide me step by step, as a non-programmer, to:
+1) create a free GitHub account,
+2) create a repository and upload my dashboard,
+3) add a small script and a GitHub Actions workflow that downloads the data every 20 minutes and saves a copy,
+4) publish the dashboard with GitHub Pages so it shows the saved data.
+Write every file I need to copy, and tell me exactly where to click.</pre></div>
+    <p class="look"><b>Look for:</b> GitHub may start timed tasks a few minutes late, so the copies will not land exactly every 20 minutes. That is normal.</p>
+  </section>
+
   <p class="foot">Data: Ajuntament de València open data portal (opendata.vlci.valencia.es), datasets ValenBisi Disponibilidad, Intensidad tráfico tramos, Barrios, EMT, Itinerarios ciclistas and Vulnerabilidad por barrios 2021. Tables prepared by CITIES FORUM for teaching.</p>
 </div>
 <script>
